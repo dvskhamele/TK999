@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Users, Award, Calendar, Zap, Star, Trophy, Target } from 'lucide-react';
+import { TrendingUp, Award, Zap, Star, Target } from 'lucide-react';
 
 const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
   // Features data
   const features = [
     {
-      icon: <Trophy className="w-12 h-12" />,
+      icon: <Award className="w-12 h-12" />,
       title: "Live Betting",
       description: "Bet on ongoing matches with real-time odds that update as the game progresses"
     },
@@ -213,24 +213,24 @@ const HomePage: React.FC = () => {
       
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-20">
-        <div className="bg-gradient-to-r from-green-500 to-blue-500 rounded-3xl p-12 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Betting?</h2>
+        <div className="bg-gradient-to-r from-green-500 to-blue-500 rounded-3xl p-12 text-center text-white shadow-2xl">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Start Betting?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Join thousands of satisfied users and experience the best sports betting platform today
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link 
               to="/register" 
-              className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4 rounded-2xl font-bold flex items-center justify-center"
+              className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4 rounded-2xl font-bold flex items-center justify-center hover:scale-105 transition-transform duration-300"
             >
-              <span className="mr-2">📝</span>
+              <span className="mr-3">📝</span>
               Create Free Account
             </Link>
             <Link 
               to="/matches" 
-              className="btn bg-transparent border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4 rounded-2xl font-bold flex items-center justify-center"
+              className="btn bg-transparent border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4 rounded-2xl font-bold flex items-center justify-center hover:scale-105 transition-transform duration-300"
             >
-              <span className="mr-2">⚽</span>
+              <span className="mr-3">⚽</span>
               View Matches
             </Link>
           </div>

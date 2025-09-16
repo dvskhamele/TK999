@@ -7,7 +7,6 @@ import {
   Lock, 
   Eye, 
   EyeOff, 
-  Shield, 
   AlertCircle, 
   CheckCircle, 
   Camera,
@@ -15,17 +14,17 @@ import {
   Bell,
   CreditCard,
   History,
-  Trophy,
   Target,
   Zap,
-  Edit,
+  Award,
+  TrendingUp,
+  Wallet,
   Save,
-  LogOut,
-  Calendar,
-  Star,
-  DollarSign,
-  BarChart3,
-  TrendingUp
+  Edit,
+  CalendarDays,
+  Heart,
+  BarChart,
+  ShieldCheck
 } from 'lucide-react';
 
 interface User {
@@ -545,7 +544,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                     <div className="space-y-4">
                       <div>
                         <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                          <Trophy className="mr-2 text-lg" />
+                          <Award className="mr-2 text-lg" />
                           Member Since
                         </label>
                         <p className="px-4 py-3 bg-gray-50 rounded-xl">
@@ -555,7 +554,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                       
                       <div>
                         <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                          <Calendar className="mr-2 text-lg" />
+                          <CalendarDays className="mr-2 text-lg" />
                           Last Login
                         </label>
                         <p className="px-4 py-3 bg-gray-50 rounded-xl">
@@ -565,7 +564,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                       
                       <div>
                         <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                          <Shield className="mr-2 text-lg" />
+                          <ShieldCheck className="mr-2 text-lg" />
                           Account Role
                         </label>
                         <p className="px-4 py-3 bg-gray-50 rounded-xl capitalize">
@@ -602,7 +601,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                         className="btn btn-secondary px-6 py-3 flex items-center"
                         disabled={isLoading}
                       >
-                        <Shield className="mr-2" size={20} />
+                        <ShieldCheck className="mr-2" size={20} />
                         Cancel
                       </button>
                     </div>
@@ -853,7 +852,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                           className="btn btn-secondary px-6 py-3 flex items-center"
                           disabled={isLoading}
                         >
-                          <Shield className="mr-2" size={20} />
+                          <ShieldCheck className="mr-2" size={20} />
                           Cancel
                         </button>
                       </div>
@@ -876,7 +875,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                 
                 <div>
                   <h4 className="font-bold text-lg mb-4 flex items-center">
-                    <Shield className="mr-2" size={20} />
+                    <ShieldCheck className="mr-2" size={20} />
                     Two-Factor Authentication
                   </h4>
                   <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6">
@@ -902,7 +901,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                       Enable 2FA to protect your account with an additional verification step.
                     </p>
                     <button className="btn btn-primary px-6 py-3 flex items-center">
-                      <Shield className="mr-2" size={20} />
+                      <ShieldCheck className="mr-2" size={20} />
                       Enable 2FA
                     </button>
                   </div>
@@ -1024,7 +1023,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                   <div className="space-y-4">
                     <div>
                       <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                        <Trophy className="mr-2 text-lg" />
+                        <Award className="mr-2 text-lg" />
                         Risk Level
                       </label>
                       <select
@@ -1043,7 +1042,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                     
                     <div>
                       <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                        <Star className="mr-2 text-lg" />
+                        <Heart className="mr-2 text-lg" />
                         Favorite Sports
                       </label>
                       <div className="flex flex-wrap gap-2">
@@ -1065,7 +1064,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                     
                     <div>
                       <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                        <Calendar className="mr-2 text-lg" />
+                        <CalendarDays className="mr-2 text-lg" />
                         Betting Schedule
                       </label>
                       <div className="flex flex-wrap gap-2">
@@ -1116,7 +1115,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                   <div className="card">
                     <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-t-2xl">
                       <h4 className="text-xl font-bold text-white mb-4 flex items-center">
-                        <DollarSign className="mr-2" size={24} />
+                        <Wallet className="mr-2" size={24} />
                         Wallet Balance
                       </h4>
                     </div>
@@ -1170,7 +1169,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                   <div className="card">
                     <div className="bg-gradient-to-r from-green-400 to-blue-500 p-6 rounded-t-2xl">
                       <h4 className="text-xl font-bold text-white mb-4 flex items-center">
-                        <BarChart3 className="mr-2" size={24} />
+                        <BarChart className="mr-2" size={24} />
                         Transaction Summary
                       </h4>
                     </div>
@@ -1309,7 +1308,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                   <div className="card">
                     <div className="bg-gradient-to-r from-purple-400 to-pink-500 p-6 rounded-t-2xl">
                       <h4 className="text-xl font-bold text-white mb-4 flex items-center">
-                        <Trophy className="mr-2" size={24} />
+                        <Award className="mr-2" size={24} />
                         Performance
                       </h4>
                     </div>
@@ -1527,7 +1526,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                 <div className="card bg-gradient-to-r from-green-50 to-teal-50">
                   <div className="p-6">
                     <h5 className="font-bold text-lg mb-3 flex items-center">
-                      <Trophy className="mr-2 text-green-600" size={20} />
+                      <Award className="mr-2 text-green-600" size={20} />
                       Performance Analysis
                     </h5>
                     <div className="space-y-3">
@@ -1581,7 +1580,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                 <div className="card bg-gradient-to-r from-purple-50 to-pink-50">
                   <div className="p-6">
                     <h5 className="font-bold text-lg mb-3 flex items-center">
-                      <Calendar className="mr-2 text-purple-600" size={20} />
+                      <CalendarDays className="mr-2 text-purple-600" size={20} />
                       Upcoming Opportunities
                     </h5>
                     <div className="space-y-3">
@@ -1602,7 +1601,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <h6 className="font-bold text-lg mb-3 flex items-center">
-                        <BarChart3 className="mr-2 text-indigo-600" size={20} />
+                        <BarChart className="mr-2 text-indigo-600" size={20} />
                         Betting Patterns
                       </h6>
                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
