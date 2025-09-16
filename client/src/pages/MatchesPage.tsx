@@ -142,17 +142,6 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'live':
-        return 'bg-red-100 text-red-800 border-red-200';
-      case 'upcoming':
-        return 'bg-blue-100 text-blue-800 border-blue-200';
-      default:
-        return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
-
   // Get user's favorite teams
   const getFavoriteTeams = () => {
     const allTeams = matches.flatMap(match => [match.teamA, match.teamB]);
@@ -165,75 +154,80 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
   const categories = ['All', ...Object.keys(matchesByCategory).filter(cat => cat !== 'All')];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-2xl sticky top-0 z-50">
-        <nav className="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <header className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 shadow-xl sticky top-0 z-50">
+        <nav className="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">
           <div className="flex items-center">
             <Link 
               to="/dashboard" 
-              className="text-3xl md:text-4xl font-bold text-white flex items-center group"
+              className="text-2xl md:text-3xl font-bold text-white flex items-center group"
             >
-              <span className="text-3xl md:text-4xl mr-3 group-hover:rotate-12 transition-transform duration-500 float">🎲</span>
-              TK999
+              <span className="text-2xl md:text-3xl mr-2 group-hover:rotate-12 transition-transform duration-300">🎲</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white font-extrabold">
+                TK999
+              </span>
             </Link>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-6 py-4 rounded-2xl font-bold flex items-center shadow-xl float">
-              <DollarSign className="mr-3" size={24} />
-              <span className="text-xl">{user.balance.toLocaleString()} BDT</span>
+          <div className="flex flex-wrap items-center justify-center gap-4 w-full lg:w-auto">
+            {/* Balance Card */}
+            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-3 rounded-xl font-bold flex items-center shadow-lg transform transition-all duration-300 hover:scale-105">
+              <DollarSign className="mr-2" size={20} />
+              <span className="text-lg font-extrabold">{user.balance.toLocaleString()} BDT</span>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="bg-white w-14 h-14 rounded-full flex items-center justify-center text-blue-600 font-bold text-2xl shadow-xl float">
+            {/* User Profile */}
+            <div className="flex items-center space-x-3">
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                 {user?.name ? user.name.charAt(0).toUpperCase() : '👤'}
               </div>
-              <div className="hidden sm:block">
-                <p className="text-white font-semibold text-lg">{user?.name || 'User'}</p>
-                <p className="text-blue-100 text-sm">
-                  {user?.role === 'admin' ? 'Admin' : user?.role === 'staff' ? 'Staff' : 'Member'}
+              <div className="hidden md:block">
+                <p className="text-white font-semibold text-base">{user?.name || 'User'}</p>
+                <p className="text-blue-100 text-xs font-medium">
+                  {user?.role === 'admin' ? '👑 Admin' : user?.role === 'staff' ? '🔧 Staff' : '⭐ Member'}
                 </p>
               </div>
             </div>
             
-            <div className="flex space-x-3">
+            {/* Navigation Buttons */}
+            <div className="flex space-x-2">
               <Link 
                 to="/dashboard" 
-                className="stunning-btn stunning-btn-success flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-float"
+                className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-blue-400 hover:to-blue-500 shadow-lg"
                 title="Dashboard"
               >
-                <span className="text-2xl">📊</span>
-                <span className="text-xs mt-1">Dashboard</span>
+                <span className="text-xl">📊</span>
+                <span className="text-xs mt-1 font-medium">Dashboard</span>
               </Link>
               
               <Link 
                 to="/matches" 
-                className="stunning-btn stunning-btn-primary flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-float"
+                className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-purple-400 hover:to-purple-500 shadow-lg"
                 title="Matches"
               >
-                <span className="text-2xl">⚽</span>
-                <span className="text-xs mt-1">Matches</span>
+                <span className="text-xl">⚽</span>
+                <span className="text-xs mt-1 font-medium">Matches</span>
               </Link>
               
               {(user?.role === 'admin' || user?.role === 'staff') && (
                 <Link 
                   to="/admin" 
-                  className="stunning-btn stunning-btn-warning flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-float"
+                  className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-amber-400 hover:to-orange-400 shadow-lg"
                   title="Admin"
                 >
-                  <span className="text-2xl">⚙️</span>
-                  <span className="text-xs mt-1">Admin</span>
+                  <span className="text-xl">⚙️</span>
+                  <span className="text-xs mt-1 font-medium">Admin</span>
                 </Link>
               )}
               
               <button 
                 onClick={handleLogout}
-                className="stunning-btn stunning-btn-danger flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-pulse-glow"
+                className="bg-gradient-to-r from-rose-500 to-red-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-rose-400 hover:to-red-400 shadow-lg"
                 title="Logout"
               >
-                <span className="text-2xl">🚪</span>
-                <span className="text-xs mt-1">Logout</span>
+                <span className="text-xl">🚪</span>
+                <span className="text-xs mt-1 font-medium">Logout</span>
               </button>
             </div>
           </div>
@@ -242,64 +236,63 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
       
       <main className="container mx-auto p-4 md:p-6">
         <div className="mb-8 fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 flex items-center">
-            <Gamepad2 className="mr-4 text-4xl float" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 flex items-center">
+            <Gamepad2 className="mr-3 text-3xl text-purple-600" />
+            <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Play Today
             </span>
           </h2>
-          <p className="text-gray-600 mt-3 text-lg">Choose your matches and place your bets</p>
+          <p className="text-gray-600 mt-2 text-lg">Choose your matches and place your bets</p>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-2xl text-center font-semibold">
+          <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-xl text-center font-semibold border-l-4 border-red-500">
             {error}
           </div>
         )}
 
         {/* Search and Filters */}
-        <div className="stunning-card stunning-card-matches mb-10 animate-zoom-in">
-          <div className="p-6">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-              <div className="relative w-full md:w-1/3">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={22} />
-                <input
-                  type="text"
-                  placeholder="Search matches, teams, or sports..."
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="stunning-btn stunning-btn-primary flex items-center py-4 px-6 hover:scale-105 transition-transform duration-300 animate-float"
-                >
-                  <Filter className="mr-2" size={20} />
-                  {showFilters ? 'Hide Filters' : 'Show Filters'}
-                </button>
-                
-                <button
-                  onClick={onShowAssistant}
-                  className="stunning-btn stunning-btn-warning flex items-center py-4 px-6 hover:scale-105 transition-transform duration-300 animate-float"
-                >
-                  <Zap className="mr-2" size={20} />
-                  Smart Tips
-                </button>
-              </div>
+        <div className="bg-white rounded-2xl shadow-xl p-6 mb-8 border border-gray-100">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div className="relative w-full md:w-1/3">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search matches, teams, or sports..."
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
+            
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Filter className="mr-2" size={18} />
+                {showFilters ? 'Hide Filters' : 'Show Filters'}
+              </button>
+              
+              <button
+                onClick={onShowAssistant}
+                className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Zap className="mr-2" size={18} />
+                Smart Tips
+              </button>
+            </div>
+          </div>
             
             {/* Advanced Filters */}
             {showFilters && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-200">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="w-full border rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
                   >
                     <option value="All">All Statuses</option>
                     <option value="upcoming">Upcoming</option>
@@ -314,7 +307,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       setStatusFilter('All');
                       setSearchTerm('');
                     }}
-                    className="stunning-btn stunning-btn-secondary py-4 hover:scale-105 transition-transform duration-300 animate-float"
+                    className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-5 py-3 rounded-xl font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg w-full"
                   >
                     Clear Filters
                   </button>
@@ -325,14 +318,14 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div className="flex flex-wrap gap-2">
                 <button
-                  className={`px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 flex items-center shadow-md hover:shadow-lg ${
+                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center shadow-sm hover:shadow-md ${
                     activeCategory === 'All'
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white transform hover:scale-105'
-                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white transform hover:scale-105'
+                      : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 border border-gray-200'
                   }`}
                   onClick={() => setActiveCategory('All')}
                 >
-                  <Trophy className="mr-2" size={18} />
+                  <Trophy className="mr-2" size={16} />
                   All Sports
                 </button>
                 {categories
@@ -340,10 +333,10 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                   .map(category => (
                     <button
                       key={category}
-                      className={`px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 flex items-center shadow-md hover:shadow-lg ${
+                      className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center shadow-sm hover:shadow-md ${
                         activeCategory === category
-                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white transform hover:scale-105'
-                          : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                          ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white transform hover:scale-105'
+                          : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 border border-gray-200'
                       }`}
                       onClick={() => setActiveCategory(category)}
                     >
@@ -358,7 +351,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="border rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  className="border border-gray-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
                 >
                   <option value="date">Sort by Date</option>
                   <option value="popularity">Sort by Popularity</option>
@@ -390,19 +383,19 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 </div>
                 <p className="text-sm text-gray-600">Favorite Sports</p>
               </div>
-              <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-4 rounded-xl text-center border border-yellow-100 hover:shadow-md transition-all duration-300">
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-xl text-center border border-amber-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
-                  <Users className="text-yellow-600 mr-2" size={20} />
-                  <p className="text-2xl font-bold text-yellow-600">{user.balance.toLocaleString()}</p>
+                  <Users className="text-amber-600 mr-2" size={20} />
+                  <p className="text-2xl font-bold text-amber-600">{user.balance.toLocaleString()}</p>
                 </div>
                 <p className="text-sm text-gray-600">Your Balance</p>
               </div>
             </div>
           </div>
-        </div>
+        </main>
 
         {/* Smart Recommendations */}
-        <div className="stunning-card stunning-card-matches mb-10 animate-zoom-in delay-200">
+        <div className="bg-white rounded-2xl shadow-xl mb-8 border border-gray-100">
           <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-5 rounded-t-2xl">
             <h3 className="text-lg font-bold text-white flex items-center">
               <Zap className="mr-2" size={22} />
@@ -411,8 +404,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
           </div>
           <div className="p-5">
             <div className="flex flex-wrap gap-4">
-              {favoriteTeams.map(team => (
-                <div key={team} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl flex-1 min-w-[220px] border border-blue-100 hover:shadow-md transition-all duration-300">
+              {favoriteTeams.map((team: string) => (
+                <div key={team} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl flex-1 min-w-[200px] border border-blue-100 hover:shadow-md transition-all duration-300">
                   <h4 className="font-bold text-gray-800 text-lg">{team}</h4>
                   <p className="text-sm text-gray-600 mt-2">Based on your preferences</p>
                   <button
@@ -428,7 +421,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                           setSelectedTeam(match.teamA === team ? match.teamA : match.teamB);
                         }
                       }}
-                      className="stunning-btn stunning-btn-success text-sm mt-4 w-full py-3 hover:scale-[1.02] transition-transform duration-300 animate-float"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm mt-4 w-full py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       View Picks
                     </button>
@@ -441,14 +434,14 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
         {/* Matches List */}
         {sortedMatches.length > 0 ? (
           sortedMatches.map((match) => (
-            <div key={match.id} className="stunning-card stunning-card-matches mb-8 animate-zoom-in">
+            <div key={match.id} className="bg-white rounded-2xl shadow-xl mb-6 border border-gray-100 hover:shadow-2xl transition-all duration-300">
               <div className="p-6">
                 {/* Match Header */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                   <div className="flex items-center">
                     <span className="text-3xl mr-4">{getSportIcon(match.category)}</span>
                     <div>
-                      <h3 className="text-2xl font-bold">{match.teamA} vs {match.teamB}</h3>
+                      <h3 className="text-2xl font-bold text-gray-800">{match.teamA} vs {match.teamB}</h3>
                       <p className="text-gray-600">{match.category}</p>
                     </div>
                   </div>
@@ -488,10 +481,10 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       {Object.entries(match.odds).map(([team, odd]) => (
                         <div 
                           key={team} 
-                          className="border rounded-2xl p-5 text-center hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-gray-50"
+                          className="border rounded-2xl p-5 text-center hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-gray-50 border-gray-200"
                         >
-                          <h4 className="font-bold mb-3 text-lg">{team}</h4>
-                          <div className="text-3xl font-bold text-blue-600 mb-4">{odd.toFixed(2)}</div>
+                          <h4 className="font-bold mb-3 text-lg text-gray-800">{team}</h4>
+                          <div className="text-3xl font-bold text-purple-600 mb-4">{odd.toFixed(2)}</div>
                           
                           {/* Quick Bet Buttons */}
                           <div className="flex gap-2 justify-center mb-4">
@@ -499,7 +492,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               <button
                                 key={amount}
                                 onClick={() => handleQuickBet(match.id, team, amount)}
-                                className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg animate-float"
+                                className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 shadow-md"
                                 disabled={match.status !== 'upcoming' || user.balance < amount}
                               >
                                 {amount}
@@ -512,11 +505,11 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               setSelectedMatch(match.id);
                               setSelectedTeam(team);
                             }}
-                            className="stunning-btn stunning-btn-primary w-full py-4 hover:scale-[1.02] transition-transform duration-300 animate-pulse-glow"
+                            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white w-full py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                             disabled={match.status !== 'upcoming'}
                             title={match.status !== 'upcoming' ? "Match not available for betting" : `Bet on ${team}`}
                           >
-                            <Play className="mr-2" size={18} />
+                            <Play className="mr-2 inline" size={18} />
                             Bet Now
                           </button>
                         </div>
@@ -525,9 +518,9 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                   </div>
                   
                   {/* Match Info */}
-                  <div className="border rounded-2xl p-5 bg-gradient-to-br from-gray-50 to-gray-100">
-                    <h4 className="font-bold mb-4 flex items-center text-lg">
-                      <TrendingUp className="mr-2" size={20} />
+                  <div className="border rounded-2xl p-5 bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200">
+                    <h4 className="font-bold mb-4 flex items-center text-lg text-gray-800">
+                      <TrendingUp className="mr-2 text-purple-600" size={20} />
                       Match Info
                     </h4>
                     
@@ -573,17 +566,17 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 {/* Bet Placement Form (if selected) */}
                 {selectedMatch === match.id && (
                   <div className="mt-6 pt-6 border-t border-gray-200">
-                    <h4 className="font-bold text-xl mb-5">Place Your Bet</h4>
+                    <h4 className="font-bold text-xl mb-5 text-gray-800">Place Your Bet</h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                       <div className="md:col-span-2">
-                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-5">
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-5 border border-purple-100">
                           <div className="flex justify-between items-center mb-4">
-                            <span className="font-medium">Selected Team:</span>
-                            <span className="font-bold text-xl">{selectedTeam}</span>
+                            <span className="font-medium text-gray-700">Selected Team:</span>
+                            <span className="font-bold text-xl text-purple-600">{selectedTeam}</span>
                           </div>
                           <div className="flex justify-between items-center">
-                            <span className="font-medium">Odds:</span>
-                            <span className="font-bold text-xl text-blue-600">
+                            <span className="font-medium text-gray-700">Odds:</span>
+                            <span className="font-bold text-xl text-purple-600">
                               {match.odds[selectedTeam]?.toFixed(2)}
                             </span>
                           </div>
@@ -598,7 +591,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                           type="number"
                           value={betAmount}
                           onChange={(e) => setBetAmount(Number(e.target.value))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
                           min="10"
                           max={user.balance}
                         />
@@ -612,10 +605,10 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                         </div>
                         <button
                           onClick={() => handlePlaceBet(match.id, selectedTeam)}
-                          className="stunning-btn stunning-btn-success w-full mt-6 py-4 hover:scale-[1.02] transition-transform duration-300 animate-pulse-glow"
+                          className="bg-gradient-to-r from-green-500 to-emerald-500 text-white w-full mt-6 py-3 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                           disabled={betAmount > user.balance || betAmount < 10}
                         >
-                          <Play className="mr-2" size={18} />
+                          <Play className="mr-2 inline" size={18} />
                           Confirm Bet
                         </button>
                         <button
@@ -623,7 +616,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                             setSelectedMatch(null);
                             setSelectedTeam('');
                           }}
-                          className="stunning-btn stunning-btn-secondary w-full mt-4 py-4 hover:scale-[1.02] transition-transform duration-300 animate-float"
+                          className="bg-gradient-to-r from-gray-500 to-gray-600 text-white w-full mt-4 py-3 rounded-xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                         >
                           Cancel
                         </button>
@@ -635,7 +628,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             </div>
           ))
         ) : (
-          <div className="stunning-card stunning-card-matches p-16 text-center animate-zoom-in">
+          <div className="bg-white rounded-2xl shadow-xl p-12 text-center border border-gray-100">
             <div className="text-7xl mb-6">⚽</div>
             <h3 className="text-2xl font-bold text-gray-800 mb-4">No Matches Found</h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -647,14 +640,13 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 setStatusFilter('All');
                 setSearchTerm('');
               }}
-              className="btn btn-primary py-3 px-6 hover:scale-105 transition-transform duration-300"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
             >
               Clear All Filters
             </button>
           </div>
-        )}
-      </main>
-      </main>
+        </div>
+      </div>
     </div>
   );
 };

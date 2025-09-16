@@ -4,7 +4,7 @@ import './index.css'; // Ensure CSS is imported at the app level
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
+import DashboardPage from './pages/DashboardPageEnhanced'; // Use the enhanced dashboard
 import MatchesPage from './pages/MatchesPage';
 import UserProfilePage from './pages/UserProfilePage';
 import AdminPage from './pages/AdminPage';

@@ -18,7 +18,11 @@ import {
   Star,
   Trophy,
   Users,
-  Clock
+  Clock,
+  ChevronRight,
+  BarChart3,
+  Coins,
+  Activity
 } from 'lucide-react';
 
 // Ensure CSS is properly imported
@@ -274,7 +278,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-2xl sticky top-0 z-50">
+      <header className="dashboard-header sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center">
             <Link 
@@ -287,7 +291,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-6 py-4 rounded-2xl font-bold flex items-center shadow-xl float">
+            <div className="dashboard-wallet-card text-white px-6 py-4 rounded-2xl font-bold flex items-center shadow-xl float">
               <span className="mr-3 text-2xl">💰</span>
               <span className="text-xl">{dashboardData?.wallet?.balance?.toLocaleString() || user.balance.toLocaleString()} BDT</span>
             </div>
@@ -373,8 +377,8 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             className={`py-3 px-6 font-medium flex items-center rounded-lg transition-all duration-300 mr-2 mb-2 ${
               activeTab === 'overview' 
-                ? 'bg-blue-100 text-blue-600 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                ? 'dashboard-tab-active' 
+                : 'dashboard-tab-inactive'
             }`}
             onClick={() => setActiveTab('overview')}
           >
@@ -384,8 +388,8 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             className={`py-3 px-6 font-medium flex items-center rounded-lg transition-all duration-300 mr-2 mb-2 ${
               activeTab === 'transactions' 
-                ? 'bg-blue-100 text-blue-600 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                ? 'dashboard-tab-active' 
+                : 'dashboard-tab-inactive'
             }`}
             onClick={() => setActiveTab('transactions')}
           >
@@ -395,8 +399,8 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             className={`py-3 px-6 font-medium flex items-center rounded-lg transition-all duration-300 mr-2 mb-2 ${
               activeTab === 'notifications' 
-                ? 'bg-blue-100 text-blue-600 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                ? 'dashboard-tab-active' 
+                : 'dashboard-tab-inactive'
             }`}
             onClick={() => setActiveTab('notifications')}
           >
@@ -411,8 +415,8 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             className={`py-3 px-6 font-medium flex items-center rounded-lg transition-all duration-300 mr-2 mb-2 ${
               activeTab === 'assistant' 
-                ? 'bg-blue-100 text-blue-600 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                ? 'dashboard-tab-active' 
+                : 'dashboard-tab-inactive'
             }`}
             onClick={onShowAssistant}
           >
@@ -422,8 +426,8 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             className={`py-3 px-6 font-medium flex items-center rounded-lg transition-all duration-300 mr-2 mb-2 ${
               activeTab === 'settings' 
-                ? 'bg-blue-100 text-blue-600 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                ? 'dashboard-tab-active' 
+                : 'dashboard-tab-inactive'
             }`}
             onClick={() => setActiveTab('settings')}
           >
@@ -599,20 +603,20 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                 </div>
                 <div className="p-6">
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl text-center border border-blue-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-blue-600">{winRate}%</p>
+                    <div className="dashboard-stats-card p-4 text-center">
+                      <p className="dashboard-stats-value">{winRate}%</p>
                       <p className="text-sm text-gray-600">Win Rate</p>
                     </div>
-                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl text-center border border-green-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-green-600">{user.totalWins}</p>
+                    <div className="dashboard-stats-card p-4 text-center">
+                      <p className="dashboard-stats-value">{user.totalWins}</p>
                       <p className="text-sm text-gray-600">Wins</p>
                     </div>
-                    <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-4 rounded-xl text-center border border-yellow-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-yellow-600">{user.totalBets}</p>
+                    <div className="dashboard-stats-card p-4 text-center">
+                      <p className="dashboard-stats-value">{user.totalBets}</p>
                       <p className="text-sm text-gray-600">Total Bets</p>
                     </div>
-                    <div className="bg-gradient-to-br from-purple-50 to-fuchsia-50 p-4 rounded-xl text-center border border-purple-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-purple-600">{user.favoriteSports.length}</p>
+                    <div className="dashboard-stats-card p-4 text-center">
+                      <p className="dashboard-stats-value">{user.favoriteSports.length}</p>
                       <p className="text-sm text-gray-600">Sports</p>
                     </div>
                   </div>
@@ -649,20 +653,20 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                 </div>
                 <div className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl text-center border border-blue-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-blue-600">{bettingStats.totalBets}</p>
+                    <div className="dashboard-stats-card p-5 text-center">
+                      <p className="dashboard-stats-value">{bettingStats.totalBets}</p>
                       <p className="text-sm text-gray-600">Today's Bets</p>
                     </div>
-                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-xl text-center border border-green-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-green-600">{bettingStats.totalWins}</p>
+                    <div className="dashboard-stats-card p-5 text-center">
+                      <p className="dashboard-stats-value">{bettingStats.totalWins}</p>
                       <p className="text-sm text-gray-600">Wins</p>
                     </div>
-                    <div className="bg-gradient-to-br from-red-50 to-rose-50 p-5 rounded-xl text-center border border-red-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-red-600">{bettingStats.totalLost}</p>
+                    <div className="dashboard-stats-card p-5 text-center">
+                      <p className="dashboard-stats-value">{bettingStats.totalLost}</p>
                       <p className="text-sm text-gray-600">Losses</p>
                     </div>
-                    <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-5 rounded-xl text-center border border-yellow-100 hover:shadow-md transition-all duration-300">
-                      <p className="text-3xl font-bold text-yellow-600">{bettingStats.winRate.toFixed(1)}%</p>
+                    <div className="dashboard-stats-card p-5 text-center">
+                      <p className="dashboard-stats-value">{bettingStats.winRate.toFixed(1)}%</p>
                       <p className="text-sm text-gray-600">Win Rate</p>
                     </div>
                   </div>
@@ -674,7 +678,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                       Recent Bets
                     </h4>
                     {recentBets.length > 0 ? (
-                      <div className="overflow-x-auto rounded-xl">
+                      <div className="dashboard-activity-table rounded-xl overflow-hidden">
                         <table className="min-w-full">
                           <thead>
                             <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
@@ -812,7 +816,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                       <p className="text-gray-500">Loading activity...</p>
                     </div>
                   ) : dashboardData?.transactions && dashboardData.transactions.length > 0 ? (
-                    <div className="overflow-x-auto rounded-xl">
+                    <div className="dashboard-activity-table rounded-xl overflow-hidden">
                       <table className="min-w-full">
                         <thead>
                           <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
@@ -907,7 +911,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                   <p className="text-gray-500">Loading transactions...</p>
                 </div>
               ) : dashboardData?.transactions && dashboardData.transactions.length > 0 ? (
-                <div className="overflow-x-auto rounded-xl">
+                <div className="dashboard-activity-table rounded-xl overflow-hidden">
                   <table className="min-w-full">
                     <thead>
                       <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
@@ -1000,7 +1004,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                     .map(notification => (
                       <div 
                         key={notification.id} 
-                        className={`p-5 rounded-xl border ${getNotificationClass(notification.type)} ${
+                        className={`dashboard-notification-card p-5 rounded-xl border ${getNotificationClass(notification.type)} ${
                           !notification.read ? 'border-l-4 border-l-blue-500 bg-opacity-70' : 'bg-opacity-50'
                         } transition-all duration-300 hover:shadow-md`}
                       >

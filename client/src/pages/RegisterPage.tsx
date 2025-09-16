@@ -93,6 +93,12 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onRegister }) => {
     }
   };
 
+  const handleVerificationSubmit = () => {
+    // Trigger the main submit handler for verification
+    const fakeEvent = { preventDefault: () => {} } as React.FormEvent;
+    handleSubmit(fakeEvent);
+  };
+
   const handleResendCode = () => {
     // In a real implementation, this would resend the verification code
     setSentCode(true);

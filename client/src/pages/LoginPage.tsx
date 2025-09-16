@@ -201,7 +201,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </div>
           ) : (
             <>
-              <>
               {/* Email Field */}
               <div className="mb-8">
                 <label className="block text-gray-700 font-extrabold mb-4 flex items-center text-2xl">
