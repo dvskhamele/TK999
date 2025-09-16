@@ -198,7 +198,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             </div>
             
             <div className="flex space-x-3">
-                            <Link 
+              <Link 
                 to="/dashboard" 
                 className="stunning-btn stunning-btn-success flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-float"
                 title="Dashboard"
@@ -207,7 +207,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 <span className="text-xs mt-1">Dashboard</span>
               </Link>
               
-                            <Link 
+              <Link 
                 to="/matches" 
                 className="stunning-btn stunning-btn-primary flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-float"
                 title="Matches"
@@ -217,7 +217,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               </Link>
               
               {(user?.role === 'admin' || user?.role === 'staff') && (
-                                <Link 
+                <Link 
                   to="/admin" 
                   className="stunning-btn stunning-btn-warning flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-float"
                   title="Admin"
@@ -232,6 +232,9 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 className="stunning-btn stunning-btn-danger flex flex-col items-center justify-center w-20 h-20 rounded-3xl transform transition-all duration-300 hover:scale-110 animate-pulse-glow"
                 title="Logout"
               >
+                <span className="text-2xl">🚪</span>
+                <span className="text-xs mt-1">Logout</span>
+              </button>
             </div>
           </div>
         </nav>
@@ -427,6 +430,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       }}
                       className="stunning-btn stunning-btn-success text-sm mt-4 w-full py-3 hover:scale-[1.02] transition-transform duration-300 animate-float"
                     >
+                      View Picks
+                    </button>
                 </div>
               ))}
             </div>
