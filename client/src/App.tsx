@@ -10,6 +10,7 @@ import UserProfilePage from './pages/UserProfilePage';
 import AdminPage from './pages/AdminPage';
 import SmartAssistant from './components/SmartAssistant';
 import LiveChat from './components/LiveChat';
+import DashboardTestPage from './pages/DashboardTestPage'; // Import the test page
 
 // Define types
 interface User {
@@ -859,6 +860,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage onLogin={login} />} />
           <Route path="/register" element={<RegisterPage onRegister={register} />} />
+          <Route path="/dashboard-test" element={<DashboardTestPage />} /> {/* Add the test page route */}
           
           {/* Protected routes */}
           <Route path="/dashboard" element={
