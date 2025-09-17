@@ -22,14 +22,13 @@ import {
   Plus,
   Minus,
   AlertCircle,
-  CheckCircle,
-  XCircle,
   DollarSign,
   TrophyIcon
 } from 'lucide-react';
 
 // Import the enhanced CSS
 import '../assets/dashboard-styles.css';
+import '../assets/beautiful-ui.css';
 import '../index.css';
 
 interface User {
@@ -290,76 +289,76 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Enhanced Header */}
-      <header className="dashboard-header-enhanced">
+      <header className="beautiful-header">
         <div className="container mx-auto">
-          <div className="dashboard-header-content">
+          <div className="beautiful-header-content">
             <div className="flex items-center">
               <Link 
                 to="/dashboard" 
-                className="dashboard-logo"
+                className="beautiful-logo"
               >
-                <span className="dashboard-logo-icon">🎲</span>
+                <span className="beautiful-logo-icon">🎲</span>
                 TK999
               </Link>
             </div>
             
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <div className="dashboard-wallet-enhanced">
-                <span className="dashboard-wallet-icon">💰</span>
-                <span className="dashboard-wallet-amount">
+              <div className="beautiful-wallet-card">
+                <span className="beautiful-wallet-icon">💰</span>
+                <span className="beautiful-wallet-amount">
                   {dashboardData?.wallet?.balance?.toLocaleString() || user.balance.toLocaleString()} BDT
                 </span>
               </div>
               
-              <div className="dashboard-user-profile">
-                <div className="dashboard-user-avatar">
+              <div className="beautiful-user-profile">
+                <div className="beautiful-avatar">
                   {user?.name?.charAt(0).toUpperCase() || 'U'}
                 </div>
-                <div className="dashboard-user-info">
-                  <div className="dashboard-user-name">{user?.name || 'User'}</div>
-                  <div className="dashboard-user-role">
+                <div className="beautiful-user-info">
+                  <div className="beautiful-user-name">{user?.name || 'User'}</div>
+                  <div className="beautiful-user-role">
                     {user?.role === 'admin' ? 'Admin' : user?.role === 'staff' ? 'Staff' : 'Member'}
                   </div>
                 </div>
               </div>
               
-              <div className="dashboard-nav-buttons">
+              <div className="beautiful-nav-buttons">
                 <Link 
                   to="/dashboard" 
-                  className="dashboard-nav-btn"
+                  className="beautiful-nav-btn"
                   title="Dashboard"
                 >
                   <span>📊</span>
-                  <span className="dashboard-nav-btn-label">Dashboard</span>
+                  <span className="beautiful-nav-btn-label">Dashboard</span>
                 </Link>
                 
                 <Link 
                   to="/matches" 
-                  className="dashboard-nav-btn"
+                  className="beautiful-nav-btn"
                   title="Matches"
                 >
                   <span>⚽</span>
-                  <span className="dashboard-nav-btn-label">Matches</span>
+                  <span className="beautiful-nav-btn-label">Matches</span>
                 </Link>
                 
                 {(user?.role === 'admin' || user?.role === 'staff') && (
                   <Link 
                     to="/admin" 
-                    className="dashboard-nav-btn"
+                    className="beautiful-nav-btn"
                     title="Admin"
                   >
                     <span>⚙️</span>
-                    <span className="dashboard-nav-btn-label">Admin</span>
+                    <span className="beautiful-nav-btn-label">Admin</span>
                   </Link>
                 )}
                 
                 <button 
                   onClick={handleLogout}
-                  className="dashboard-nav-btn"
+                  className="beautiful-nav-btn"
                   title="Logout"
                 >
                   <span>🚪</span>
-                  <span className="dashboard-nav-btn-label">Logout</span>
+                  <span className="beautiful-nav-btn-label">Logout</span>
                 </button>
               </div>
             </div>
@@ -367,52 +366,52 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
         </div>
       </header>
       
-      <main className="container mx-auto p-4 md:p-6">
-        <div className="mb-8">
-          <h1 className="dashboard-title">Dashboard</h1>
-          <p className="dashboard-subtitle">
-            Welcome back, <span className="dashboard-welcome-user">{user?.name}</span>! 
+      <main className=\"container mx-auto p-4 md:p-6\">
+        <div className=\"mb-8\">
+          <h1 className=\"beautiful-title\">Dashboard</h1>
+          <p className=\"beautiful-subtitle\">
+            Welcome back, <span className=\"beautiful-welcome-user\">{user?.name}</span>! 
             Ready to place some winning bets today?
           </p>
         </div>
         
         {/* Enhanced Tabs */}
-        <div className="dashboard-tabs">
+        <div className=\"beautiful-tabs\">
           <button
-            className={`dashboard-tab ${activeTab === 'overview' ? 'active' : ''}`}
+            className={`beautiful-tab ${activeTab === 'overview' ? 'active' : ''}`}
             onClick={() => setActiveTab('overview')}
           >
             <TrendingUp size={18} />
             Overview
           </button>
           <button
-            className={`dashboard-tab ${activeTab === 'transactions' ? 'active' : ''}`}
+            className={`beautiful-tab ${activeTab === 'transactions' ? 'active' : ''}`}
             onClick={() => setActiveTab('transactions')}
           >
             <History size={18} />
             Transactions
           </button>
           <button
-            className={`dashboard-tab ${activeTab === 'notifications' ? 'active' : ''}`}
+            className={`beautiful-tab ${activeTab === 'notifications' ? 'active' : ''}`}
             onClick={() => setActiveTab('notifications')}
           >
             <Bell size={18} />
             Notifications
             {unreadNotifications > 0 && (
-              <span className="dashboard-tab-badge">
+              <span className=\"dashboard-tab-badge\">
                 {unreadNotifications}
               </span>
             )}
           </button>
           <button
-            className={`dashboard-tab ${activeTab === 'assistant' ? 'active' : ''}`}
+            className={`beautiful-tab ${activeTab === 'assistant' ? 'active' : ''}`}
             onClick={onShowAssistant}
           >
             <Zap size={18} />
             Smart Assistant
           </button>
           <button
-            className={`dashboard-tab ${activeTab === 'settings' ? 'active' : ''}`}
+            className={`beautiful-tab ${activeTab === 'settings' ? 'active' : ''}`}
             onClick={() => setActiveTab('settings')}
           >
             <Settings size={18} />
@@ -425,21 +424,21 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Profile Section */}
             <div className="lg:col-span-1 space-y-6">
-              <div className="dashboard-profile-card">
-                <div className="dashboard-profile-header">
+              <div className="beautiful-card">
+                <div className="beautiful-card-header">
                   <User size={24} />
                   Profile
                 </div>
-                <div className="dashboard-profile-body">
+                <div className="beautiful-card-body">
                   {isLoading ? (
                     <div className="flex flex-col items-center justify-center py-8">
-                      <div className="loading-spinner mb-4"></div>
+                      <div className="beautiful-spinner mb-4"></div>
                       <p className="text-gray-500">Loading profile...</p>
                     </div>
                   ) : dashboardData?.profile ? (
                     <div className="space-y-6">
                       <div className="dashboard-profile-avatar-container">
-                        <div className="dashboard-profile-avatar">
+                        <div className="beautiful-avatar beautiful-avatar-lg">
                           {profileImage ? (
                             <img 
                               src={profileImage} 
@@ -531,15 +530,15 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                 </div>
               </div>
               
-              <div className="dashboard-wallet-card-enhanced">
-                <div className="dashboard-wallet-header">
+              <div className="beautiful-card">
+                <div className="beautiful-card-header">
                   <Wallet size={24} />
                   Wallet
                 </div>
-                <div className="dashboard-wallet-body">
+                <div className="beautiful-card-body">
                   {isLoading ? (
                     <div className="flex flex-col items-center justify-center py-8">
-                      <div className="loading-spinner mb-4"></div>
+                      <div className="beautiful-spinner mb-4"></div>
                       <p className="text-gray-500">Loading wallet...</p>
                     </div>
                   ) : dashboardData?.wallet ? (
@@ -554,14 +553,14 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                       <div className="dashboard-wallet-actions">
                         <button 
                           onClick={handleDeposit} 
-                          className="dashboard-wallet-btn deposit"
+                          className="beautiful-btn beautiful-btn-success"
                         >
                           <Plus size={20} className="dashboard-wallet-btn-icon" />
                           <span>Deposit</span>
                         </button>
                         <button 
                           onClick={handleWithdraw} 
-                          className="dashboard-wallet-btn withdraw"
+                          className="beautiful-btn beautiful-btn-warning"
                         >
                           <Minus size={20} className="dashboard-wallet-btn-icon" />
                           <span>Withdraw</span>
@@ -576,7 +575,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                             <button
                               key={amount}
                               onClick={() => onDeposit(amount)}
-                              className="dashboard-quick-deposit-btn"
+                              className="beautiful-btn beautiful-btn-secondary"
                             >
                               {amount} BDT
                             </button>
@@ -594,28 +593,28 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
               </div>
               
               {/* Performance Stats */}
-              <div className="dashboard-card">
-                <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #a855f7, #ec4899)' }}>
+              <div className="beautiful-card">
+                <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #a855f7, #ec4899)' }}>
                   <Award size={24} />
                   Performance
                 </div>
-                <div className="dashboard-card-body">
+                <div className="beautiful-card-body">
                   <div className="dashboard-stats-grid">
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{winRate}%</p>
-                      <p className="dashboard-stat-label">Win Rate</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{winRate}%</p>
+                      <p className="beautiful-stat-label">Win Rate</p>
                     </div>
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{user.totalWins}</p>
-                      <p className="dashboard-stat-label">Wins</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{user.totalWins}</p>
+                      <p className="beautiful-stat-label">Wins</p>
                     </div>
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{user.totalBets}</p>
-                      <p className="dashboard-stat-label">Total Bets</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{user.totalBets}</p>
+                      <p className="beautiful-stat-label">Total Bets</p>
                     </div>
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{user.favoriteSports.length}</p>
-                      <p className="dashboard-stat-label">Sports</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{user.favoriteSports.length}</p>
+                      <p className="beautiful-stat-label">Sports</p>
                     </div>
                   </div>
                   
@@ -642,28 +641,28 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
             {/* Recent Activity and Recommendations */}
             <div className="lg:col-span-2 space-y-6">
               {/* Betting Stats */}
-              <div className="dashboard-card">
-                <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}>
+              <div className="beautiful-card">
+                <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}>
                   <Gamepad2 size={24} />
                   Today's Play
                 </div>
-                <div className="dashboard-card-body">
+                <div className="beautiful-card-body">
                   <div className="dashboard-stats-grid">
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{bettingStats.totalBets}</p>
-                      <p className="dashboard-stat-label">Today's Bets</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{bettingStats.totalBets}</p>
+                      <p className="beautiful-stat-label">Today's Bets</p>
                     </div>
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{bettingStats.totalWins}</p>
-                      <p className="dashboard-stat-label">Wins</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{bettingStats.totalWins}</p>
+                      <p className="beautiful-stat-label">Wins</p>
                     </div>
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{bettingStats.totalLost}</p>
-                      <p className="dashboard-stat-label">Losses</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{bettingStats.totalLost}</p>
+                      <p className="beautiful-stat-label">Losses</p>
                     </div>
-                    <div className="dashboard-stat-card">
-                      <p className="dashboard-stat-value">{bettingStats.winRate.toFixed(1)}%</p>
-                      <p className="dashboard-stat-label">Win Rate</p>
+                    <div className="beautiful-stat-card">
+                      <p className="beautiful-stat-value">{bettingStats.winRate.toFixed(1)}%</p>
+                      <p className="beautiful-stat-label">Win Rate</p>
                     </div>
                   </div>
                   
@@ -675,7 +674,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                     </h4>
                     {recentBets.length > 0 ? (
                       <div className="dashboard-table-container">
-                        <table className="dashboard-table">
+                        <table className="beautiful-table">
                           <thead>
                             <tr>
                               <th>Date</th>
@@ -712,10 +711,10 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                         </table>
                       </div>
                     ) : (
-                      <div className="dashboard-empty-state">
-                        <div className="dashboard-empty-state-icon">📋</div>
-                        <h4 className="dashboard-empty-state-title">No bets placed yet</h4>
-                        <p className="dashboard-empty-state-message">
+                      <div className="beautiful-empty-state">
+                        <div className="beautiful-empty-state-icon">📋</div>
+                        <h4 className="beautiful-empty-state-title">No bets placed yet</h4>
+                        <p className="beautiful-empty-state-message">
                           Start placing bets to see your betting history here.
                         </p>
                       </div>
@@ -725,12 +724,12 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
               </div>
               
               {/* Smart Recommendations */}
-              <div className="dashboard-card">
-                <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #f59e0b, #f97316)' }}>
+              <div className="beautiful-card">
+                <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #f59e0b, #f97316)' }}>
                   <Target size={24} />
                   Daily Picks
                 </div>
-                <div className="dashboard-card-body">
+                <div className="beautiful-card-body">
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 mb-6 border border-blue-100">
                     <h4 className="font-bold text-lg mb-3 flex items-center">
                       <Zap className="mr-2 text-yellow-500" size={22} />
@@ -783,7 +782,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                   
                   <button
                     onClick={onShowAssistant}
-                    className="stunning-btn stunning-btn-primary w-full mt-8 flex items-center justify-center py-5 hover:scale-[1.02] transition-transform duration-300 animate-pulse-glow"
+                    className="beautiful-btn beautiful-btn-primary w-full mt-8 flex items-center justify-center py-5 hover:scale-[1.02] transition-transform duration-300 animate-beautiful-pulse-glow"
                   >
                     <Zap className="mr-2" size={22} />
                     Get More Smart Recommendations
@@ -792,20 +791,20 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
               </div>
               
               {/* Recent Activity */}
-              <div className="dashboard-card">
-                <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #4f46e5, #7c3aed)' }}>
+              <div className="beautiful-card">
+                <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #4f46e5, #7c3aed)' }}>
                   <History size={24} />
                   Recent Activity
                 </div>
-                <div className="dashboard-card-body">
+                <div className="beautiful-card-body">
                   {isLoading ? (
                     <div className="flex flex-col items-center justify-center py-12">
-                      <div className="loading-spinner mb-4"></div>
+                      <div className="beautiful-spinner mb-4"></div>
                       <p className="text-gray-500">Loading activity...</p>
                     </div>
                   ) : dashboardData?.transactions && dashboardData.transactions.length > 0 ? (
                     <div className="dashboard-table-container">
-                      <table className="dashboard-table">
+                      <table className="beautiful-table">
                         <thead>
                           <tr>
                             <th>Date</th>
@@ -857,16 +856,16 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                       </div>
                     </div>
                   ) : (
-                    <div className="dashboard-empty-state">
-                      <div className="dashboard-empty-state-icon">📋</div>
-                      <h4 className="dashboard-empty-state-title">No activity yet</h4>
-                      <p className="dashboard-empty-state-message">
+                    <div className="beautiful-empty-state">
+                      <div className="beautiful-empty-state-icon">📋</div>
+                      <h4 className="beautiful-empty-state-title">No activity yet</h4>
+                      <p className="beautiful-empty-state-message">
                         Your recent transactions and betting activity will appear here.
                       </p>
                       <div className="mt-4">
                         <Link 
                           to="/matches" 
-                          className="dashboard-empty-state-btn"
+                          className="beautiful-btn beautiful-btn-primary"
                         >
                           <span>⚽</span>
                           Start Betting
@@ -882,20 +881,20 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
 
         {/* Transactions Tab */}
         {activeTab === 'transactions' && (
-          <div className="dashboard-card">
-            <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
+          <div className="beautiful-card">
+            <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
               <History size={24} />
               Transaction History
             </div>
-            <div className="dashboard-card-body">
+            <div className="beautiful-card-body">
               {isLoading ? (
                 <div className="flex flex-col items-center justify-center py-12">
-                  <div className="loading-spinner mb-4"></div>
+                  <div className="beautiful-spinner mb-4"></div>
                   <p className="text-gray-500">Loading transactions...</p>
                 </div>
               ) : dashboardData?.transactions && dashboardData.transactions.length > 0 ? (
                 <div className="dashboard-table-container">
-                  <table className="dashboard-table">
+                  <table className="beautiful-table">
                     <thead>
                       <tr>
                         <th>Date</th>
@@ -941,16 +940,16 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                   </table>
                 </div>
               ) : (
-                <div className="dashboard-empty-state">
-                  <div className="dashboard-empty-state-icon">📋</div>
-                  <h4 className="dashboard-empty-state-title">No transactions yet</h4>
-                  <p className="dashboard-empty-state-message">
+                <div className="beautiful-empty-state">
+                  <div className="beautiful-empty-state-icon">📋</div>
+                  <h4 className="beautiful-empty-state-title">No transactions yet</h4>
+                  <p className="beautiful-empty-state-message">
                     Your transaction history will appear here once you start making deposits or withdrawals.
                   </p>
                   <div className="mt-4">
                     <button 
                       onClick={handleDeposit} 
-                      className="dashboard-empty-state-btn"
+                      className="beautiful-btn beautiful-btn-primary"
                     >
                       <span>📥</span>
                       Make Deposit
@@ -964,8 +963,8 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
 
         {/* Notifications Tab */}
         {activeTab === 'notifications' && (
-          <div className="dashboard-card">
-            <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #8b5cf6, #c026d3)' }}>
+          <div className="beautiful-card">
+            <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #8b5cf6, #c026d3)' }}>
               <Bell size={24} />
               Notifications
               {unreadNotifications > 0 && (
@@ -974,7 +973,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                 </span>
               )}
             </div>
-            <div className="dashboard-card-body">
+            <div className="beautiful-card-body">
               {notifications.length > 0 ? (
                 <div className="dashboard-notifications-container">
                   {[...notifications]
@@ -982,21 +981,21 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                     .map(notification => (
                       <div 
                         key={notification.id} 
-                        className={`${getNotificationClass(notification.type)} ${!notification.read ? 'unread' : ''}`}
+                        className={`beautiful-notification-card ${!notification.read ? 'unread' : ''}`}
                       >
-                        <div className="dashboard-notification-header">
-                          <h4 className="dashboard-notification-title">{notification.title}</h4>
+                        <div className="beautiful-notification-header">
+                          <h4 className="beautiful-notification-title">{notification.title}</h4>
                           {!notification.read && (
                             <button
                               onClick={() => onMarkNotificationRead(notification.id)}
-                              className="dashboard-notification-mark-read"
+                              className="text-sm text-blue-600 hover:text-blue-800 font-semibold px-3 py-1 rounded-lg hover:bg-blue-50 transition-colors"
                             >
                               Mark as read
                             </button>
                           )}
                         </div>
-                        <p className="dashboard-notification-message">{notification.message}</p>
-                        <p className="dashboard-notification-date">
+                        <p className="beautiful-notification-message">{notification.message}</p>
+                        <p className="beautiful-notification-date">
                           {new Date(notification.date).toLocaleString()}
                         </p>
                       </div>
@@ -1004,10 +1003,10 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                   }
                 </div>
               ) : (
-                <div className="dashboard-empty-state">
-                  <div className="dashboard-empty-state-icon">🔔</div>
-                  <h4 className="dashboard-empty-state-title">No notifications</h4>
-                  <p className="dashboard-empty-state-message">
+                <div className="beautiful-empty-state">
+                  <div className="beautiful-empty-state-icon">🔔</div>
+                  <h4 className="beautiful-empty-state-title">No notifications</h4>
+                  <p className="beautiful-empty-state-message">
                     You don't have any notifications at the moment.
                   </p>
                 </div>
@@ -1018,12 +1017,12 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
         
         {/* Settings Tab */}
         {activeTab === 'settings' && (
-          <div className="dashboard-card">
-            <div className="dashboard-card-header" style={{ background: 'linear-gradient(135deg, #6b7280, #374151)' }}>
+          <div className="beautiful-card">
+            <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #6b7280, #374151)' }}>
               <Settings size={24} />
               Account Settings
             </div>
-            <div className="dashboard-card-body">
+            <div className="beautiful-card-body">
               <div className="dashboard-settings-grid">
                 <div className="dashboard-settings-section">
                   <h4 className="dashboard-settings-section-title">
@@ -1038,7 +1037,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                           type="text"
                           value={editedUser.name}
                           onChange={(e) => setEditedUser({...editedUser, name: e.target.value})}
-                          className="dashboard-settings-input"
+                          className="beautiful-input"
                         />
                       ) : (
                         <p className="px-4 py-3 bg-white rounded-xl border border-gray-200">{editedUser.name}</p>
@@ -1052,7 +1051,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                           type="email"
                           value={editedUser.email}
                           onChange={(e) => setEditedUser({...editedUser, email: e.target.value})}
-                          className="dashboard-settings-input"
+                          className="beautiful-input"
                         />
                       ) : (
                         <p className="px-4 py-3 bg-white rounded-xl border border-gray-200">{editedUser.email}</p>
@@ -1066,7 +1065,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                           type="tel"
                           value={editedUser.phone}
                           onChange={(e) => setEditedUser({...editedUser, phone: e.target.value})}
-                          className="dashboard-settings-input"
+                          className="beautiful-input"
                         />
                       ) : (
                         <p className="px-4 py-3 bg-white rounded-xl border border-gray-200">{editedUser.phone}</p>
@@ -1087,7 +1086,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                         <select
                           value={editedUser.riskLevel}
                           onChange={(e) => setEditedUser({...editedUser, riskLevel: e.target.value as any})}
-                          className="dashboard-settings-select"
+                          className="beautiful-input"
                         >
                           <option value="low">Low Risk</option>
                           <option value="medium">Medium Risk</option>
@@ -1183,7 +1182,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                   <div className="flex gap-4 flex-wrap">
                     <button 
                       onClick={saveProfileChanges}
-                      className="dashboard-settings-btn save"
+                      className="beautiful-btn beautiful-btn-success"
                     >
                       <Save size={18} />
                       Save Changes
@@ -1193,7 +1192,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                         setIsEditingProfile(false);
                         setEditedUser({...user});
                       }}
-                      className="dashboard-settings-btn cancel"
+                      className="beautiful-btn beautiful-btn-secondary"
                     >
                       Cancel
                     </button>
@@ -1201,7 +1200,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                 ) : (
                   <button 
                     onClick={() => setIsEditingProfile(true)}
-                    className="dashboard-settings-btn save"
+                    className="beautiful-btn beautiful-btn-primary"
                   >
                     <Edit size={18} />
                     Edit Profile
@@ -1209,7 +1208,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                 )}
                 <button 
                   onClick={handleLogout}
-                  className="dashboard-settings-btn logout"
+                  className="beautiful-btn beautiful-btn-danger"
                 >
                   Logout
                 </button>

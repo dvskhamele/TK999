@@ -16,6 +16,8 @@ import {
   Clock,
   AlertCircle
 } from 'lucide-react';
+import '../index.css';
+import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface User {
   id: number;
@@ -292,80 +294,12 @@ Options: ${teams.join(', ')}`);
     day: 'numeric' 
   });
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl sticky top-0 z-50">
-        <nav className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center">
-            <Link 
-              to="/admin" 
-              className="text-2xl md:text-3xl font-bold text-white flex items-center group"
-            >
-              <span className="text-2xl md:text-3xl mr-2 group-hover:rotate-12 transition-transform duration-300">🎲</span>
-              TK999 Admin
-            </Link>
-          </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <div className="flex items-center space-x-3">
-              <div className="bg-white w-12 h-12 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl shadow-lg">
-                Admin
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-white font-semibold">Administrator</p>
-                <p className="text-blue-100 text-sm">Admin Panel</p>
-              </div>
-            </div>
-            
-            <div className="flex space-x-3">
-              <Link 
-                to="/dashboard" 
-                className="btn btn-success flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Dashboard"
-              >
-                <span className="text-2xl">📊</span>
-                <span className="text-xs mt-1">User</span>
-              </Link>
-              
-              <Link 
-                to="/matches" 
-                className="btn btn-primary flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Matches"
-              >
-                <span className="text-2xl">⚽</span>
-                <span className="text-xs mt-1">Matches</span>
-              </Link>
-              
-              <Link 
-                to="/admin" 
-                className="btn btn-warning flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Admin"
-              >
-                <span className="text-2xl">⚙️</span>
-                <span className="text-xs mt-1">Admin</span>
-              </Link>
-              
-              <button 
-                onClick={handleLogout}
-                className="btn btn-danger flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Logout"
-              >
-                <span className="text-2xl">🚪</span>
-                <span className="text-xs mt-1">Logout</span>
-              </button>
-            </div>
-          </div>
-        </nav>
-      </header>
+  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-gray-50 to-blue-50\">\n      {/* Header */}\n      <header className=\"beautiful-header\">\n        <nav className=\"container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4\">\n          <div className=\"flex items-center\">\n            <Link \n              to=\"/admin\" \n              className=\"beautiful-logo\"\n            >\n              <span className=\"beautiful-logo-icon\">🎲</span>\n              TK999 Admin\n            </Link>\n          </div>\n          \n          <div className=\"flex flex-wrap items-center justify-center gap-4\">\n            <div className=\"beautiful-user-profile\">\n              <div className=\"beautiful-avatar\">\n                {currentUser?.name?.charAt(0).toUpperCase() || 'A'}\n              </div>\n              <div className=\"beautiful-user-info\">\n                <div className=\"beautiful-user-name\">{currentUser?.name || 'Admin'}</div>\n                <div className=\"beautiful-user-role\">Administrator</div>\n              </div>\n            </div>\n            \n            <div className=\"beautiful-nav-buttons\">\n              <Link \n                to=\"/dashboard\" \n                className=\"beautiful-nav-btn\"\n                title=\"Dashboard\"\n              >\n                <span>📊</span>\n                <span className=\"beautiful-nav-btn-label\">User</span>\n              </Link>\n              \n              <Link \n                to=\"/matches\" \n                className=\"beautiful-nav-btn\"\n                title=\"Matches\"\n              >\n                <span>⚽</span>\n                <span className=\"beautiful-nav-btn-label\">Matches</span>\n              </Link>\n              \n              <Link \n                to=\"/admin\" \n                className=\"beautiful-nav-btn\"\n                title=\"Admin\"\n              >\n                <span>⚙️</span>\n                <span className=\"beautiful-nav-btn-label\">Admin</span>\n              </Link>\n              \n              <button \n                onClick={handleLogout}\n                className=\"beautiful-nav-btn\"\n                title=\"Logout\"\n              >\n                <span>🚪</span>\n                <span className=\"beautiful-nav-btn-label\">Logout</span>\n              </button>\n            </div>\n          </div>\n        </nav>\n      </header>
       
       <main className="container mx-auto p-4 md:p-6">
         <div className="mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 flex items-center">
-            <span className="mr-3 text-3xl">⚙️</span>
-            Daily Operations
-          </h2>
-          <p className="text-gray-600 mt-2">{currentDate} - Manage today's matches, users, and bets</p>
+          <h2 className="beautiful-title">Daily Operations</h2>
+          <p className="beautiful-subtitle">{currentDate} - Manage today's matches, users, and bets</p>
         </div>
 
         {/* Search and Filters */}
@@ -400,46 +334,30 @@ Options: ${teams.join(', ')}`);
             </div>
             
             {/* Tabs */}
-            <div className="flex flex-wrap border-b mb-6">
+            <div className="beautiful-tabs">
               <button
-                className={`py-3 px-6 font-medium flex items-center ${
-                  activeTab === 'overview' 
-                    ? 'text-blue-600 border-b-2 border-blue-600' 
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
+                className={`beautiful-tab ${activeTab === 'overview' ? 'active' : ''}`}
                 onClick={() => setActiveTab('overview')}
               >
                 <Target className="mr-2" size={18} />
                 Overview
               </button>
               <button
-                className={`py-3 px-6 font-medium flex items-center ${
-                  activeTab === 'users' 
-                    ? 'text-blue-600 border-b-2 border-blue-600' 
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
+                className={`beautiful-tab ${activeTab === 'users' ? 'active' : ''}`}
                 onClick={() => setActiveTab('users')}
               >
                 <Users className="mr-2" size={18} />
                 Users
               </button>
               <button
-                className={`py-3 px-6 font-medium flex items-center ${
-                  activeTab === 'matches' 
-                    ? 'text-blue-600 border-b-2 border-blue-600' 
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
+                className={`beautiful-tab ${activeTab === 'matches' ? 'active' : ''}`}
                 onClick={() => setActiveTab('matches')}
               >
                 <Trophy className="mr-2" size={18} />
                 Matches
               </button>
               <button
-                className={`py-3 px-6 font-medium flex items-center ${
-                  activeTab === 'bets' 
-                    ? 'text-blue-600 border-b-2 border-blue-600' 
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
+                className={`beautiful-tab ${activeTab === 'bets' ? 'active' : ''}`}
                 onClick={() => setActiveTab('bets')}
               >
                 <Target className="mr-2" size={18} />
@@ -591,7 +509,7 @@ Options: ${teams.join(', ')}`);
 
             {/* Stats Overview */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              <div className="card bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+              <div className="beautiful-card bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                 <div className="p-6">
                   <div className="flex justify-between items-center">
                     <div>
@@ -608,7 +526,7 @@ Options: ${teams.join(', ')}`);
                 </div>
               </div>
               
-              <div className="card bg-gradient-to-r from-green-500 to-green-600 text-white">
+              <div className="beautiful-card bg-gradient-to-r from-green-500 to-green-600 text-white">
                 <div className="p-6">
                   <div className="flex justify-between items-center">
                     <div>
@@ -625,7 +543,7 @@ Options: ${teams.join(', ')}`);
                 </div>
               </div>
               
-              <div className="card bg-gradient-to-r from-purple-500 to-purple-600 text-white">
+              <div className="beautiful-card bg-gradient-to-r from-purple-500 to-purple-600 text-white">
                 <div className="p-6">
                   <div className="flex justify-between items-center">
                     <div>
@@ -642,7 +560,7 @@ Options: ${teams.join(', ')}`);
                 </div>
               </div>
               
-              <div className="card bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
+              <div className="beautiful-card bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
                 <div className="p-6">
                   <div className="flex justify-between items-center">
                     <div>
@@ -662,20 +580,20 @@ Options: ${teams.join(', ')}`);
 
             {/* Daily Highlights */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-              <div className="card lg:col-span-2">
+              <div className="beautiful-card lg:col-span-2">
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                     <Trophy className="mr-2" />
                     Today's Matches
                   </h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full">
+                    <table className="beautiful-table">
                       <thead>
-                        <tr className="bg-gray-100">
-                          <th className="py-3 px-4 text-left rounded-l-lg">Match</th>
-                          <th className="py-3 px-4 text-left">Time</th>
-                          <th className="py-3 px-4 text-left">Status</th>
-                          <th className="py-3 px-4 text-left rounded-r-lg">Actions</th>
+                        <tr>
+                          <th className="rounded-l-lg">Match</th>
+                          <th>Time</th>
+                          <th>Status</th>
+                          <th className="rounded-r-lg">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -685,15 +603,15 @@ Options: ${teams.join(', ')}`);
                           .map((match, index) => (
                             <tr 
                               key={match.id} 
-                              className={`border-t hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+                              className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                             >
-                              <td className="py-3 px-4 font-medium">
+                              <td className="font-medium">
                                 {match.teamA} vs {match.teamB}
                               </td>
-                              <td className="py-3 px-4 text-sm">
+                              <td className="text-sm">
                                 {new Date(match.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                               </td>
-                              <td className="py-3 px-4">
+                              <td>
                                 <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                                   match.status === 'upcoming' ? 'bg-blue-100 text-blue-800' :
                                   match.status === 'live' ? 'bg-green-100 text-green-800' :
@@ -702,7 +620,7 @@ Options: ${teams.join(', ')}`);
                                   {match.status}
                                 </span>
                               </td>
-                              <td className="py-3 px-4">
+                              <td>
                                 <div className="flex gap-2">
                                   {match.status === 'upcoming' && (
                                     <button 
@@ -740,7 +658,7 @@ Options: ${teams.join(', ')}`);
                 </div>
               </div>
               
-              <div className="card">
+              <div className="beautiful-card">
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                     <AlertCircle className="mr-2" />
@@ -781,20 +699,20 @@ Options: ${teams.join(', ')}`);
 
             {/* Recent Activity */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="card">
+              <div className="beautiful-card">
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                     <Trophy className="mr-2" />
                     Recent Matches
                   </h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full">
+                    <table className="beautiful-table">
                       <thead>
-                        <tr className="bg-gray-100">
-                          <th className="py-3 px-4 text-left rounded-l-lg">Match</th>
-                          <th className="py-3 px-4 text-left">Date</th>
-                          <th className="py-3 px-4 text-left">Status</th>
-                          <th className="py-3 px-4 text-left rounded-r-lg">Result</th>
+                        <tr>
+                          <th className="rounded-l-lg">Match</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th className="rounded-r-lg">Result</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -804,15 +722,15 @@ Options: ${teams.join(', ')}`);
                           .map((match, index) => (
                             <tr 
                               key={match.id} 
-                              className={`border-t hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+                              className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                             >
-                              <td className="py-3 px-4 font-medium">
+                              <td className="font-medium">
                                 {match.teamA} vs {match.teamB}
                               </td>
-                              <td className="py-3 px-4 text-sm">
+                              <td className="text-sm">
                                 {new Date(match.date).toLocaleDateString()}
                               </td>
-                              <td className="py-3 px-4">
+                              <td>
                                 <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                                   match.status === 'upcoming' ? 'bg-blue-100 text-blue-800' :
                                   match.status === 'live' ? 'bg-green-100 text-green-800' :
@@ -821,7 +739,7 @@ Options: ${teams.join(', ')}`);
                                   {match.status}
                                 </span>
                               </td>
-                              <td className="py-3 px-4">
+                              <td>
                                 {match.result || 'Pending'}
                               </td>
                             </tr>
@@ -833,19 +751,19 @@ Options: ${teams.join(', ')}`);
                 </div>
               </div>
               
-              <div className="card">
+              <div className="beautiful-card">
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                     <Users className="mr-2" />
                     Recent Users
                   </h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full">
+                    <table className="beautiful-table">
                       <thead>
-                        <tr className="bg-gray-100">
-                          <th className="py-3 px-4 text-left rounded-l-lg">Name</th>
-                          <th className="py-3 px-4 text-left">Email</th>
-                          <th className="py-3 px-4 text-left rounded-r-lg">Role</th>
+                        <tr>
+                          <th className="rounded-l-lg">Name</th>
+                          <th>Email</th>
+                          <th className="rounded-r-lg">Role</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -855,15 +773,15 @@ Options: ${teams.join(', ')}`);
                           .map((user, index) => (
                             <tr 
                               key={user.id} 
-                              className={`border-t hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+                              className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                             >
-                              <td className="py-3 px-4 font-medium">
+                              <td className="font-medium">
                                 {user.name}
                               </td>
-                              <td className="py-3 px-4 text-sm">
+                              <td className="text-sm">
                                 {user.email}
                               </td>
-                              <td className="py-3 px-4">
+                              <td>
                                 <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getUserRoleClass(user.role)}`}>
                                   {getUserRoleIcon(user.role)} {user.role}
                                 </span>
@@ -882,7 +800,7 @@ Options: ${teams.join(', ')}`);
 
         {/* Users Tab */}
         {activeTab === 'users' && (
-          <div className="card">
+          <div className="beautiful-card">
             <div className="p-6">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <h3 className="text-xl font-bold text-gray-800 flex items-center">
@@ -894,7 +812,7 @@ Options: ${teams.join(', ')}`);
                   <select
                     value={userRoleFilter}
                     onChange={(e) => setUserRoleFilter(e.target.value)}
-                    className="border rounded-lg px-3 py-2 text-sm"
+                    className="beautiful-input"
                   >
                     <option value="All">All Roles</option>
                     <option value="user">Users</option>
@@ -902,7 +820,7 @@ Options: ${teams.join(', ')}`);
                     <option value="admin">Admins</option>
                   </select>
                   
-                  <button className="btn btn-primary flex items-center">
+                  <button className="beautiful-btn beautiful-btn-primary flex items-center">
                     <Plus className="mr-2" size={18} />
                     Add User
                   </button>
@@ -910,15 +828,15 @@ Options: ${teams.join(', ')}`);
               </div>
               
               <div className="overflow-x-auto">
-                <table className="min-w-full">
+                <table className="beautiful-table">
                   <thead>
-                    <tr className="bg-gray-100">
-                      <th className="py-3 px-4 text-left rounded-l-lg">Name</th>
-                      <th className="py-3 px-4 text-left">Email</th>
-                      <th className="py-3 px-4 text-left">Role</th>
-                      <th className="py-3 px-4 text-left">Balance</th>
-                      <th className="py-3 px-4 text-left">Bets</th>
-                      <th className="py-3 px-4 text-left rounded-r-lg">Actions</th>
+                    <tr>
+                      <th className="rounded-l-lg">Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Balance</th>
+                      <th>Bets</th>
+                      <th className="rounded-r-lg">Actions</th>
                     </tr>
                   </thead>
                   <tbody>

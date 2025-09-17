@@ -1,1 +1,15 @@
-{\n  \"name\": \"tk999-monorepo\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"install\": \"npm install --prefix server && npm install --prefix client\",\n    \"dev\": \"concurrently \\\"npm:dev:server\\\" \\\"npm:dev:client\\\"\",\n    \"dev:server\": \"npm run dev --prefix server\",\n    \"dev:client\": \"npm run dev --prefix client\",\n    \"start\": \"bash auto-start.sh\"\n  },\n  \"devDependencies\": {\n    \"concurrently\": \"^8.2.2\"\n  }\n}
+{
+  "name": "tk999-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "start": "bash auto-start.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

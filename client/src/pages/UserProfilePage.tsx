@@ -26,6 +26,8 @@ import {
   BarChart,
   ShieldCheck
 } from 'lucide-react';
+import '../index.css';
+import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface User {
   id: number;
@@ -271,100 +273,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl sticky top-0 z-50">
-        <nav className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center">
-            <Link 
-              to="/dashboard" 
-              className="text-2xl md:text-3xl font-bold text-white flex items-center group"
-            >
-              <span className="text-2xl md:text-3xl mr-2 group-hover:rotate-12 transition-transform duration-300">🎲</span>
-              TK999
-            </Link>
-          </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-5 py-3 rounded-full font-bold flex items-center shadow-lg">
-              <span className="mr-2 text-xl">💰</span>
-              <span className="text-lg">{user.balance.toLocaleString()} BDT</span>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <div className="relative">
-                <div className="bg-white w-12 h-12 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl shadow-lg">
-                  {profileImage ? (
-                    <img 
-                      src={profileImage} 
-                      alt="Profile" 
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                  ) : (
-                    user?.name ? user.name.charAt(0).toUpperCase() : '👤'
-                  )}
-                </div>
-                <label className="absolute bottom-0 right-0 bg-white rounded-full p-1 shadow-md cursor-pointer">
-                  <Camera size={16} className="text-gray-600" />
-                  <input 
-                    type="file" 
-                    className="hidden" 
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                  />
-                </label>
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-white font-semibold">{user?.name || 'User'}</p>
-                <p className="text-blue-100 text-sm">
-                  {user?.role === 'admin' ? 'Admin' : user?.role === 'staff' ? 'Staff' : 'Member'}
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex space-x-3">
-              <Link 
-                to="/dashboard" 
-                className="btn btn-success flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Dashboard"
-              >
-                <span className="text-2xl">📊</span>
-                <span className="text-xs mt-1">Dashboard</span>
-              </Link>
-              
-              <Link 
-                to="/matches" 
-                className="btn btn-primary flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Matches"
-              >
-                <span className="text-2xl">⚽</span>
-                <span className="text-xs mt-1">Matches</span>
-              </Link>
-              
-              {(user?.role === 'admin' || user?.role === 'staff') && (
-                <Link 
-                  to="/admin" 
-                  className="btn btn-warning flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                  title="Admin"
-                >
-                  <span className="text-2xl">⚙️</span>
-                  <span className="text-xs mt-1">Admin</span>
-                </Link>
-              )}
-              
-              <button 
-                onClick={handleLogout}
-                className="btn btn-danger flex flex-col items-center justify-center w-16 h-16 rounded-2xl transform transition-all duration-300 hover:scale-110"
-                title="Logout"
-              >
-                <span className="text-2xl">🚪</span>
-                <span className="text-xs mt-1">Logout</span>
-              </button>
-            </div>
-          </div>
-        </nav>
-      </header>
+  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-gray-50 to-blue-50\">\n      {/* Header */}\n      <header className=\"beautiful-header\">\n        <nav className=\"container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4\">\n          <div className=\"flex items-center\">\n            <Link \n              to=\"/dashboard\" \n              className=\"beautiful-logo\"\n            >\n              <span className=\"beautiful-logo-icon\">🎲</span>\n              TK999\n            </Link>\n          </div>\n          \n          <div className=\"flex flex-wrap items-center justify-center gap-4\">\n            <div className=\"beautiful-wallet-card\">\n              <span className=\"beautiful-wallet-icon\">💰</span>\n              <span className=\"beautiful-wallet-amount\">\n                {user.balance.toLocaleString()} BDT\n              </span>\n            </div>\n            \n            <div className=\"beautiful-user-profile\">\n              <div className=\"beautiful-avatar\">\n                {user?.name?.charAt(0).toUpperCase() || 'U'}\n              </div>\n              <div className=\"beautiful-user-info\">\n                <div className=\"beautiful-user-name\">{user?.name || 'User'}</div>\n                <div className=\"beautiful-user-role\">\n                  {user?.role === 'admin' ? 'Admin' : user?.role === 'staff' ? 'Staff' : 'Member'}\n                </div>\n              </div>\n            </div>\n            \n            <div className=\"beautiful-nav-buttons\">\n              <Link \n                to=\"/dashboard\" \n                className=\"beautiful-nav-btn\"\n                title=\"Dashboard\"\n              >\n                <span>📊</span>\n                <span className=\"beautiful-nav-btn-label\">Dashboard</span>\n              </Link>\n              \n              <Link \n                to=\"/matches\" \n                className=\"beautiful-nav-btn\"\n                title=\"Matches\"\n              >\n                <span>⚽</span>\n                <span className=\"beautiful-nav-btn-label\">Matches</span>\n              </Link>\n              \n              {(user?.role === 'admin' || user?.role === 'staff') && (\n                <Link \n                  to=\"/admin\" \n                  className=\"beautiful-nav-btn\"\n                  title=\"Admin\"\n                >\n                  <span>⚙️</span>\n                  <span className=\"beautiful-nav-btn-label\">Admin</span>\n                </Link>\n              )}\n              \n              <button \n                onClick={handleLogout}\n                className=\"beautiful-nav-btn\"\n                title=\"Logout\"\n              >\n                <span>🚪</span>\n                <span className=\"beautiful-nav-btn-label\">Logout</span>\n              </button>\n            </div>\n          </div>\n        </nav>\n      </header>
       
       <main className="container mx-auto p-4 md:p-6">
         <div className="mb-8">

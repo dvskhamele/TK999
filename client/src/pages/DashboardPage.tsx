@@ -18,11 +18,7 @@ import {
   Star,
   Trophy,
   Users,
-  Clock,
-  ChevronRight,
-  BarChart3,
-  Coins,
-  Activity
+  Clock
 } from 'lucide-react';
 
 // Ensure CSS is properly imported
