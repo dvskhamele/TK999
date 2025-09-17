@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Zap, Trophy, Calendar, TrendingUp, Search, Filter, Star, Clock, Users, Gamepad2, Play, DollarSign } from 'lucide-react';
 import '../index.css'; // Ensure CSS is properly imported
-import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface User {
   id: number;
@@ -155,80 +154,80 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
   const categories = ['All', ...Object.keys(matchesByCategory).filter(cat => cat !== 'All')];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
       {/* Header */}
-      <header className=\"beautiful-header\">
-        <nav className=\"container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4\">
-          <div className=\"flex items-center\">
+      <header className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 shadow-xl sticky top-0 z-50">
+        <nav className="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">
+          <div className="flex items-center">
             <Link 
-              to=\"/dashboard\" 
-              className=\"beautiful-logo\"
+              to="/dashboard" 
+              className="text-2xl md:text-3xl font-bold text-white flex items-center group"
             >
-              <span className=\"beautiful-logo-icon\">🎲</span>
-              <span className=\"bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white font-extrabold\">
+              <span className="text-2xl md:text-3xl mr-2 group-hover:rotate-12 transition-transform duration-300">🎲</span>
+              <span className="font-extrabold text-white">
                 TK999
               </span>
             </Link>
           </div>
           
-          <div className=\"flex flex-wrap items-center justify-center gap-4 w-full lg:w-auto\">
+          <div className="flex flex-wrap items-center justify-center gap-4 w-full lg:w-auto">
             {/* Balance Card */}
-            <div className=\"beautiful-wallet-card\">
-              <DollarSign className=\"mr-2\" size={20} />
-              <span className=\"text-lg font-extrabold\">{user.balance.toLocaleString()} BDT</span>
+            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-3 rounded-xl font-bold flex items-center shadow-lg transform transition-all duration-300 hover:scale-105">
+              <DollarSign className="mr-2" size={20} />
+              <span className="text-lg font-extrabold">{user.balance.toLocaleString()} BDT</span>
             </div>
             
             {/* User Profile */}
-            <div className=\"beautiful-user-profile\">
-              <div className=\"beautiful-avatar\">
+            <div className="flex items-center space-x-3">
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                 {user?.name ? user.name.charAt(0).toUpperCase() : '👤'}
               </div>
-              <div className=\"beautiful-user-info\">
-                <p className=\"beautiful-user-name\">{user?.name || 'User'}</p>
-                <p className=\"beautiful-user-role\">
+              <div className="hidden md:block">
+                <p className="text-white font-semibold text-base">{user?.name || 'User'}</p>
+                <p className="text-blue-100 text-xs font-medium">
                   {user?.role === 'admin' ? '👑 Admin' : user?.role === 'staff' ? '🔧 Staff' : '⭐ Member'}
                 </p>
               </div>
             </div>
             
             {/* Navigation Buttons */}
-            <div className=\"beautiful-nav-buttons\">
+            <div className="flex space-x-2">
               <Link 
-                to=\"/dashboard\" 
-                className=\"beautiful-nav-btn\"
-                title=\"Dashboard\"
+                to="/dashboard" 
+                className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-blue-400 hover:to-blue-500 shadow-lg"
+                title="Dashboard"
               >
-                <span className=\"text-xl\">📊</span>
-                <span className=\"beautiful-nav-btn-label\">Dashboard</span>
+                <span className="text-xl">📊</span>
+                <span className="text-xs mt-1 font-medium">Dashboard</span>
               </Link>
               
               <Link 
-                to=\"/matches\" 
-                className=\"beautiful-nav-btn\"
-                title=\"Matches\"
+                to="/matches" 
+                className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-purple-400 hover:to-purple-500 shadow-lg"
+                title="Matches"
               >
-                <span className=\"text-xl\">⚽</span>
-                <span className=\"beautiful-nav-btn-label\">Matches</span>
+                <span className="text-xl">⚽</span>
+                <span className="text-xs mt-1 font-medium">Matches</span>
               </Link>
               
               {(user?.role === 'admin' || user?.role === 'staff') && (
                 <Link 
-                  to=\"/admin\" 
-                  className=\"beautiful-nav-btn\"
-                  title=\"Admin\"
+                  to="/admin" 
+                  className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-amber-400 hover:to-orange-400 shadow-lg"
+                  title="Admin"
                 >
-                  <span className=\"text-xl\">⚙️</span>
-                  <span className=\"beautiful-nav-btn-label\">Admin</span>
+                  <span className="text-xl">⚙️</span>
+                  <span className="text-xs mt-1 font-medium">Admin</span>
                 </Link>
               )}
               
               <button 
                 onClick={handleLogout}
-                className=\"beautiful-nav-btn\"
-                title=\"Logout\"
+                className="bg-gradient-to-r from-rose-500 to-red-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-rose-400 hover:to-red-400 shadow-lg"
+                title="Logout"
               >
-                <span className=\"text-xl\">🚪</span>
-                <span className=\"beautiful-nav-btn-label\">Logout</span>
+                <span className="text-xl">🚪</span>
+                <span className="text-xs mt-1 font-medium">Logout</span>
               </button>
             </div>
           </div>
@@ -236,51 +235,54 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
       </header>
       
       <main className="container mx-auto p-4 md:p-6">
-        <div className="mb-8">
-          <h2 className="beautiful-title">
-            <Gamepad2 className="mr-3 text-3xl text-purple-600" />
-            <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+        <div className="mb-8 fade-in-up">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 flex items-center">
+            <Gamepad2 className="mr-3 text-3xl text-purple-700" />
+            <span className="text-gray-900">
               Play Today
             </span>
           </h2>
-          <p className="beautiful-subtitle">Choose your matches and place your bets</p>
+          <p className="text-gray-800 mt-2 text-lg">Choose your matches and place your bets</p>
         </div>
 
-        {error && (\n          <div className=\"mb-6 p-4 bg-red-100 text-red-700 rounded-xl text-center font-semibold border-l-4 border-red-500\">\n            {error}\n          </div>\n        )}
+        {error && (
+          <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-xl text-center font-semibold border-l-4 border-red-500">
+            {error}
+          </div>
+        )}
 
         {/* Search and Filters */}
-        <div className="beautiful-card mb-8">
-          <div className="beautiful-card-body">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-              <div className="relative w-full md:w-1/3">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="Search matches, teams, or sports..."
-                  className="beautiful-input w-full pl-12 pr-4 py-3"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="beautiful-btn beautiful-btn-primary"
-                >
-                  <Filter className="mr-2" size={18} />
-                  {showFilters ? 'Hide Filters' : 'Show Filters'}
-                </button>
-                
-                <button
-                  onClick={onShowAssistant}
-                  className="beautiful-btn beautiful-btn-warning"
-                >
-                  <Zap className="mr-2" size={18} />
-                  Smart Tips
-                </button>
-              </div>
+        <div className="bg-white rounded-2xl shadow-xl p-6 mb-8 border border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div className="relative w-full md:w-1/3">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search matches, teams, or sports..."
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
+            
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Filter className="mr-2" size={18} />
+                {showFilters ? 'Hide Filters' : 'Show Filters'}
+              </button>
+              
+              <button
+                onClick={onShowAssistant}
+                className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Zap className="mr-2" size={18} />
+                Smart Tips
+              </button>
+            </div>
+          </div>
             
             {/* Advanced Filters */}
             {showFilters && (
@@ -290,7 +292,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="beautiful-input w-full"
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
                   >
                     <option value="All">All Statuses</option>
                     <option value="upcoming">Upcoming</option>
@@ -305,7 +307,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       setStatusFilter('All');
                       setSearchTerm('');
                     }}
-                    className="beautiful-btn beautiful-btn-secondary w-full"
+                    className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-5 py-3 rounded-xl font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg w-full"
                   >
                     Clear Filters
                   </button>
@@ -318,7 +320,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 <button
                   className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center shadow-sm hover:shadow-md ${
                     activeCategory === 'All'
-                      ? 'beautiful-btn beautiful-btn-primary transform hover:scale-105'
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white transform hover:scale-105'
                       : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 border border-gray-200'
                   }`}
                   onClick={() => setActiveCategory('All')}
@@ -333,7 +335,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       key={category}
                       className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center shadow-sm hover:shadow-md ${
                         activeCategory === category
-                          ? 'beautiful-btn beautiful-btn-primary transform hover:scale-105'
+                          ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white transform hover:scale-105'
                           : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 border border-gray-200'
                       }`}
                       onClick={() => setActiveCategory(category)}
@@ -349,7 +351,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="beautiful-input border border-gray-300 rounded-xl px-4 py-2 text-sm"
+                  className="border border-gray-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
                 >
                   <option value="date">Sort by Date</option>
                   <option value="popularity">Sort by Popularity</option>
@@ -360,45 +362,47 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-gray-200">
-              <div className="beautiful-stat-card">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl text-center border border-blue-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Clock className="text-blue-600 mr-2" size={20} />
-                  <p className="beautiful-stat-value">{matches.filter(m => m.status === 'live').length}</p>
+                  <p className="text-2xl font-bold text-blue-600">{matches.filter(m => m.status === 'live').length}</p>
                 </div>
-                <p className="beautiful-stat-label">Live Matches</p>
+                <p className="text-sm text-gray-600">Live Matches</p>
               </div>
-              <div className="beautiful-stat-card">
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl text-center border border-green-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Calendar className="text-green-600 mr-2" size={20} />
-                  <p className="beautiful-stat-value">{matches.filter(m => m.status === 'upcoming').length}</p>
+                  <p className="text-2xl font-bold text-green-600">{matches.filter(m => m.status === 'upcoming').length}</p>
                 </div>
-                <p className="beautiful-stat-label">Upcoming</p>
+                <p className="text-sm text-gray-600">Upcoming</p>
               </div>
-              <div className="beautiful-stat-card">
+              <div className="bg-gradient-to-br from-purple-50 to-fuchsia-50 p-4 rounded-xl text-center border border-purple-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Star className="text-purple-600 mr-2" size={20} />
-                  <p className="beautiful-stat-value">{user.favoriteSports.length}</p>
+                  <p className="text-2xl font-bold text-purple-600">{user.favoriteSports.length}</p>
                 </div>
-                <p className="beautiful-stat-label">Favorite Sports</p>
+                <p className="text-sm text-gray-600">Favorite Sports</p>
               </div>
-              <div className="beautiful-stat-card">
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-xl text-center border border-amber-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Users className="text-amber-600 mr-2" size={20} />
-                  <p className="beautiful-stat-value">{user.balance.toLocaleString()}</p>
+                  <p className="text-2xl font-bold text-amber-600">{user.balance.toLocaleString()}</p>
                 </div>
-                <p className="beautiful-stat-label">Your Balance</p>
+                <p className="text-sm text-gray-600">Your Balance</p>
               </div>
             </div>
           </div>
         </main>
 
         {/* Smart Recommendations */}
-        <div className="beautiful-card mb-8">
-          <div className="beautiful-card-header">
-            <Zap className="mr-2" size={22} />
-            Daily Picks for You
+        <div className="bg-white rounded-2xl shadow-xl mb-8 border border-gray-100">
+          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-5 rounded-t-2xl">
+            <h3 className="text-lg font-bold text-white flex items-center">
+              <Zap className="mr-2" size={22} />
+              Daily Picks for You
+            </h3>
           </div>
-          <div className="beautiful-card-body">
+          <div className="p-5">
             <div className="flex flex-wrap gap-4">
               {favoriteTeams.map((team: string) => (
                 <div key={team} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl flex-1 min-w-[200px] border border-blue-100 hover:shadow-md transition-all duration-300">
@@ -417,7 +421,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                           setSelectedTeam(match.teamA === team ? match.teamA : match.teamB);
                         }
                       }}
-                      className="beautiful-btn beautiful-btn-primary text-sm mt-4 w-full py-2"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm mt-4 w-full py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       View Picks
                     </button>
@@ -430,8 +434,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
         {/* Matches List */}
         {sortedMatches.length > 0 ? (
           sortedMatches.map((match) => (
-            <div key={match.id} className="beautiful-card mb-6">
-              <div className="beautiful-card-body">
+            <div key={match.id} className="bg-white rounded-2xl shadow-xl mb-6 border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <div className="p-6">
                 {/* Match Header */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                   <div className="flex items-center">
@@ -488,7 +492,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               <button
                                 key={amount}
                                 onClick={() => handleQuickBet(match.id, team, amount)}
-                                className="beautiful-btn beautiful-btn-secondary"
+                                className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 shadow-md"
                                 disabled={match.status !== 'upcoming' || user.balance < amount}
                               >
                                 {amount}
@@ -501,7 +505,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               setSelectedMatch(match.id);
                               setSelectedTeam(team);
                             }}
-                            className="beautiful-btn beautiful-btn-primary w-full py-3"
+                            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white w-full py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                             disabled={match.status !== 'upcoming'}
                             title={match.status !== 'upcoming' ? "Match not available for betting" : `Bet on ${team}`}
                           >
@@ -587,7 +591,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                           type="number"
                           value={betAmount}
                           onChange={(e) => setBetAmount(Number(e.target.value))}
-                          className="beautiful-input w-full px-4 py-3"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm"
                           min="10"
                           max={user.balance}
                         />
@@ -601,7 +605,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                         </div>
                         <button
                           onClick={() => handlePlaceBet(match.id, selectedTeam)}
-                          className="beautiful-btn beautiful-btn-success w-full mt-6 py-3"
+                          className="bg-gradient-to-r from-green-500 to-emerald-500 text-white w-full mt-6 py-3 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                           disabled={betAmount > user.balance || betAmount < 10}
                         >
                           <Play className="mr-2 inline" size={18} />
@@ -612,7 +616,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                             setSelectedMatch(null);
                             setSelectedTeam('');
                           }}
-                          className="beautiful-btn beautiful-btn-secondary w-full mt-4 py-3"
+                          className="bg-gradient-to-r from-gray-500 to-gray-600 text-white w-full mt-4 py-3 rounded-xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                         >
                           Cancel
                         </button>
@@ -624,10 +628,10 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             </div>
           ))
         ) : (
-          <div className="beautiful-empty-state">
-            <div className="beautiful-empty-state-icon text-7xl mb-6">⚽</div>
-            <h3 className="beautiful-empty-state-title">No Matches Found</h3>
-            <p className="beautiful-empty-state-message">
+          <div className="bg-white rounded-2xl shadow-xl p-12 text-center border border-gray-100">
+            <div className="text-7xl mb-6">⚽</div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">No Matches Found</h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               There are currently no matches matching your filters. Try adjusting your filters or check back later for new matches!
             </p>
             <button
@@ -636,13 +640,14 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 setStatusFilter('All');
                 setSearchTerm('');
               }}
-              className="beautiful-btn beautiful-btn-primary py-3 px-6"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Clear All Filters
             </button>
           </div>
-        )}
+        </div>
       </div>
+    </div>
   );
 };
 

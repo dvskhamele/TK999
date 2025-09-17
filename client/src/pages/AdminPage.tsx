@@ -294,77 +294,102 @@ Options: ${teams.join(', ')}`);
     day: 'numeric' 
   });
 
-  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-gray-50 to-blue-50\">\n      {/* Header */}\n      <header className=\"beautiful-header\">\n        <nav className=\"container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4\">\n          <div className=\"flex items-center\">\n            <Link \n              to=\"/admin\" \n              className=\"beautiful-logo\"\n            >\n              <span className=\"beautiful-logo-icon\">🎲</span>\n              TK999 Admin\n            </Link>\n          </div>\n          \n          <div className=\"flex flex-wrap items-center justify-center gap-4\">\n            <div className=\"beautiful-user-profile\">\n              <div className=\"beautiful-avatar\">\n                {currentUser?.name?.charAt(0).toUpperCase() || 'A'}\n              </div>\n              <div className=\"beautiful-user-info\">\n                <div className=\"beautiful-user-name\">{currentUser?.name || 'Admin'}</div>\n                <div className=\"beautiful-user-role\">Administrator</div>\n              </div>\n            </div>\n            \n            <div className=\"beautiful-nav-buttons\">\n              <Link \n                to=\"/dashboard\" \n                className=\"beautiful-nav-btn\"\n                title=\"Dashboard\"\n              >\n                <span>📊</span>\n                <span className=\"beautiful-nav-btn-label\">User</span>\n              </Link>\n              \n              <Link \n                to=\"/matches\" \n                className=\"beautiful-nav-btn\"\n                title=\"Matches\"\n              >\n                <span>⚽</span>\n                <span className=\"beautiful-nav-btn-label\">Matches</span>\n              </Link>\n              \n              <Link \n                to=\"/admin\" \n                className=\"beautiful-nav-btn\"\n                title=\"Admin\"\n              >\n                <span>⚙️</span>\n                <span className=\"beautiful-nav-btn-label\">Admin</span>\n              </Link>\n              \n              <button \n                onClick={handleLogout}\n                className=\"beautiful-nav-btn\"\n                title=\"Logout\"\n              >\n                <span>🚪</span>\n                <span className=\"beautiful-nav-btn-label\">Logout</span>\n              </button>\n            </div>\n          </div>\n        </nav>\n      </header>
-      
-      <main className="container mx-auto p-4 md:p-6">
-        <div className="mb-8">
-          <h2 className="beautiful-title">Daily Operations</h2>
-          <p className="beautiful-subtitle">{currentDate} - Manage today's matches, users, and bets</p>
-        </div>
-
-        {/* Search and Filters */}
-        <div className="card mb-8">
-          <div className="p-6">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-              <div className="relative w-full md:w-1/3">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="Search users, matches, or bets..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Header */}
+      <header className="beautiful-header">
+        <nav className="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">
+          <div className="flex items-center">
+            <Link 
+              to="/dashboard" 
+              className="beautiful-logo"
+            >
+              <span className="beautiful-logo-icon">🎲</span>
+              TK999 Admin
+            </Link>
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="beautiful-user-profile">
+              <div className="beautiful-avatar">
+                {currentUser?.name?.charAt(0).toUpperCase() || 'A'}
               </div>
-              
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setShowAddMatchForm(true)}
-                  className="btn btn-success flex items-center"
-                >
-                  <Plus className="mr-2" size={18} />
-                  Add Match
-                </button>
-                
-                <button className="btn btn-primary flex items-center">
-                  <Eye className="mr-2" size={18} />
-                  Reports
-                </button>
+              <div className="beautiful-user-info">
+                <div className="beautiful-user-name">{currentUser?.name || 'Admin'}</div>
+                <div className="beautiful-user-role">Administrator</div>
               </div>
             </div>
             
-            {/* Tabs */}
-            <div className="beautiful-tabs">
-              <button
-                className={`beautiful-tab ${activeTab === 'overview' ? 'active' : ''}`}
-                onClick={() => setActiveTab('overview')}
+            <div className="beautiful-nav-buttons">
+              <Link 
+                to="/dashboard" 
+                className="beautiful-nav-btn"
+                title="Dashboard"
               >
-                <Target className="mr-2" size={18} />
-                Overview
-              </button>
-              <button
-                className={`beautiful-tab ${activeTab === 'users' ? 'active' : ''}`}
-                onClick={() => setActiveTab('users')}
+                <span>📊</span>
+                <span className="beautiful-nav-btn-label">Dashboard</span>
+              </Link>
+              
+              <Link 
+                to="/matches" 
+                className="beautiful-nav-btn"
+                title="Matches"
               >
-                <Users className="mr-2" size={18} />
-                Users
-              </button>
-              <button
-                className={`beautiful-tab ${activeTab === 'matches' ? 'active' : ''}`}
-                onClick={() => setActiveTab('matches')}
+                <span>⚽</span>
+                <span className="beautiful-nav-btn-label">Matches</span>
+              </Link>
+              
+              <button 
+                onClick={handleLogout}
+                className="beautiful-nav-btn"
+                title="Logout"
               >
-                <Trophy className="mr-2" size={18} />
-                Matches
-              </button>
-              <button
-                className={`beautiful-tab ${activeTab === 'bets' ? 'active' : ''}`}
-                onClick={() => setActiveTab('bets')}
-              >
-                <Target className="mr-2" size={18} />
-                Bets
+                <span>🚪</span>
+                <span className="beautiful-nav-btn-label">Logout</span>
               </button>
             </div>
           </div>
+        </nav>
+      </header>
+      
+      <main className="container mx-auto p-4 md:p-6">
+        <div className="mb-8">
+          <h1 className="beautiful-title">Admin Dashboard</h1>
+          <p className="beautiful-subtitle">
+            Manage users, matches, and system settings
+          </p>
+        </div>
+        
+        {/* Tabs */}
+        <div className="beautiful-tabs">
+          <button
+            className={`beautiful-tab ${activeTab === 'overview' ? 'active' : ''}`}
+            onClick={() => setActiveTab('overview')}
+          >
+            <Target className="mr-2" size={18} />
+            Overview
+          </button>
+          <button
+            className={`beautiful-tab ${activeTab === 'users' ? 'active' : ''}`}
+            onClick={() => setActiveTab('users')}
+          >
+            <Users className="mr-2" size={18} />
+            Users
+          </button>
+          <button
+            className={`beautiful-tab ${activeTab === 'matches' ? 'active' : ''}`}
+            onClick={() => setActiveTab('matches')}
+          >
+            <Trophy className="mr-2" size={18} />
+            Matches
+          </button>
+          <button
+            className={`beautiful-tab ${activeTab === 'settings' ? 'active' : ''}`}
+            onClick={() => setActiveTab('settings')}
+          >
+            <Settings className="mr-2" size={18} />
+            Settings
+          </button>
         </div>
 
         {/* Add Match Form */}
@@ -889,7 +914,7 @@ Options: ${teams.join(', ')}`);
 
         {/* Matches Tab */}
         {activeTab === 'matches' && (
-          <div className="card">
+          <div className="beautiful-card">
             <div className="p-6">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <h3 className="text-xl font-bold text-gray-800 flex items-center">
@@ -901,25 +926,33 @@ Options: ${teams.join(', ')}`);
                   <select
                     value={matchStatusFilter}
                     onChange={(e) => setMatchStatusFilter(e.target.value)}
-                    className="border rounded-lg px-3 py-2 text-sm"
+                    className="beautiful-input"
                   >
                     <option value="All">All Statuses</option>
                     <option value="upcoming">Upcoming</option>
                     <option value="live">Live</option>
                     <option value="finished">Finished</option>
                   </select>
+                  
+                  <button 
+                    onClick={() => setShowAddMatchModal(true)}
+                    className="beautiful-btn beautiful-btn-primary flex items-center"
+                  >
+                    <Plus className="mr-2" size={18} />
+                    Add Match
+                  </button>
                 </div>
               </div>
               
               <div className="overflow-x-auto">
-                <table className="min-w-full">
+                <table className="beautiful-table">
                   <thead>
-                    <tr className="bg-gray-100">
-                      <th className="py-3 px-4 text-left rounded-l-lg">Match</th>
-                      <th className="py-3 px-4 text-left">Time</th>
-                      <th className="py-3 px-4 text-left">Status</th>
-                      <th className="py-3 px-4 text-left">Result</th>
-                      <th className="py-3 px-4 text-left rounded-r-lg">Actions</th>
+                    <tr>
+                      <th className="rounded-l-lg">Match</th>
+                      <th>Time</th>
+                      <th>Status</th>
+                      <th>Result</th>
+                      <th className="rounded-r-lg">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -928,15 +961,15 @@ Options: ${teams.join(', ')}`);
                       .map((match, index) => (
                         <tr 
                           key={match.id} 
-                          className={`border-t hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+                          className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                         >
-                          <td className="py-3 px-4 font-medium">
+                          <td className="font-medium">
                             {match.teamA} vs {match.teamB}
                           </td>
-                          <td className="py-3 px-4">
+                          <td>
                             {new Date(match.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                           </td>
-                          <td className="py-3 px-4">
+                          <td>
                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                               match.status === 'upcoming' ? 'bg-blue-100 text-blue-800' :
                               match.status === 'live' ? 'bg-green-100 text-green-800' :
@@ -945,10 +978,10 @@ Options: ${teams.join(', ')}`);
                               {match.status}
                             </span>
                           </td>
-                          <td className="py-3 px-4">
+                          <td>
                             {match.result || 'Pending'}
                           </td>
-                          <td className="py-3 px-4">
+                          <td>
                             <div className="flex gap-2">
                               {match.status === 'upcoming' && (
                                 <button 
@@ -998,7 +1031,7 @@ Options: ${teams.join(', ')}`);
 
         {/* Bets Tab */}
         {activeTab === 'bets' && (
-          <div className="card">
+          <div className="beautiful-card">
             <div className="p-6">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <h3 className="text-xl font-bold text-gray-800 flex items-center">
@@ -1010,7 +1043,7 @@ Options: ${teams.join(', ')}`);
                   <select
                     value={betStatusFilter}
                     onChange={(e) => setBetStatusFilter(e.target.value)}
-                    className="border rounded-lg px-3 py-2 text-sm"
+                    className="beautiful-input"
                   >
                     <option value="All">All Statuses</option>
                     <option value="Pending">Pending</option>
@@ -1021,15 +1054,15 @@ Options: ${teams.join(', ')}`);
               </div>
               
               <div className="overflow-x-auto">
-                <table className="min-w-full">
+                <table className="beautiful-table">
                   <thead>
-                    <tr className="bg-gray-100">
-                      <th className="py-3 px-4 text-left rounded-l-lg">User</th>
-                      <th className="py-3 px-4 text-left">Match</th>
-                      <th className="py-3 px-4 text-left">Team</th>
-                      <th className="py-3 px-4 text-left">Amount</th>
-                      <th className="py-3 px-4 text-left">Status</th>
-                      <th className="py-3 px-4 text-left rounded-r-lg">Date</th>
+                    <tr>
+                      <th className="rounded-l-lg">User</th>
+                      <th>Match</th>
+                      <th>Team</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th className="rounded-r-lg">Date</th>
                     </tr>
                   </thead>
                   <tbody>

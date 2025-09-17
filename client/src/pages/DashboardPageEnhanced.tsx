@@ -366,17 +366,17 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
         </div>
       </header>
       
-      <main className=\"container mx-auto p-4 md:p-6\">
-        <div className=\"mb-8\">
-          <h1 className=\"beautiful-title\">Dashboard</h1>
-          <p className=\"beautiful-subtitle\">
-            Welcome back, <span className=\"beautiful-welcome-user\">{user?.name}</span>! 
+      <main className="container mx-auto p-4 md:p-6">
+        <div className="mb-8">
+          <h1 className="beautiful-title">Dashboard</h1>
+          <p className="beautiful-subtitle">
+            Welcome back, <span className="beautiful-welcome-user">{user?.name}</span>! 
             Ready to place some winning bets today?
           </p>
         </div>
         
         {/* Enhanced Tabs */}
-        <div className=\"beautiful-tabs\">
+        <div className="beautiful-tabs">
           <button
             className={`beautiful-tab ${activeTab === 'overview' ? 'active' : ''}`}
             onClick={() => setActiveTab('overview')}
@@ -398,7 +398,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
             <Bell size={18} />
             Notifications
             {unreadNotifications > 0 && (
-              <span className=\"dashboard-tab-badge\">
+              <span className="dashboard-tab-badge">
                 {unreadNotifications}
               </span>
             )}

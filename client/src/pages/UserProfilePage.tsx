@@ -273,7 +273,83 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
     }
   };
 
-  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-gray-50 to-blue-50\">\n      {/* Header */}\n      <header className=\"beautiful-header\">\n        <nav className=\"container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4\">\n          <div className=\"flex items-center\">\n            <Link \n              to=\"/dashboard\" \n              className=\"beautiful-logo\"\n            >\n              <span className=\"beautiful-logo-icon\">🎲</span>\n              TK999\n            </Link>\n          </div>\n          \n          <div className=\"flex flex-wrap items-center justify-center gap-4\">\n            <div className=\"beautiful-wallet-card\">\n              <span className=\"beautiful-wallet-icon\">💰</span>\n              <span className=\"beautiful-wallet-amount\">\n                {user.balance.toLocaleString()} BDT\n              </span>\n            </div>\n            \n            <div className=\"beautiful-user-profile\">\n              <div className=\"beautiful-avatar\">\n                {user?.name?.charAt(0).toUpperCase() || 'U'}\n              </div>\n              <div className=\"beautiful-user-info\">\n                <div className=\"beautiful-user-name\">{user?.name || 'User'}</div>\n                <div className=\"beautiful-user-role\">\n                  {user?.role === 'admin' ? 'Admin' : user?.role === 'staff' ? 'Staff' : 'Member'}\n                </div>\n              </div>\n            </div>\n            \n            <div className=\"beautiful-nav-buttons\">\n              <Link \n                to=\"/dashboard\" \n                className=\"beautiful-nav-btn\"\n                title=\"Dashboard\"\n              >\n                <span>📊</span>\n                <span className=\"beautiful-nav-btn-label\">Dashboard</span>\n              </Link>\n              \n              <Link \n                to=\"/matches\" \n                className=\"beautiful-nav-btn\"\n                title=\"Matches\"\n              >\n                <span>⚽</span>\n                <span className=\"beautiful-nav-btn-label\">Matches</span>\n              </Link>\n              \n              {(user?.role === 'admin' || user?.role === 'staff') && (\n                <Link \n                  to=\"/admin\" \n                  className=\"beautiful-nav-btn\"\n                  title=\"Admin\"\n                >\n                  <span>⚙️</span>\n                  <span className=\"beautiful-nav-btn-label\">Admin</span>\n                </Link>\n              )}\n              \n              <button \n                onClick={handleLogout}\n                className=\"beautiful-nav-btn\"\n                title=\"Logout\"\n              >\n                <span>🚪</span>\n                <span className=\"beautiful-nav-btn-label\">Logout</span>\n              </button>\n            </div>\n          </div>\n        </nav>\n      </header>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Header */}
+      <header className="beautiful-header">
+        <nav className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex items-center">
+            <Link 
+              to="/dashboard" 
+              className="beautiful-logo"
+            >
+              <span className="beautiful-logo-icon">🎲</span>
+              TK999
+            </Link>
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="beautiful-wallet-card">
+              <span className="beautiful-wallet-icon">💰</span>
+              <span className="beautiful-wallet-amount">
+                {user.balance.toLocaleString()} BDT
+              </span>
+            </div>
+            
+            <div className="beautiful-user-profile">
+              <div className="beautiful-avatar">
+                {user?.name?.charAt(0).toUpperCase() || 'U'}
+              </div>
+              <div className="beautiful-user-info">
+                <div className="beautiful-user-name">{user?.name || 'User'}</div>
+                <div className="beautiful-user-role">
+                  {user?.role === 'admin' ? 'Admin' : user?.role === 'staff' ? 'Staff' : 'Member'}
+                </div>
+              </div>
+            </div>
+            
+            <div className="beautiful-nav-buttons">
+              <Link 
+                to="/dashboard" 
+                className="beautiful-nav-btn"
+                title="Dashboard"
+              >
+                <span>📊</span>
+                <span className="beautiful-nav-btn-label">Dashboard</span>
+              </Link>
+              
+              <Link 
+                to="/matches" 
+                className="beautiful-nav-btn"
+                title="Matches"
+              >
+                <span>⚽</span>
+                <span className="beautiful-nav-btn-label">Matches</span>
+              </Link>
+              
+              {(user?.role === 'admin' || user?.role === 'staff') && (
+                <Link 
+                  to="/admin" 
+                  className="beautiful-nav-btn"
+                  title="Admin"
+                >
+                  <span>⚙️</span>
+                  <span className="beautiful-nav-btn-label">Admin</span>
+                </Link>
+              )}
+              
+              <button 
+                onClick={handleLogout}
+                className="beautiful-nav-btn"
+                title="Logout"
+              >
+                <span>🚪</span>
+                <span className="beautiful-nav-btn-label">Logout</span>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
       
       <main className="container mx-auto p-4 md:p-6">
         <div className="mb-8">
