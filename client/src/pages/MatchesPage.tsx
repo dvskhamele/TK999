@@ -213,7 +213,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               {(user?.role === 'admin' || user?.role === 'staff') && (
                 <Link 
                   to="/admin" 
-                  className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-amber-400 hover:to-orange-400 shadow-lg"
+                  className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-amber-400 hover:to-orange-500 shadow-lg"
                   title="Admin"
                 >
                   <span className="text-xl">⚙️</span>
@@ -645,7 +645,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               Clear All Filters
             </button>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
