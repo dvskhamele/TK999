@@ -28,7 +28,11 @@ echo "✅ 5. Frontend deployment package:"
 ls -la tk999-frontend.zip
 echo
 
-echo "✅ 6. README.md updated with deployment instructions:"
+echo "✅ 6. Prepared deployment directory:"
+ls -la tk999-netlify-deploy/
+echo
+
+echo "✅ 7. README.md updated with deployment instructions:"
 grep -c "Netlify Deployment" README.md && echo "README.md contains Netlify deployment instructions"
 echo
 

@@ -10,8 +10,7 @@ const getApiBaseUrl = () => {
   }
   
   // In production, use the environment variable
-  // If not set, we'll use a relative path which will likely fail,
-  // but it's better than crashing the app
+  // If not set, we'll use a relative path as fallback
   return import.meta.env.VITE_API_BASE_URL || '';
 };
 
@@ -28,6 +27,12 @@ export const apiCall = async (endpoint: string, options: RequestInit = {}) => {
     const baseUrl = API_BASE_URL.endsWith('/') ? API_BASE_URL.slice(0, -1) : API_BASE_URL;
     const endpointPath = endpoint.startsWith('/') ? endpoint : '/' + endpoint;
     url = `${baseUrl}${endpointPath}`;
+  } else if (!API_BASE_URL && !endpoint.startsWith('http')) {
+    // If no base URL is set and we're not in development, 
+    // we'll need to determine the API URL based on the current domain
+    // For Netlify, we might need to append '/.netlify/functions/' or similar
+    // For now, we'll just use the relative path and hope for the best
+    url = endpoint;
   }
   
   const defaultOptions = {

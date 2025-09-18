@@ -17,43 +17,36 @@ fi
 
 echo "✅ Netlify CLI is installed"
 
-# Create a temporary directory for deployment
-echo "📦 Preparing deployment files..."
-rm -rf /tmp/tk999-netlify-deploy
-mkdir -p /tmp/tk999-netlify-deploy
-
-# Extract frontend files
-echo "📂 Extracting frontend files..."
-unzip -q tk999-frontend.zip -d /tmp/tk999-netlify-deploy
-
-# Move files to root of temp directory for easier deployment
-mv /tmp/tk999-netlify-deploy/frontend/dist/* /tmp/tk999-netlify-deploy/
-rm -rf /tmp/tk999-netlify-deploy/frontend
-
-echo "✅ Deployment files prepared in /tmp/tk999-netlify-deploy"
+# Prepare deployment files (already extracted to tk999-netlify-deploy directory)
+echo "📦 Using deployment files in tk999-netlify-deploy directory"
 
 # Show what we're deploying
 echo
 echo "📁 Deployment package contents:"
-ls -la /tmp/tk999-netlify-deploy
+ls -la tk999-netlify-deploy
 echo
 
-# Deploy to Netlify
+# Try to deploy to Netlify
 echo "🚀 Deploying to Netlify..."
 echo "Note: You'll need to authenticate with Netlify if not already logged in"
 echo
 
 # Try to deploy (will prompt for login if needed)
-netlify deploy \
-  --dir=/tmp/tk999-netlify-deploy \
-  --prod
-
-echo
-echo "✅ Deployment completed!"
-
-# Clean up
-echo "🧹 Cleaning up temporary files..."
-rm -rf /tmp/tk999-netlify-deploy
+if netlify deploy --dir=tk999-netlify-deploy --prod; then
+    echo
+    echo "✅ Deployment completed successfully!"
+else
+    echo
+    echo "⚠️  Deployment failed. This might be due to permission issues."
+    echo "Please try one of these alternatives:"
+    echo "1. Run: netlify login && netlify deploy --dir=tk999-netlify-deploy --prod"
+    echo "2. Manually deploy by:"
+    echo "   - Going to https://app.netlify.com/"
+    echo "   - Clicking 'New site from Git' or 'Import an existing project'"
+    echo "   - Uploading the tk999-netlify-deploy directory"
+    echo
+    exit 1
+fi
 
 echo
 echo "=========================================="
@@ -67,6 +60,5 @@ echo "3. You can later set up a custom domain in Netlify dashboard"
 echo
 echo "For manual deployment or troubleshooting:"
 echo "1. Visit https://app.netlify.com/"
-echo "2. Create a new site from the /tmp/tk999-netlify-deploy directory"
-echo "   (or extract tk999-frontend.zip and deploy the frontend/dist folder)"
+echo "2. Create a new site from the tk999-netlify-deploy directory"
 echo
