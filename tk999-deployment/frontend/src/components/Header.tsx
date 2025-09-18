@@ -14,7 +14,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gradient-primary shadow-xl sticky top-0 z-50">
+    <header style={{background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)'}} className="shadow-xl sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="flex items-center">
           <Link 

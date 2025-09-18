@@ -1060,28 +1060,28 @@ body::before {
 
 /* Enhanced gradient backgrounds */
 .bg-gradient-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .bg-gradient-secondary {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+  background: var(--gradient-secondary);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .bg-gradient-success {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  background: var(--gradient-success);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .bg-gradient-warning {
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-  box-shadow: 0 4px 15px rgba(246, 211, 101, 0.3);
+  background: var(--gradient-warning);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
 
 .bg-gradient-danger {
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.3);
+  background: var(--gradient-danger);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
 }
 
 .bg-gradient-dark {
@@ -1245,32 +1245,6 @@ body::before {
 .btn-secondary:hover {
   background: linear-gradient(135deg, #475569 0%, #334155 100%) !important;
   box-shadow: 0 10px 25px rgba(71, 85, 105, 0.5) !important;
-}
-
-/* Enhanced gradient backgrounds */
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.bg-gradient-secondary {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
-}
-
-.bg-gradient-success {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
-}
-
-.bg-gradient-warning {
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-  box-shadow: 0 4px 15px rgba(246, 211, 101, 0.3);
-}
-
-.bg-gradient-danger {
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.3);
 }
 
 .bg-gradient-dark {

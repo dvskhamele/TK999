@@ -307,7 +307,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       setStatusFilter('All');
                       setSearchTerm('');
                     }}
-                    className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-5 py-3 rounded-xl font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg w-full"
+                    className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-5 py-3 rounded-xl font-semibold hover:from-rose-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg w-full"
                   >
                     Clear Filters
                   </button>
@@ -492,7 +492,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               <button
                                 key={amount}
                                 onClick={() => handleQuickBet(match.id, team, amount)}
-                                className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 shadow-md"
+                                className="bg-gradient-to-r from-blue-100 to-indigo-100 hover:from-blue-200 hover:to-indigo-200 text-blue-800 px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 shadow-md"
                                 disabled={match.status !== 'upcoming' || user.balance < amount}
                               >
                                 {amount}
