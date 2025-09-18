@@ -1,4 +1,4 @@
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../hooks/useToast';
 
 interface Match {
     id: number;

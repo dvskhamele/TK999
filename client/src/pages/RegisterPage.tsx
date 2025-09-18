@@ -4,7 +4,7 @@ import { User, Mail, Phone, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Key } f
 import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface RegisterPageProps {
-  onRegister: (name: string, email: string, phone: string) => any;
+  onRegister: (name: string, email: string, phone: string) => Promise<boolean>;
 }
 
 const RegisterPage: React.FC<RegisterPageProps> = ({ onRegister }) => {
@@ -87,8 +87,8 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onRegister }) => {
       await onRegister(name, email, phone);
       setSuccess('Registration successful! Redirecting to login...');
       setTimeout(() => navigate('/login'), 2000);
-    } catch (err: any) {
-      setError(err.message || 'Registration failed. Please try again.');
+    } catch (err: unknown) {
+      setError((err as Error).message || 'Registration failed. Please try again.');
     } finally {
       setIsLoading(false);
     }

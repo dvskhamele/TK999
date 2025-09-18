@@ -65,8 +65,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
         onPlaceBet(matchId, team, parseInt(amount));
         setSelectedMatch(null);
         setSelectedTeam('');
-      } catch (err: any) {
-        setError(err.message || 'Failed to place bet');
+      } catch (err: unknown) {
+        setError((err as Error).message || 'Failed to place bet');
         setTimeout(() => setError(''), 3000);
       }
     } else if (amount) {
@@ -77,8 +77,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
   const handleQuickBet = (matchId: number, team: string, amount: number) => {
     try {
       onPlaceBet(matchId, team, amount);
-    } catch (err: any) {
-      setError(err.message || 'Failed to place bet');
+    } catch (err: unknown) {
+      setError((err as Error).message || 'Failed to place bet');
       setTimeout(() => setError(''), 3000);
     }
   };
@@ -647,7 +647,6 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
           </div>
         )}
       </div>
-    </div>
   );
 };
 

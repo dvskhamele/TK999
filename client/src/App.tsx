@@ -373,7 +373,7 @@ const App: React.FC = () => {
   }, [matches, bets, currentUser]);
 
   // Smart login function
-  const login = useCallback((email: string, password: string) => {
+  const login = useCallback(async (email: string, password: string): Promise<boolean> => {
     // For demo purposes, we'll use a simple check
     if (email === 'admin@example.com' && password === 'admin123') {
       const adminUser: User = {
@@ -392,7 +392,7 @@ const App: React.FC = () => {
         favoriteSports: ['Football', 'Cricket']
       };
       setCurrentUser({...adminUser, lastLogin: new Date().toISOString()});
-      return { user: adminUser, token: 'admin-token' };
+      return true;
     } else if (email === 'staff@example.com' && password === 'staff123') {
       const staffUser: User = {
         id: 2,
@@ -410,7 +410,7 @@ const App: React.FC = () => {
         favoriteSports: ['Basketball', 'Tennis']
       };
       setCurrentUser({...staffUser, lastLogin: new Date().toISOString()});
-      return { user: staffUser, token: 'staff-token' };
+      return true;
     } else {
       // Create a regular user if not exists
       const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
@@ -426,7 +426,7 @@ const App: React.FC = () => {
         );
         localStorage.setItem('users', JSON.stringify(updatedUsers));
         
-        return { user: updatedUser, token: 'user-token' };
+        return true;
       } else {
         const newUser: User = {
           id: Date.now(),
@@ -447,13 +447,13 @@ const App: React.FC = () => {
         const updatedUsers = [...existingUsers, newUser];
         localStorage.setItem('users', JSON.stringify(updatedUsers));
         setCurrentUser(newUser);
-        return { user: newUser, token: 'user-token' };
+        return true;
       }
     }
   }, []);
 
   // Smart register function with auto-profile completion
-  const register = useCallback((name: string, email: string, phone: string) => {
+  const register = useCallback(async (name: string, email: string, phone: string): Promise<boolean> => {
     const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
     const existingUser = existingUsers.find((u: User) => u.email === email);
     
@@ -520,7 +520,7 @@ const App: React.FC = () => {
     
     setNotifications(prev => [...prev, welcomeNotification]);
     
-    return { user: newUser, token: 'user-token' };
+    return true;
   }, []);
 
   const logout = useCallback(() => {

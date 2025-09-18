@@ -171,8 +171,8 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
       setIsEditingProfile(false);
       setSuccess('Profile updated successfully!');
       setTimeout(() => setSuccess(''), 3000);
-    } catch (err: any) {
-      setError(err.message || 'Failed to update profile');
+    } catch (err: unknown) {
+      setError((err as Error).message || 'Failed to update profile');
       setTimeout(() => setError(''), 3000);
     } finally {
       setIsLoading(false);
@@ -207,8 +207,8 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
       setConfirmNewPassword('');
       setShowPasswordChange(false);
       setTimeout(() => setSuccess(''), 3000);
-    } catch (err: any) {
-      setError(err.message || 'Failed to change password');
+    } catch (err: unknown) {
+      setError((err as Error).message || 'Failed to change password');
       setTimeout(() => setError(''), 3000);
     } finally {
       setIsLoading(false);
@@ -223,8 +223,8 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
         onDeposit(parseInt(amount));
         setSuccess(`Successfully deposited ${amount} BDT!`);
         setTimeout(() => setSuccess(''), 3000);
-      } catch (err: any) {
-        setError(err.message || 'Deposit failed');
+      } catch (err: unknown) {
+        setError((err as Error).message || 'Deposit failed');
         setTimeout(() => setError(''), 3000);
       }
     } else if (amount) {
@@ -240,8 +240,8 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
         onWithdraw(parseInt(amount));
         setSuccess(`Successfully withdrew ${amount} BDT!`);
         setTimeout(() => setSuccess(''), 3000);
-      } catch (err: any) {
-        setError(err.message || 'Withdrawal failed');
+      } catch (err: unknown) {
+        setError((err as Error).message || 'Withdrawal failed');
         setTimeout(() => setError(''), 3000);
       }
     } else if (amount) {
@@ -1013,7 +1013,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({
                       </label>
                       <select
                         value={user.riskLevel}
-                        onChange={(e) => setEditedUser({...user, riskLevel: e.target.value as any})}
+                        onChange={(e) => setEditedUser({...user, riskLevel: e.target.value as 'low' | 'medium' | 'high'})}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       >
                         <option value="low">Low Risk</option>

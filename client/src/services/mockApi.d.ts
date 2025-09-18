@@ -7,7 +7,7 @@ export interface User {
   phone: string;
   walletBalance: number;
   role: string;
-  bets: any[];
+  bets: Bet[];
 }
 
 export interface Match {

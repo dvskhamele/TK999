@@ -35,10 +35,13 @@ const TestDashboard: React.FC = () => {
     onLogout: () => console.log('Logout'),
     onDeposit: (amount: number) => console.log('Deposit:', amount),
     onWithdraw: (amount: number) => console.log('Withdraw:', amount),
-    getUserDashboard: (_userId: number) => mockDashboardData,
+    getUserDashboard: (userId: number) => {
+      console.log('Fetching dashboard for user:', userId);
+      return mockDashboardData;
+    },
     onMarkNotificationRead: (id: number) => console.log('Mark notification read:', id),
     onShowAssistant: () => console.log('Show assistant'),
-    onUpdateProfile: (user: any) => console.log('Update profile:', user)
+    onUpdateProfile: (user: { name: string; email: string; phone: string }) => console.log('Update profile:', user)
   };
 
   return (

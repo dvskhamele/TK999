@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, type ReactNode, useEffect } from 'react';
+import { createContext, useState, type ReactNode, useEffect } from 'react';
 import { getUserDashboard } from '../services/mockApi';
 
 interface User {
@@ -28,37 +28,38 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const currentToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
     if (currentToken && storedUser) {
-        try {
-            const userData = JSON.parse(storedUser);
-            // Ensure user ID is the correct type
-            const userId = typeof userData.id === 'string' ? parseInt(userData.id) : userData.id;
-            const dashboardData = await getUserDashboard(userId);
-            setWallet(dashboardData.wallet);
-        } catch (error) {
-            console.error('Failed to fetch wallet', error);
-        }
+      try {
+        const userData = JSON.parse(storedUser);
+        const dashboard = await getUserDashboard(userData.id);
+        setWallet({ balance: dashboard.wallet.balance });
+      } catch (error) {
+        console.error('Failed to fetch wallet:', error);
+        setWallet(null);
+      }
+    } else {
+      setWallet(null);
     }
   };
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser && token) {
-      try {
-        const userData = JSON.parse(storedUser);
-        // Ensure user ID is the correct type
-        const userWithCorrectId = {
-          ...userData,
-          id: typeof userData.id === 'string' ? parseInt(userData.id) : userData.id
-        };
-        setUser(userWithCorrectId);
-        fetchWallet();
-      } catch (error) {
-        console.error('Failed to parse user data', error);
-        // Clear invalid data
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        setUser(null);
-        setToken(null);
+    if (token) {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        try {
+          const userData = JSON.parse(storedUser);
+          // Ensure user ID is stored as a number
+          const userWithNumberId = {
+            ...userData,
+            id: typeof userData.id === 'string' ? parseInt(userData.id) : userData.id
+          };
+          setUser(userWithNumberId);
+          fetchWallet();
+        } catch (error) {
+          console.error('Failed to parse user data:', error);
+          logout();
+        }
+      } else {
+        logout();
       }
     }
   }, [token]);
@@ -92,10 +93,4 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+export { AuthContext };

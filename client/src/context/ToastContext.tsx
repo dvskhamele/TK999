@@ -1,26 +1,24 @@
-import { createContext, useContext, useReducer, useCallback } from 'react';
+import { createContext, useReducer, type ReactNode } from 'react';
 import ToastNotification from '../components/ToastNotification';
-
-type ToastType = 'success' | 'error' | 'warning' | 'info';
 
 interface Toast {
   id: string;
   message: string;
-  type: ToastType;
+  type: 'success' | 'error' | 'info' | 'warning';
   duration?: number;
 }
 
-type ToastAction =
-  | { type: 'ADD_TOAST'; payload: Toast }
-  | { type: 'REMOVE_TOAST'; payload: string };
-
 interface ToastContextType {
   toasts: Toast[];
-  showToast: (message: string, type: ToastType, duration?: number) => void;
+  showToast: (message: string, type: Toast['type'], duration?: number) => void;
   removeToast: (id: string) => void;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
+
+type ToastAction =
+  | { type: 'ADD_TOAST'; payload: Toast }
+  | { type: 'REMOVE_TOAST'; payload: string };
 
 const toastReducer = (state: Toast[], action: ToastAction): Toast[] => {
   switch (action.type) {
@@ -33,10 +31,10 @@ const toastReducer = (state: Toast[], action: ToastAction): Toast[] => {
   }
 };
 
-export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
+export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const [toasts, dispatch] = useReducer(toastReducer, []);
 
-  const showToast = useCallback((message: string, type: ToastType, duration = 5000) => {
+  const showToast = (message: string, type: Toast['type'], duration: number = 3000) => {
     const id = Math.random().toString(36).substr(2, 9);
     dispatch({ type: 'ADD_TOAST', payload: { id, message, type, duration } });
     
@@ -45,11 +43,11 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
         dispatch({ type: 'REMOVE_TOAST', payload: id });
       }, duration);
     }
-  }, []);
+  };
 
-  const removeToast = useCallback((id: string) => {
+  const removeToast = (id: string) => {
     dispatch({ type: 'REMOVE_TOAST', payload: id });
-  }, []);
+  };
 
   return (
     <ToastContext.Provider value={{ toasts, showToast, removeToast }}>
@@ -59,10 +57,4 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useToast = () => {
-  const context = useContext(ToastContext);
-  if (context === undefined) {
-    throw new Error('useToast must be used within a ToastProvider');
-  }
-  return context;
-};
+export { ToastContext };

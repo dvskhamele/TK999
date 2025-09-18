@@ -143,8 +143,8 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
         // Refresh data
         const data = getUserDashboard(user.id);
         setDashboardData(data);
-      } catch (error: any) {
-        alert(error.message || 'Deposit failed');
+      } catch (error: unknown) {
+        alert((error as Error).message || 'Deposit failed');
       }
     } else if (amount) {
       alert('Please enter a valid amount');
@@ -159,8 +159,8 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
         // Refresh data
         const data = getUserDashboard(user.id);
         setDashboardData(data);
-      } catch (error: any) {
-        alert(error.message || 'Withdrawal failed');
+      } catch (error: unknown) {
+        alert((error as Error).message || 'Withdrawal failed');
       }
     } else if (amount) {
       alert('Please enter a valid amount');
@@ -211,18 +211,18 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
     }
   };
 
-  const getNotificationClass = (type: string) => {
-    switch (type) {
-      case 'success':
-        return 'dashboard-notification-card';
-      case 'warning':
-        return 'dashboard-notification-card';
-      case 'error':
-        return 'dashboard-notification-card';
-      default:
-        return 'dashboard-notification-card';
-    }
-  };
+  // const getNotificationClass = (type: string) => {
+  //   switch (type) {
+  //     case 'success':
+  //       return 'dashboard-notification-card';
+  //     case 'warning':
+  //       return 'dashboard-notification-card';
+  //     case 'error':
+  //       return 'dashboard-notification-card';
+  //     default:
+  //       return 'dashboard-notification-card';
+  //   }
+  // };
 
   const getBetStatusClass = (status: string) => {
     switch (status) {
@@ -1085,7 +1085,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
                       {isEditingProfile ? (
                         <select
                           value={editedUser.riskLevel}
-                          onChange={(e) => setEditedUser({...editedUser, riskLevel: e.target.value as any})}
+                          onChange={(e) => setEditedUser({...editedUser, riskLevel: e.target.value as 'low' | 'medium' | 'high'})}
                           className="beautiful-input"
                         >
                           <option value="low">Low Risk</option>

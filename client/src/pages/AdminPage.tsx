@@ -5,7 +5,7 @@ import {
   Trophy, 
   Calendar,
   Target,
-  Search,
+  Settings,
   Edit,
   Trash2,
   Plus,
@@ -118,7 +118,7 @@ const AdminPage: React.FC<AdminPageProps> = ({
   const navigate = useNavigate();
   const [timeRange, setTimeRange] = useState('7d');
   const [activeTab, setActiveTab] = useState('overview');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, /*setSearchTerm*/] = useState('');
   const [userRoleFilter, setUserRoleFilter] = useState('All');
   const [matchStatusFilter, setMatchStatusFilter] = useState('All');
   const [betStatusFilter, setBetStatusFilter] = useState('All');
@@ -162,20 +162,22 @@ Options: ${teams.join(', ')}`);
         onUpdateMatchResult(matchId, winner);
         // Show success message
         alert(`Match result updated successfully! ${winner} won.`);
-      } catch (error: any) {
-        alert(error.message || 'Failed to update result');
+      } catch (error: unknown) {
+        alert((error as Error).message || 'Failed to update result');
       }
     } else if (winner) {
       alert('Please enter a valid team name');
     }
   };
 
-  const handleStartMatch = (_matchId: number) => {
+  const handleStartMatch = (matchId: number) => {
+    console.log('Starting match:', matchId);
     // In a real implementation, this would update the match status
     alert('Match would be started in a real implementation');
   };
 
-  const handlePauseMatch = (_matchId: number) => {
+  const handlePauseMatch = (matchId: number) => {
+    console.log('Pausing match:', matchId);
     // In a real implementation, this would pause the match
     alert('Match would be paused in a real implementation');
   };
@@ -193,7 +195,8 @@ Options: ${teams.join(', ')}`);
     });
   };
 
-  const handleDeleteMatch = (_matchId: number) => {
+  const handleDeleteMatch = (matchId: number) => {
+    console.log('Deleting match:', matchId);
     if (window.confirm('Are you sure you want to delete this match?')) {
       // In a real implementation, this would call an API
       alert('Match would be deleted in a real implementation');
@@ -287,12 +290,12 @@ Options: ${teams.join(', ')}`);
     ((analytics.revenue / analytics.totalBetAmount) * 100).toFixed(2) : '0.00';
 
   // Get current date formatted
-  const currentDate = new Date().toLocaleDateString('en-US', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
+  // const currentDate = new Date().toLocaleDateString('en-US', { 
+  //   weekday: 'long', 
+  //   year: 'numeric', 
+  //   month: 'long', 
+  //   day: 'numeric' 
+  // });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
@@ -312,10 +315,10 @@ Options: ${teams.join(', ')}`);
           <div className="flex flex-wrap items-center justify-center gap-4">
             <div className="beautiful-user-profile">
               <div className="beautiful-avatar">
-                {currentUser?.name?.charAt(0).toUpperCase() || 'A'}
+                {adminData?.users.find(u => u.role === 'admin')?.name?.charAt(0).toUpperCase() || 'A'}
               </div>
               <div className="beautiful-user-info">
-                <div className="beautiful-user-name">{currentUser?.name || 'Admin'}</div>
+                <div className="beautiful-user-name">{adminData?.users.find(u => u.role === 'admin')?.name || 'Admin'}</div>
                 <div className="beautiful-user-role">Administrator</div>
               </div>
             </div>
@@ -935,7 +938,7 @@ Options: ${teams.join(', ')}`);
                   </select>
                   
                   <button 
-                    onClick={() => setShowAddMatchModal(true)}
+                    onClick={() => setShowAddMatchForm(true)}
                     className="beautiful-btn beautiful-btn-primary flex items-center"
                   >
                     <Plus className="mr-2" size={18} />

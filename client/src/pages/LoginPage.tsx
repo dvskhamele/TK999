@@ -4,7 +4,7 @@ import { Eye, EyeOff, Lock, Mail, User, Shield, AlertCircle, CheckCircle, Key, F
 import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface LoginPageProps {
-  onLogin: (email: string, password: string) => any;
+  onLogin: (email: string, password: string) => Promise<boolean>;
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
@@ -56,16 +56,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         return;
       }
       
-      const response = onLogin(email, password);
-      if (response.user.role === 'admin') {
-        setSuccess('Login successful! Redirecting to admin panel...');
-        setTimeout(() => navigate('/admin'), 1500);
-      } else {
-        setSuccess('Login successful! Redirecting to dashboard...');
-        setTimeout(() => navigate('/dashboard'), 1500);
-      }
-    } catch (err: any) {
-      setError(err.message || 'Login failed. Please check your credentials.');
+      await onLogin(email, password);
+      setSuccess('Login successful! Redirecting to dashboard...');
+      setTimeout(() => navigate('/dashboard'), 1500);
+    } catch (err: unknown) {
+      setError((err as Error).message || 'Login failed. Please check your credentials.');
     } finally {
       setIsLoading(false);
     }
