@@ -2,26 +2,24 @@
 
 # Deployment script for TK999 application
 
-echo "Starting TK999 deployment..."
-
-# Build frontend
 echo "Building frontend..."
 cd frontend
-npm install
 npm run build
-cd ..
 
-# Build backend
-echo "Building backend..."
-cd backend
-npm install
-cd ..
+echo "Frontend build complete!"
 
-echo "Deployment ready!"
-echo "To deploy to Vercel:"
-echo "1. Create a new project on Vercel"
-echo "2. Connect your GitHub repository"
-echo "3. Set the root directory to 'tk999-deployment'"
-echo "4. Set the build command to './deploy.sh'"
-echo "5. Set the output directory to 'frontend/dist'"
-echo "6. Add environment variables as needed"
+echo "Preparing deployment package..."
+cd ..
+mkdir -p deployment
+cp -r frontend/dist deployment/
+cp -r backend deployment/
+
+echo "Deployment package created!"
+
+echo "To deploy:"
+echo "1. Upload the contents of the 'deployment' directory to your hosting provider"
+echo "2. Configure your hosting provider to serve the frontend from the 'dist' directory"
+echo "3. Configure your hosting provider to run the backend as a Node.js application"
+echo "4. Set the required environment variables (JWT_SECRET, etc.)"
+
+echo "Deployment package is ready in the 'deployment' directory"
