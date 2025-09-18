@@ -66,3 +66,35 @@ This is a lightweight, frontend-only demo for a betting platform called TK999. A
 
 2.  **Access Admin Panel:** After logging in as an admin, an "Admin" link will appear in the header. Click it to go to the admin dashboard.
 3.  **Manage Matches:** In the admin panel, you can set a winner for any pending match. This will update the match result and automatically update the status of all bets placed on that match (to 'Won' or 'Lost') and adjust user wallets accordingly.
+
+## Deployment
+
+### Netlify Deployment
+
+The application can be easily deployed to Netlify using the provided deployment script:
+
+1. Install Netlify CLI:
+   ```bash
+   npm install -g netlify-cli
+   ```
+
+2. Login to Netlify:
+   ```bash
+   netlify login
+   ```
+
+3. Run the deployment script:
+   ```bash
+   ./deploy-to-netlify.sh
+   ```
+
+Alternatively, you can manually deploy by:
+1. Extracting the frontend files from `tk999-frontend.zip`
+2. Using the Netlify CLI to deploy the `frontend/dist` directory
+3. Or using the Netlify dashboard to deploy the same directory
+
+For more detailed instructions, see `NETLIFY_DEPLOYMENT_GUIDE.md`.
+
+### Vercel Deployment
+
+The application is also configured for Vercel deployment, but may require SSO settings to be adjusted in the Vercel dashboard for public access.
