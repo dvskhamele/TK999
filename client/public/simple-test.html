@@ -2,23 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>React CDN Test</title>
+    <title>Simple React Test</title>
+    <!-- Load React & ReactDOM from CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Load Babel for JSX processing -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        const { useState } = React;
-
         function App() {
             return (
-                <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-                    <div className="bg-white p-8 rounded-lg shadow-lg">
-                        <h1 className="text-3xl font-bold text-gray-800 mb-4">React CDN Test</h1>
-                        <p className="text-gray-600">If you can see this, React is working with CDN!</p>
-                    </div>
+                <div>
+                    <h1>Simple React Test</h1>
+                    <p>If you can see this, React is working!</p>
                 </div>
             );
         }

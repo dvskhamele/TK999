@@ -47,6 +47,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
   onLogout,
   onShowAssistant
 }) => {
+  console.log('MatchesPage rendered with matches:', matches);
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
