@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiCall } from '../utils/api';
 
 // Define the structure for matches from the API
 interface APIMatch {
@@ -39,18 +40,14 @@ const MatchesFetcher: React.FC<{
       try {
         setLoading(true);
         console.log('Fetching matches from /api/matches');
-        const response = await fetch('/api/matches');
-        console.log('Response status:', response.status);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch matches: ${response.status} ${response.statusText}`);
-        }
-        const apiMatches: APIMatchCategory[] = await response.json();
+        const apiMatches: APIMatchCategory[] = await apiCall('/api/matches');
         console.log('Received matches:', apiMatches);
         
         // Transform API data to match frontend interface
         const transformedMatches: Match[] = apiMatches.flatMap(categoryObj => 
           categoryObj.matches.map(apiMatch => {
-            const matchStatus = new Date(apiMatch.date) > new Date() ? 'upcoming' : 
+            const matchStatus = new Date(apiMatch.date) > new Date() ? 
+                   'upcoming' : 
                    new Date(apiMatch.date) < new Date() && new Date(apiMatch.date) > new Date(Date.now() - 3600000) ? 'live' : 'finished';
             
             console.log('Match status for', apiMatch.id, ':', matchStatus);

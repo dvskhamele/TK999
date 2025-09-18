@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import InlineTestApp from './InlineTestApp';
+import App from './App';
 
 console.log('main.tsx is running');
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <InlineTestApp />
+    <App />
   </React.StrictMode>,
 );
 
-console.log('InlineTestApp component mounted');
+console.log('App component mounted');
