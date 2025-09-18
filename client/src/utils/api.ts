@@ -10,7 +10,8 @@ const getApiBaseUrl = () => {
   }
   
   // In production, use the environment variable
-  // If not set, API calls will fail which is the correct behavior
+  // If not set, we'll use a relative path which will likely fail,
+  // but it's better than crashing the app
   return import.meta.env.VITE_API_BASE_URL || '';
 };
 
@@ -18,12 +19,16 @@ export const API_BASE_URL = getApiBaseUrl();
 
 // Helper function to make API calls
 export const apiCall = async (endpoint: string, options: RequestInit = {}) => {
-  // If we don't have a base URL in production, throw an error
-  if (!API_BASE_URL && !import.meta.env.DEV) {
-    throw new Error('API base URL is not configured. Please set the VITE_API_BASE_URL environment variable.');
-  }
+  // Construct the full URL
+  let url = endpoint;
   
-  const url = `${API_BASE_URL}${endpoint}`;
+  // If we have a base URL and the endpoint doesn't start with http, prepend the base URL
+  if (API_BASE_URL && !endpoint.startsWith('http')) {
+    // Ensure we don't double up on slashes
+    const baseUrl = API_BASE_URL.endsWith('/') ? API_BASE_URL.slice(0, -1) : API_BASE_URL;
+    const endpointPath = endpoint.startsWith('/') ? endpoint : '/' + endpoint;
+    url = `${baseUrl}${endpointPath}`;
+  }
   
   const defaultOptions = {
     headers: {
@@ -41,11 +46,20 @@ export const apiCall = async (endpoint: string, options: RequestInit = {}) => {
   };
   
   try {
+    console.log(`Making API call to: ${url}`);
     const response = await fetch(url, mergedOptions);
+    
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return await response.json();
+    
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return await response.json();
+    } else {
+      // Handle non-JSON responses
+      return await response.text();
+    }
   } catch (error) {
     console.error('API call failed:', error);
     throw error;

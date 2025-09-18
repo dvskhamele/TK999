@@ -40,8 +40,19 @@ const MatchesFetcher: React.FC<{
       try {
         setLoading(true);
         console.log('Fetching matches from /api/matches');
-        const apiMatches: APIMatchCategory[] = await apiCall('/api/matches');
-        console.log('Received matches:', apiMatches);
+        const apiData: any = await apiCall('/api/matches');
+        console.log('Received data:', apiData);
+        
+        // Check if the response is an array
+        let apiMatches: APIMatchCategory[];
+        if (Array.isArray(apiData)) {
+          apiMatches = apiData;
+        } else if (apiData && Array.isArray(apiData.matches)) {
+          // Handle case where data is wrapped in an object
+          apiMatches = apiData.matches;
+        } else {
+          throw new Error('Unexpected API response format');
+        }
         
         // Transform API data to match frontend interface
         const transformedMatches: Match[] = apiMatches.flatMap(categoryObj => 
@@ -71,10 +82,18 @@ const MatchesFetcher: React.FC<{
       } catch (err) {
         console.error('Error fetching matches:', err);
         // Display a more user-friendly error message
-        if (err instanceof Error && err.message.includes('API base URL is not configured')) {
-          setError('API configuration error. Please contact the administrator.');
+        if (err instanceof Error) {
+          if (err.message.includes('API base URL is not configured')) {
+            setError('API configuration error. Please contact the administrator.');
+          } else if (err.message.includes('HTTP error')) {
+            setError('Unable to connect to the server. Please try again later.');
+          } else if (err.message.includes('Unexpected API response')) {
+            setError('Data format error. Please contact support.');
+          } else {
+            setError(err.message);
+          }
         } else {
-          setError(err instanceof Error ? err.message : 'Failed to load matches. Please try again later.');
+          setError('An unknown error occurred');
         }
       } finally {
         setLoading(false);
@@ -95,6 +114,8 @@ const MatchesFetcher: React.FC<{
         <div className="text-gray-500 text-sm">
           {error.includes('API configuration') 
             ? 'The application is not properly configured.' 
+            : error.includes('connect to the server')
+            ? 'Please check your internet connection and try again.'
             : 'Unable to load betting matches at this time.'}
         </div>
       </div>
