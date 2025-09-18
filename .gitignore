@@ -2,3 +2,4 @@ node_modules/\n*.log\n.env*\ndist/\nbuild/\n.vscode/\n.idea/\n*.swp\n*.swo\n.DS_
 
 # Local Netlify folder
 .netlify
+.vercel
