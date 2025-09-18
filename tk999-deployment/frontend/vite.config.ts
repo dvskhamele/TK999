@@ -7,5 +7,19 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: ['tasty-hotels-vanish.loca.lt']
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        }
+      }
+    }
+  },
+  define: {
+    'process.env': {}
   }
 })
