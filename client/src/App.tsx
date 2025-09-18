@@ -6,7 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import GameFocusedDashboard from './pages/GameFocusedDashboard';
 import MatchesPage from './pages/MatchesPage';
 import UserProfilePage from './pages/UserProfilePage';
-import AdminPage from './pages/AdminPage';
+import AdminPage from './pages/EnhancedAdminPage';
 import DashboardTestPage from './pages/DashboardTestPage';
 import './index.css'; // Import the main CSS file
 
