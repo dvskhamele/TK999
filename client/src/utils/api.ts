@@ -46,3 +46,6 @@ export const apiCall = async (endpoint: string, options: RequestInit = {}) => {
     throw error;
   }
 };
+
+// Export a version number for debugging deployment issues
+export const API_UTILS_VERSION = '1.0.1';
