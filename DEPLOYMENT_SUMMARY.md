@@ -3,41 +3,44 @@
 ## Deployment Status
 The application has been successfully built and packaged for deployment. The frontend builds correctly and the backend is ready to be deployed.
 
-## Deployment Package
-A deployment package has been created in the `deployment` directory with the following structure:
-- `dist/` - The built frontend files
-- `backend/` - The backend API files
+## Deployment Packages
+Two deployment packages have been created:
+- `tk999-frontend.zip` - Contains the built frontend files
+- `tk999-backend.zip` - Contains the backend API files
 
 ## Deployment Instructions
 
 ### Option 1: Manual Deployment
-1. Upload the contents of the `deployment` directory to your hosting provider
-2. Configure your hosting provider to serve the frontend from the `dist` directory
-3. Configure your hosting provider to run the backend as a Node.js application
+1. Download the `tk999-frontend.zip` and `tk999-backend.zip` files
+2. Extract the frontend files and upload them to your static hosting provider (Netlify, Vercel static hosting, etc.)
+3. Extract the backend files and deploy them to a Node.js hosting provider (Railway, Render, Heroku, etc.)
 4. Set the required environment variables:
    - `JWT_SECRET` - A secret key for JWT token generation
 
-### Option 2: Vercel Deployment (if SSO is disabled)
-If you can disable SSO on your Vercel account, you can deploy using:
-```
-cd tk999-deployment
-vercel deploy --prod
-```
-
-### Option 3: Netlify Deployment
-If you can resolve the permission issues with Netlify CLI, you can deploy the frontend using:
-```
-cd tk999-deployment/frontend
-netlify deploy --prod --dir dist
-```
+### Option 2: Unified Deployment
+If your hosting provider supports both static files and Node.js in a single deployment:
+1. Extract both zip files into a single directory
+2. Configure your hosting provider to:
+   - Serve the frontend from the `frontend/dist` directory
+   - Run the backend as a Node.js application from the `backend` directory
+3. Set up routing so that:
+   - `/api/*` requests are forwarded to the backend
+   - All other requests serve the frontend
 
 ## Testing the Application Locally
 You can test the frontend locally by running:
 ```
-cd tk999-deployment/frontend/dist
+cd frontend/dist
 python3 -m http.server 8000
 ```
 Then visit http://localhost:8000 in your browser.
+
+To test the backend locally:
+```
+cd backend
+npm start
+```
+The backend will run on http://localhost:3000
 
 ## API Endpoints
 The backend API provides the following endpoints:
