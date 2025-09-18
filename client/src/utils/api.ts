@@ -9,15 +9,20 @@ const getApiBaseUrl = () => {
     return '';
   }
   
-  // In production, you need to set the VITE_API_BASE_URL environment variable
-  // This should be the URL of your deployed backend
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
+  // In production, use the environment variable
+  // If not set, API calls will fail which is the correct behavior
+  return import.meta.env.VITE_API_BASE_URL || '';
 };
 
 export const API_BASE_URL = getApiBaseUrl();
 
 // Helper function to make API calls
 export const apiCall = async (endpoint: string, options: RequestInit = {}) => {
+  // If we don't have a base URL in production, throw an error
+  if (!API_BASE_URL && !import.meta.env.DEV) {
+    throw new Error('API base URL is not configured. Please set the VITE_API_BASE_URL environment variable.');
+  }
+  
   const url = `${API_BASE_URL}${endpoint}`;
   
   const defaultOptions = {

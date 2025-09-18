@@ -70,7 +70,12 @@ const MatchesFetcher: React.FC<{
         setError(null);
       } catch (err) {
         console.error('Error fetching matches:', err);
-        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        // Display a more user-friendly error message
+        if (err instanceof Error && err.message.includes('API base URL is not configured')) {
+          setError('API configuration error. Please contact the administrator.');
+        } else {
+          setError(err instanceof Error ? err.message : 'Failed to load matches. Please try again later.');
+        }
       } finally {
         setLoading(false);
       }
@@ -84,7 +89,16 @@ const MatchesFetcher: React.FC<{
   }
 
   if (error) {
-    return <div className="text-center p-4 text-red-500">Error: {error}</div>;
+    return (
+      <div className="text-center p-4">
+        <div className="text-red-500 mb-2">Error: {error}</div>
+        <div className="text-gray-500 text-sm">
+          {error.includes('API configuration') 
+            ? 'The application is not properly configured.' 
+            : 'Unable to load betting matches at this time.'}
+        </div>
+      </div>
+    );
   }
 
   return null;
