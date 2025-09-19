@@ -4,7 +4,11 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import GameFocusedDashboard from './pages/GameFocusedDashboard';
+import EnhancedGameDashboard from './pages/EnhancedGameDashboard';
+import BeautifulDashboard from './pages/BeautifulDashboard';
 import MatchesPage from './pages/MatchesPage';
+import GamingMatchesPage from './pages/GamingMatchesPage';
+import BeautifulMatchesPage from './pages/BeautifulMatchesPage';
 import UserProfilePage from './pages/UserProfilePage';
 import AdminPage from './pages/EnhancedAdminPage';
 import DashboardTestPage from './pages/DashboardTestPage';
@@ -31,6 +35,41 @@ const mockUser = {
   favoriteSports: ['Football', 'Basketball', 'Tennis']
 };
 
+// Mock matches data
+const mockMatches = [
+  {
+    id: 1,
+    teamA: 'Team Alpha',
+    teamB: 'Team Beta',
+    date: new Date(Date.now() + 86400000).toISOString(), // Tomorrow
+    odds: { 'Team Alpha': 2.1, 'Team Beta': 1.8, 'Draw': 3.2 },
+    result: null,
+    category: 'Football',
+    status: 'upcoming' as const
+  },
+  {
+    id: 2,
+    teamA: 'Team Gamma',
+    teamB: 'Team Delta',
+    date: new Date(Date.now() + 172800000).toISOString(), // In 2 days
+    odds: { 'Team Gamma': 1.9, 'Team Delta': 2.0, 'Draw': 3.0 },
+    result: null,
+    category: 'Basketball',
+    status: 'upcoming' as const
+  },
+  {
+    id: 3,
+    teamA: 'Team Epsilon',
+    teamB: 'Team Zeta',
+    date: new Date().toISOString(),
+    odds: { 'Team Epsilon': 2.5, 'Team Zeta': 1.6, 'Draw': 3.5 },
+    result: null,
+    category: 'Tennis',
+    status: 'live' as const,
+    liveScore: { teamA: 2, teamB: 1 }
+  }
+];
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -38,7 +77,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage onLogin={mockLogin} />} />
         <Route path="/register" element={<RegisterPage onRegister={mockRegister} />} />
-        <Route path="/dashboard" element={<GameFocusedDashboard 
+        <Route path="/dashboard" element={<BeautifulDashboard 
           user={mockUser} 
           onLogout={() => {}} 
           onDeposit={() => {}} 
@@ -52,7 +91,7 @@ const App: React.FC = () => {
             {id: 2, userId: 1, title: 'Bet Won!', message: 'Congratulations! Your bet on Match #123 won.', date: new Date().toISOString(), read: false, type: 'success'}
           ], wallet: {balance: 1650}, bets: [
             {id: 1, userId: 1, matchId: 123, teamChosen: 'Team A', amount: 100, status: 'Won', date: new Date().toISOString(), potentialWin: 250, odds: 2.5}
-          ]})} 
+          ], matches: mockMatches})} 
           notifications={[
             {id: 1, userId: 1, title: 'Welcome Bonus', message: 'You received a 500 BDT welcome bonus!', date: new Date().toISOString(), read: false, type: 'success'},
             {id: 2, userId: 1, title: 'Bet Won!', message: 'Congratulations! Your bet on Match #123 won.', date: new Date().toISOString(), read: false, type: 'success'}
@@ -60,10 +99,12 @@ const App: React.FC = () => {
           onMarkNotificationRead={() => {}} 
           onShowAssistant={() => {}} 
           onUpdateProfile={() => {}} 
+          matches={mockMatches}
+          onPlaceBet={() => {}} 
         />} />
-        <Route path="/matches" element={<MatchesPage 
+        <Route path="/matches" element={<BeautifulMatchesPage 
           user={mockUser} 
-          matches={[]} 
+          matches={mockMatches} 
           onPlaceBet={() => {}} 
           onLogout={() => {}} 
           onShowAssistant={() => {}} 
@@ -78,9 +119,9 @@ const App: React.FC = () => {
           getUserDashboard={() => ({profile: mockUser, transactions: [], notifications: [], wallet: {balance: 1000}, bets: []})} 
         />} />
         <Route path="/admin" element={<AdminPage 
-          matches={[]} 
+          matches={mockMatches} 
           onUpdateMatchResult={() => {}} 
-          getAdminData={() => ({matches: [], users: [], bets: [], transactions: [], notifications: []})} 
+          getAdminData={() => ({matches: mockMatches, users: [], bets: [], transactions: [], notifications: []})} 
           onLogout={() => {}} 
           analytics={{
             totalUsers: 0,
