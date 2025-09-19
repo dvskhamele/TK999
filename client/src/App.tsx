@@ -13,6 +13,7 @@ import UserProfilePage from './pages/UserProfilePage';
 import AdminPage from './pages/EnhancedAdminPage';
 import DashboardTestPage from './pages/DashboardTestPage';
 import './index.css'; // Import the main CSS file
+import './assets/beautiful-solid-cards.css'; // Import the solid color CSS file
 
 // Simple mock functions to avoid TypeScript errors
 const mockLogin = async () => true;
@@ -45,7 +46,7 @@ const mockUser = {
 };
 
 // Mock matches data
-const mockMatches = [
+const mockMatches: any = [
   {
     id: 1,
     teamA: 'Team Alpha',
@@ -54,7 +55,7 @@ const mockMatches = [
     odds: { 'Team Alpha': 2.1, 'Team Beta': 1.8, 'Draw': 3.2 },
     result: null,
     category: 'Football',
-    status: 'upcoming' as const
+    status: 'upcoming'
   },
   {
     id: 2,
@@ -64,7 +65,7 @@ const mockMatches = [
     odds: { 'Team Gamma': 1.9, 'Team Delta': 2.0, 'Draw': 3.0 },
     result: null,
     category: 'Basketball',
-    status: 'upcoming' as const
+    status: 'upcoming'
   },
   {
     id: 3,
@@ -74,7 +75,7 @@ const mockMatches = [
     odds: { 'Team Epsilon': 2.5, 'Team Zeta': 1.6, 'Draw': 3.5 },
     result: null,
     category: 'Tennis',
-    status: 'live' as const,
+    status: 'live',
     liveScore: { teamA: 2, teamB: 1 }
   }
 ];

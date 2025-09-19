@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail, User, Shield, AlertCircle, CheckCircle, Key, Fingerprint } from 'lucide-react';
-import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface LoginPageProps {
   onLogin: (email: string, password: string) => Promise<boolean>;

@@ -1,35 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
-  User, 
-  Wallet, 
+  Activity, 
   TrendingUp, 
-  History, 
-  Bell,
-  Zap,
-  Award,
-  Target,
-  Settings,
-  CalendarDays,
-  Gamepad2,
-  Camera,
-  Save,
-  Edit,
-  Star,
-  Trophy,
-  Users,
-  Clock,
-  Plus,
-  Minus,
+  Users, 
+  DollarSign, 
+  BarChart3, 
+  Bell, 
+  Settings, 
+  User, 
+  Search, 
+  Filter, 
+  Eye, 
+  Play, 
+  Pause, 
+  CheckCircle, 
+  XCircle, 
   AlertCircle,
-  DollarSign,
-  TrophyIcon
+  Trophy,
+  Calendar,
+  Clock,
+  Target,
+  Star,
+  Crown,
+  Zap,
+  Gift,
+  Wallet,
+  CreditCard,
+  Gamepad2,
+  Home,
+  LogOut,
+  Menu,
+  X,
+  Plus,
+  Minus
 } from 'lucide-react';
-
-// Import the enhanced CSS
-import '../assets/dashboard-styles.css';
-import '../assets/beautiful-ui.css';
-import '../index.css';
 
 interface User {
   id: number;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Phone, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Key } from 'lucide-react';
-import '../assets/beautiful-ui.css'; // Import beautiful UI components
+import { Eye, EyeOff, Lock, Mail, User, Phone, AlertCircle, CheckCircle, Shield, Key } from 'lucide-react';
 
 interface RegisterPageProps {
   onRegister: (name: string, email: string, phone: string) => Promise<boolean>;

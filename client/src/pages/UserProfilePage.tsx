@@ -1,33 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   User, 
   Mail, 
   Phone, 
+  MapPin, 
+  Calendar, 
   Lock, 
-  Eye, 
-  EyeOff, 
-  AlertCircle, 
-  CheckCircle, 
+  CreditCard, 
+  Bell, 
+  Shield, 
+  Edit, 
+  Save, 
   Camera,
-  Settings,
-  Bell,
-  CreditCard,
-  History,
+  X,
+  Check,
+  AlertCircle,
+  Eye,
+  EyeOff,
+  Key,
+  Globe,
+  Crown,
+  Star,
   Target,
-  Zap,
+  Trophy,
   Award,
-  TrendingUp,
+  Gift,
   Wallet,
-  Save,
-  Edit,
-  CalendarDays,
-  Heart,
-  BarChart,
-  ShieldCheck
+  Settings,
+  LogOut,
+  UserCheck,
+  UserX,
+  Activity,
+  TrendingUp,
+  BarChart3,
+  DollarSign
 } from 'lucide-react';
-import '../index.css';
-import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface User {
   id: number;

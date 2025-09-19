@@ -1,23 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
-  Trophy, 
-  Calendar,
-  Target,
-  Settings,
+  BarChart3, 
+  Settings, 
+  Bell, 
+  Search, 
+  Filter,
+  Plus,
   Edit,
   Trash2,
-  Plus,
   Eye,
+  Download,
+  Upload,
+  UserCheck,
+  UserX,
+  Shield,
+  AlertCircle,
+  CheckCircle,
+  X,
+  Menu,
+  Home,
+  Gamepad2,
+  Trophy,
+  Calendar,
+  CreditCard,
+  TrendingUp,
+  Activity,
+  DollarSign,
+  UserPlus,
+  Lock,
+  Mail,
+  Phone,
+  MapPin,
+  Crown,
+  Star,
+  Target,
+  Zap,
+  Clock,
   Play,
   Pause,
-  CheckCircle,
-  Clock,
-  AlertCircle
+  Check,
+  Minus,
+  Hash,
+  Award,
+  Gift,
+  Wallet,
+  Database,
+  Server,
+  Globe,
+  Key,
+  RefreshCw
 } from 'lucide-react';
-import '../index.css';
-import '../assets/beautiful-ui.css'; // Import beautiful UI components
 
 interface User {
   id: number;

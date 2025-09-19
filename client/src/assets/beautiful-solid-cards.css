@@ -1,89 +1,182 @@
-/* ==================== BEAUTIFUL SOLID CARDS ==================== */
+/* ==================== BEAUTIFUL SOLID CARDS CSS ==================== */
+/* This file contains styles with solid colors only, no transparency or blur effects */
 
-/* Beautiful Solid Cards - No Transparency */
+:root {
+  /* Solid Color Palette */
+  --solid-primary-50: #eff6ff;
+  --solid-primary-100: #dbeafe;
+  --solid-primary-200: #bfdbfe;
+  --solid-primary-300: #93c5fd;
+  --solid-primary-400: #60a5fa;
+  --solid-primary-500: #3b82f6;
+  --solid-primary-600: #2563eb;
+  --solid-primary-700: #1d4ed8;
+  --solid-primary-800: #1e40af;
+  --solid-primary-900: #1e3a8a;
+  
+  --solid-secondary-50: #f0f9ff;
+  --solid-secondary-100: #e0f2fe;
+  --solid-secondary-200: #bae6fd;
+  --solid-secondary-300: #7dd3fc;
+  --solid-secondary-400: #38bdf8;
+  --solid-secondary-500: #0ea5e9;
+  --solid-secondary-600: #0284c7;
+  --solid-secondary-700: #0369a1;
+  --solid-secondary-800: #075985;
+  --solid-secondary-900: #0c4a6e;
+  
+  --solid-success-50: #f0fdf4;
+  --solid-success-100: #dcfce7;
+  --solid-success-200: #bbf7d0;
+  --solid-success-300: #86efac;
+  --solid-success-400: #4ade80;
+  --solid-success-500: #22c55e;
+  --solid-success-600: #16a34a;
+  --solid-success-700: #15803d;
+  --solid-success-800: #166534;
+  --solid-success-900: #14532d;
+  
+  --solid-warning-50: #fffbeb;
+  --solid-warning-100: #fef3c7;
+  --solid-warning-200: #fde68a;
+  --solid-warning-300: #fcd34d;
+  --solid-warning-400: #fbbf24;
+  --solid-warning-500: #f59e0b;
+  --solid-warning-600: #d97706;
+  --solid-warning-700: #b45309;
+  --solid-warning-800: #92400e;
+  --solid-warning-900: #78350f;
+  
+  --solid-danger-50: #fef2f2;
+  --solid-danger-100: #fee2e2;
+  --solid-danger-200: #fecaca;
+  --solid-danger-300: #fca5a5;
+  --solid-danger-400: #f87171;
+  --solid-danger-500: #ef4444;
+  --solid-danger-600: #dc2626;
+  --solid-danger-700: #b91c1c;
+  --solid-danger-800: #991b1b;
+  --solid-danger-900: #7f1d1d;
+  
+  --solid-neutral-50: #fafafa;
+  --solid-neutral-100: #f5f5f5;
+  --solid-neutral-200: #e5e5e5;
+  --solid-neutral-300: #d4d4d4;
+  --solid-neutral-400: #a3a3a3;
+  --solid-neutral-500: #737373;
+  --solid-neutral-600: #525252;
+  --solid-neutral-700: #404040;
+  --solid-neutral-800: #262626;
+  --solid-neutral-900: #171717;
+  
+  --solid-purple-500: #a855f7;
+  --solid-purple-600: #9333ea;
+  --solid-blue-500: #3b82f6;
+  --solid-blue-600: #2563eb;
+  --solid-green-500: #22c55e;
+  --solid-green-600: #16a34a;
+  --solid-emerald-100: #d1fae5;
+  --solid-emerald-200: #a7f3d0;
+  --solid-orange-100: #fed7aa;
+  --solid-orange-200: #fdba74;
+  --solid-amber-100: #fef3c7;
+  --solid-amber-200: #fde68a;
+  --solid-indigo-50: #eef2ff;
+  --solid-indigo-100: #e0e7ff;
+  --solid-pink-100: #fce7f3;
+  --solid-yellow-100: #fef9c3;
+  --solid-red-100: #fee2e2;
+  
+  /* Spacing and Radius */
+  --solid-radius-sm: 0.25rem;
+  --solid-radius: 0.5rem;
+  --solid-radius-md: 0.75rem;
+  --solid-radius-lg: 1rem;
+  --solid-radius-xl: 1.25rem;
+  --solid-radius-2xl: 1.5rem;
+  --solid-radius-3xl: 1.75rem;
+  --solid-radius-full: 9999px;
+}
+
+/* Solid Card Components */
 .beautiful-solid-card {
-  background: #ffffff;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 25px #cccccc;
+  background: var(--solid-neutral-50);
+  border-radius: var(--solid-radius-2xl);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 2px solid #d1d5db;
-  color: #1e293b;
+  border: 1px solid var(--solid-neutral-200);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px #999999;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .beautiful-solid-card-header {
   padding: 1.5rem;
-  background: #4f46e5;
+  background: var(--solid-primary-700);
   color: white;
   font-weight: 700;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-card-body {
   padding: 1.5rem;
-  background: #ffffff;
 }
 
-/* Beautiful Solid Stats Cards */
+/* Stats Cards */
 .beautiful-solid-stats-card {
-  background: #ffffff;
-  border-radius: 1.25rem;
+  background: white;
+  border-radius: var(--solid-radius-xl);
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 5px 15px #dddddd;
-  border: 2px solid #d1d5db;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--solid-neutral-200);
   transition: all 0.3s ease;
-  color: #1e293b;
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-stats-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px #cccccc;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .beautiful-solid-stats-value {
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  color: #4f46e5;
+  color: var(--solid-primary-600);
 }
 
 .beautiful-solid-stats-label {
-  color: #64748b;
+  color: var(--solid-neutral-600);
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-/* Beautiful Solid Profile Card */
+/* Profile Card */
 .beautiful-solid-profile-card {
-  background: #ffffff;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 25px #cccccc;
+  background: white;
+  border-radius: var(--solid-radius-2xl);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 2px solid #d1d5db;
-  color: #1e293b;
+  border: 1px solid var(--solid-neutral-200);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-profile-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px #999999;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .beautiful-solid-profile-header {
-  background: #4f46e5;
+  background: var(--solid-primary-600);
   padding: 1.5rem;
   color: white;
   font-weight: 700;
@@ -91,32 +184,30 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-profile-body {
   padding: 1.5rem;
 }
 
-/* Beautiful Solid Wallet Card */
+/* Wallet Card */
 .beautiful-solid-wallet-card {
-  background: #ffffff;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 25px #cccccc;
+  background: white;
+  border-radius: var(--solid-radius-2xl);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 2px solid #d1d5db;
-  color: #1e293b;
+  border: 1px solid var(--solid-neutral-200);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-wallet-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px #999999;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .beautiful-solid-wallet-header {
-  background: #10b981;
+  background: var(--solid-green-600);
   padding: 1.5rem;
   color: white;
   font-weight: 700;
@@ -124,67 +215,63 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-wallet-body {
   padding: 1.5rem;
 }
 
-/* Beautiful Solid Notification Card */
+/* Notification Card */
 .beautiful-solid-notification-card {
-  background: #ffffff;
-  border-radius: 1.25rem;
+  background: white;
+  border-radius: var(--solid-radius-xl);
   padding: 1.5rem;
-  box-shadow: 0 5px 15px #dddddd;
-  border: 2px solid #d1d5db;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--solid-neutral-200);
   transition: all 0.3s ease;
-  color: #1e293b;
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-notification-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px #cccccc;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .beautiful-solid-notification-card.unread {
-  border-left: 6px solid #4f46e5;
-  background: #eef2ff;
-  border: 2px solid #d1d5db;
+  border-left: 4px solid var(--solid-primary-500);
+  background: var(--solid-blue-50);
 }
 
-/* Beautiful Solid Table */
+/* Table Styles */
 .beautiful-solid-table-container {
-  border-radius: 1.25rem;
+  border-radius: var(--solid-radius-xl);
   overflow: hidden;
-  box-shadow: 0 5px 15px #dddddd;
-  border: 2px solid #d1d5db;
-  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--solid-neutral-200);
+  background: white;
 }
 
 .beautiful-solid-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  color: #1e293b;
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-table th {
-  background: #f1f5f9;
+  background: var(--solid-neutral-100);
   padding: 1rem 1.25rem;
   text-align: left;
   font-weight: 600;
-  color: #334155;
+  color: var(--solid-neutral-700);
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
-  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-table td {
   padding: 1rem 1.25rem;
-  border-bottom: 2px solid #d1d5db;
+  border-bottom: 1px solid var(--solid-neutral-200);
 }
 
 .beautiful-solid-table tr:last-child td {
@@ -192,23 +279,23 @@
 }
 
 .beautiful-solid-table tr:nth-child(even) {
-  background-color: #f8fafc;
+  background-color: var(--solid-neutral-50);
 }
 
 .beautiful-solid-table tr:hover {
-  background-color: #e0e7ff;
+  background-color: var(--solid-blue-50);
 }
 
-/* Beautiful Solid Buttons */
+/* Buttons */
 .beautiful-solid-btn {
   padding: 0.875rem 1.75rem;
-  border-radius: 0.75rem;
+  border-radius: var(--solid-radius-lg);
   font-weight: 600;
   transition: all 0.3s ease;
-  border: 2px solid #d1d5db;
+  border: none;
   outline: none;
   cursor: pointer;
-  box-shadow: 0 4px 6px #cccccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -216,171 +303,157 @@
   letter-spacing: 0.25px;
   text-transform: uppercase;
   font-size: 0.875rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   text-align: center;
   min-width: 120px;
   min-height: 44px;
   color: white;
-  background-color: #4b5563;
 }
 
 .beautiful-solid-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 15px #999999;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
 }
 
 .beautiful-solid-btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px #999999;
-  border: 2px solid #6b7280;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .beautiful-solid-btn-primary {
-  background: #4f46e5;
-  border: 2px solid #4338ca;
+  background: var(--solid-primary-600);
 }
 
 .beautiful-solid-btn-primary:hover {
-  background: #4338ca;
-  border: 2px solid #3730a3;
+  background: var(--solid-primary-700);
 }
 
 .beautiful-solid-btn-success {
-  background: #10b981;
-  border: 2px solid #047857;
+  background: var(--solid-success-600);
 }
 
 .beautiful-solid-btn-success:hover {
-  background: #059669;
-  border: 2px solid #065f46;
+  background: var(--solid-success-700);
 }
 
 .beautiful-solid-btn-warning {
-  background: #f59e0b;
-  color: white;
-  border: 2px solid #b45309;
+  background: var(--solid-warning-600);
+  color: var(--solid-neutral-900);
 }
 
 .beautiful-solid-btn-warning:hover {
-  background: #d97706;
-  border: 2px solid #92400e;
+  background: var(--solid-warning-700);
 }
 
 .beautiful-solid-btn-danger {
-  background: #ef4444;
-  border: 2px solid #b91c1c;
+  background: var(--solid-danger-600);
 }
 
 .beautiful-solid-btn-danger:hover {
-  background: #dc2626;
-  border: 2px solid #991b1b;
+  background: var(--solid-danger-700);
 }
 
 .beautiful-solid-btn-secondary {
-  background: #64748b;
-  border: 2px solid #374151;
+  background: var(--solid-secondary-600);
 }
 
 .beautiful-solid-btn-secondary:hover {
-  background: #475569;
-  border: 2px solid #1f2937;
+  background: var(--solid-secondary-700);
 }
 
-/* Beautiful Solid Input Fields */
+/* Inputs */
 .beautiful-solid-input {
   width: 100%;
   padding: 0.875rem 1.25rem;
-  border: 2px solid #d1d5db;
-  border-radius: 0.75rem;
+  border: 2px solid var(--solid-neutral-200);
+  border-radius: var(--solid-radius-lg);
   font-family: inherit;
   font-size: 1rem;
   transition: all 0.2s ease;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px #dddddd;
-  color: #1e293b;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-input:focus {
   outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px #a5b4fc;
-  background-color: #ffffff;
-  border: 2px solid #4338ca;
+  border-color: var(--solid-primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  background-color: white;
 }
 
 .beautiful-solid-input:hover:not(:focus):not(:disabled) {
-  border-color: #9ca3af;
-  border: 2px solid #9ca3af;
+  border-color: var(--solid-neutral-300);
 }
 
-/* Beautiful Solid Header */
+/* Header */
 .beautiful-solid-header {
-  background: #4f46e5;
-  box-shadow: 0 4px 20px #999999;
-  border-bottom: 2px solid #c7d2fe;
+  background: var(--solid-primary-700);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--solid-primary-600);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
+/* Wallet Display */
 .beautiful-solid-wallet-display {
-  background: #10b981;
+  background: var(--solid-green-600);
   color: white;
-  border-radius: 1rem;
+  border-radius: var(--solid-radius-lg);
   padding: 1rem 1.5rem;
   font-weight: 700;
-  box-shadow: 0 4px 10px #6ee7b7;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
-  border: 2px solid #6ee7b7;
+  border: 1px solid var(--solid-green-500);
 }
 
 .beautiful-solid-wallet-display:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px #34d399;
-  border: 2px solid #34d399;
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
 }
 
-/* Beautiful Solid Tabs */
+/* Tabs */
 .beautiful-solid-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 2rem;
-  background: #ffffff;
-  border-radius: 1.25rem;
+  background: white;
+  border-radius: var(--solid-radius-xl);
   padding: 0.5rem;
-  box-shadow: 0 4px 12px #dddddd;
-  border: 2px solid #d1d5db;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--solid-neutral-200);
 }
 
 .beautiful-solid-tab {
   padding: 0.75rem 1.5rem;
-  border-radius: 1rem;
+  border-radius: var(--solid-radius-lg);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 2px solid #d1d5db;
-  background: #f9fafb;
-  color: #64748b;
+  border: none;
+  background: transparent;
+  color: var(--solid-neutral-600);
 }
 
 .beautiful-solid-tab:hover {
-  background: #f1f5f9;
-  color: #475569;
-  border: 2px solid #9ca3af;
+  background: var(--solid-neutral-100);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-tab.active {
-  background: #e0e7ff;
-  color: #4f46e5;
-  box-shadow: 0 4px 10px #a5b4fc;
-  border: 2px solid #a5b4fc;
+  background: var(--solid-blue-100);
+  color: var(--solid-primary-700);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
 
-/* Beautiful Solid Badges */
+/* Badges */
 .beautiful-solid-badge {
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
@@ -389,66 +462,58 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  border: 2px solid #d1d5db;
 }
 
 .beautiful-solid-badge-primary {
-  background: #e0e7ff;
-  color: #4f46e5;
-  border: 2px solid #c7d2fe;
+  background: var(--solid-blue-100);
+  color: var(--solid-primary-700);
 }
 
 .beautiful-solid-badge-success {
-  background: #dcfce7;
-  color: #10b981;
-  border: 2px solid #bbf7d0;
+  background: var(--solid-green-100);
+  color: var(--solid-success-700);
 }
 
 .beautiful-solid-badge-warning {
-  background: #fef3c7;
-  color: #f59e0b;
-  border: 2px solid #fde68a;
+  background: var(--solid-warning-100);
+  color: var(--solid-warning-700);
 }
 
 .beautiful-solid-badge-danger {
-  background: #fee2e2;
-  color: #ef4444;
-  border: 2px solid #fecaca;
+  background: var(--solid-danger-100);
+  color: var(--solid-danger-700);
 }
 
 .beautiful-solid-badge-secondary {
-  background: #e2e8f0;
-  color: #64748b;
-  border: 2px solid #cbd5e1;
+  background: var(--solid-neutral-100);
+  color: var(--solid-neutral-700);
 }
 
-/* Beautiful Solid Match Card */
+/* Match Card */
 .beautiful-solid-match-card {
-  background: #ffffff;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 25px #cccccc;
+  background: white;
+  border-radius: var(--solid-radius-2xl);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 2px solid #d1d5db;
-  color: #1e293b;
+  border: 1px solid var(--solid-neutral-200);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-match-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px #999999;
-  border: 2px solid #9ca3af;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .beautiful-solid-match-header {
   padding: 1.25rem;
-  background: #4f46e5;
+  background: var(--solid-primary-700);
   color: white;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-match-body {
@@ -458,14 +523,14 @@
 .beautiful-solid-match-team {
   font-weight: 700;
   font-size: 1.25rem;
-  color: #1e293b;
+  color: var(--solid-neutral-800);
   text-align: center;
   margin: 1rem 0;
 }
 
 .beautiful-solid-match-vs {
   text-align: center;
-  color: #94a3b8;
+  color: var(--solid-neutral-500);
   font-weight: 600;
   margin: 0.5rem 0;
 }
@@ -478,32 +543,31 @@
 }
 
 .beautiful-solid-odd-card {
-  background: #f8fafc;
-  border-radius: 0.75rem;
+  background: var(--solid-neutral-50);
+  border-radius: var(--solid-radius-lg);
   padding: 1rem;
   text-align: center;
-  border: 2px solid #d1d5db;
+  border: 1px solid var(--solid-neutral-200);
   transition: all 0.2s ease;
 }
 
 .beautiful-solid-odd-card:hover {
-  background: #e0e7ff;
-  border-color: #c7d2fe;
+  background: var(--solid-blue-50);
+  border-color: var(--solid-blue-200);
   transform: translateY(-2px);
-  border: 2px solid #a5b4fc;
 }
 
 .beautiful-solid-odd-team {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--solid-neutral-700);
   margin-bottom: 0.5rem;
 }
 
 .beautiful-solid-odd-value {
   font-weight: 800;
   font-size: 1.25rem;
-  color: #4f46e5;
+  color: var(--solid-primary-600);
 }
 
 .beautiful-solid-quick-bet {
@@ -514,37 +578,36 @@
 }
 
 .beautiful-solid-quick-bet-btn {
-  background: #f1f5f9;
-  border: 2px solid #d1d5db;
-  border-radius: 0.5rem;
+  background: var(--solid-neutral-100);
+  border: 1px solid var(--solid-neutral-200);
+  border-radius: var(--solid-radius-md);
   padding: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
-  color: #475569;
+  color: var(--solid-neutral-700);
   transition: all 0.2s ease;
 }
 
 .beautiful-solid-quick-bet-btn:hover {
-  background: #e2e8f0;
+  background: var(--solid-neutral-200);
   transform: translateY(-2px);
-  border: 2px solid #9ca3af;
 }
 
-/* Beautiful Solid Bet Form */
+/* Bet Form */
 .beautiful-solid-bet-form {
-  background: #ffffff;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 25px #cccccc;
+  background: white;
+  border-radius: var(--solid-radius-2xl);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  border: 2px solid #d1d5db;
-  color: #1e293b;
+  border: 1px solid var(--solid-neutral-200);
+  color: var(--solid-neutral-800);
   padding: 1.5rem;
 }
 
 .beautiful-solid-bet-form-header {
   font-weight: 700;
   font-size: 1.25rem;
-  color: #1e293b;
+  color: var(--solid-neutral-800);
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -552,11 +615,11 @@
 }
 
 .beautiful-solid-bet-summary {
-  background: #f8fafc;
-  border-radius: 1rem;
+  background: var(--solid-neutral-50);
+  border-radius: var(--solid-radius-lg);
   padding: 1.25rem;
   margin-bottom: 1.5rem;
-  border: 2px solid #d1d5db;
+  border: 1px solid var(--solid-neutral-200);
 }
 
 .beautiful-solid-bet-summary-item {
@@ -566,44 +629,44 @@
 }
 
 .beautiful-solid-bet-summary-label {
-  color: #64748b;
+  color: var(--solid-neutral-600);
   font-weight: 500;
 }
 
 .beautiful-solid-bet-summary-value {
   font-weight: 700;
-  color: #1e293b;
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-bet-summary-value.highlight {
-  color: #4f46e5;
+  color: var(--solid-primary-600);
 }
 
-/* Beautiful Solid Empty State */
+/* Empty State */
 .beautiful-solid-empty-state {
   text-align: center;
   padding: 3rem 2rem;
-  background: #f8fafc;
-  border-radius: 1.25rem;
-  border: 2px solid #d1d5db;
-  color: #1e293b;
+  background: var(--solid-neutral-50);
+  border-radius: var(--solid-radius-xl);
+  border: 1px dashed var(--solid-neutral-300);
+  color: var(--solid-neutral-800);
 }
 
 .beautiful-solid-empty-state-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #94a3b8;
+  color: var(--solid-neutral-400);
 }
 
 .beautiful-solid-empty-state-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #334155;
+  color: var(--solid-neutral-700);
   margin-bottom: 0.5rem;
 }
 
 .beautiful-solid-empty-state-message {
-  color: #64748b;
+  color: var(--solid-neutral-600);
   margin-bottom: 1.5rem;
   max-width: 32rem;
   margin-left: auto;
