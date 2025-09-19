@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnostics</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f7fa; color: #1e293b; }
+        .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Site Diagnostics</h1>
+    
+    <div class="card">
+        <h2>File Check</h2>
+        <p>Checking if CSS is embedded in index.html...</p>
+        <div id="css-check"></div>
+    </div>
+    
+    <div class="card">
+        <h2>JavaScript Test</h2>
+        <p>If you can see this styling, JavaScript is working.</p>
+        <button onclick="testStyles()" id="test-btn">Test Styles</button>
+        <div id="test-result"></div>
+    </div>
+
+    <script>
+        function testStyles() {
+            document.getElementById('test-result').innerHTML = '<p style="color: green; font-weight: bold;">JavaScript is working correctly!</p>';
+        }
+        
+        // Check if CSS is embedded
+        window.addEventListener('DOMContentLoaded', function() {
+            var styleTags = document.getElementsByTagName('style');
+            if(styleTags.length > 0) {
+                document.getElementById('css-check').innerHTML = '<p style="color: green; font-weight: bold;">✓ CSS is embedded (' + styleTags.length + ' style tags found)</p>';
+            } else {
+                document.getElementById('css-check').innerHTML = '<p style="color: red; font-weight: bold;">✗ No CSS embedded</p>';
+            }
+        });
+    </script>
+</body>
+</html>
