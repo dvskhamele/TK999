@@ -172,7 +172,11 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-4 w-full lg:w-auto">
-            {/* Balance Card */}\n            <div className=\"bg-emerald-500 text-white px-4 py-3 rounded-xl font-bold flex items-center shadow-lg transform transition-all duration-300 hover:scale-105\">\n              <DollarSign className=\"mr-2\" size={20} />\n              <span className=\"text-lg font-extrabold\">{user.balance.toLocaleString()} BDT</span>\n            </div>
+            {/* Balance Card */}
+            <div className="bg-emerald-500 text-white px-4 py-3 rounded-xl font-bold flex items-center shadow-lg transform transition-all duration-300 hover:scale-105">
+              <DollarSign className="mr-2" size={20} />
+              <span className="text-lg font-extrabold">{user.balance.toLocaleString()} BDT</span>
+            </div>
             
             {/* User Profile */}
             <div className="flex items-center space-x-3">
@@ -340,8 +344,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       <span className="mr-2">{getSportIcon(category)}</span>
                       {category}
                     </button>
-                  ))
-                }
+                  ))}
               </div>
               
               <div className="flex gap-3 mt-4 md:mt-0">
