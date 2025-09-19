@@ -19,6 +19,7 @@ import {
   AlertCircle,
   Trophy,
   Calendar,
+  CalendarDays,
   Clock,
   Target,
   Star,
@@ -33,7 +34,11 @@ import {
   Menu,
   X,
   Plus,
-  Minus
+  Minus,
+  Camera,
+  Award,
+  Save,
+  Edit
 } from 'lucide-react';
 
 interface User {
@@ -178,20 +183,35 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
   };
 
   // Visual status indicators
-  const getStatusIcon = (type: string) => {
+  const getTypeIcon = (type: string) => {
     switch (type) {
       case 'Deposit':
-        return <Plus size={16} />;
+        return <DollarSign size={16} />;
       case 'Withdrawal':
-        return <Minus size={16} />;
+        return <CreditCard size={16} />;
       case 'Bet':
         return <Gamepad2 size={16} />;
       case 'Win':
-        return <TrophyIcon size={16} />;
+        return <Trophy size={16} />;
       case 'Bonus':
         return <Award size={16} />;
       case 'Fee':
         return <DollarSign size={16} />;
+      default:
+        return <AlertCircle size={16} />;
+    }
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'Completed':
+        return <CheckCircle size={16} />;
+      case 'Pending':
+        return <Clock size={16} />;
+      case 'Cancelled':
+        return <XCircle size={16} />;
+      case 'Failed':
+        return <XCircle size={16} />;
       default:
         return <AlertCircle size={16} />;
     }
@@ -393,7 +413,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
             className={`beautiful-tab ${activeTab === 'transactions' ? 'active' : ''}`}
             onClick={() => setActiveTab('transactions')}
           >
-            <History size={18} />
+                          <Clock size={18} />
             Transactions
           </button>
           <button
@@ -798,7 +818,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
               {/* Recent Activity */}
               <div className="beautiful-card">
                 <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #4f46e5, #7c3aed)' }}>
-                  <History size={24} />
+                  <Clock size={24} />
                   Recent Activity
                 </div>
                 <div className="beautiful-card-body">
@@ -888,7 +908,7 @@ const DashboardPageEnhanced: React.FC<DashboardPageProps> = ({
         {activeTab === 'transactions' && (
           <div className="beautiful-card">
             <div className="beautiful-card-header" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
-              <History size={24} />
+              <Clock size={24} />
               Transaction History
             </div>
             <div className="beautiful-card-body">

@@ -33,7 +33,9 @@ import {
   Menu,
   X,
   Plus,
-  Minus
+  Minus,
+  Award,
+  Flame
 } from 'lucide-react';
 
 interface User {
@@ -150,7 +152,7 @@ const GameFocusedDashboard: React.FC<DashboardPageProps> = ({
       case 'Deposit': return <Plus size={16} />;
       case 'Withdrawal': return <Minus size={16} />;
       case 'Bet': return <Gamepad2 size={16} />;
-      case 'Win': return <TrophyIcon size={16} />;
+      case 'Win': return <Trophy size={16} />;
       case 'Bonus': return <Award size={16} />;
       case 'Fee': return <DollarSign size={16} />;
       default: return <AlertCircle size={16} />;
@@ -318,7 +320,7 @@ const GameFocusedDashboard: React.FC<DashboardPageProps> = ({
             }`}
             onClick={() => setActiveTab('transactions')}
           >
-            <History />
+            <Clock />
             Transactions
           </button>
           <button
@@ -647,7 +649,7 @@ const GameFocusedDashboard: React.FC<DashboardPageProps> = ({
               </div>
             ) : (
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 text-center">
-                <History className="mx-auto text-gray-600 mb-4" size={48} />
+                <Clock className="mx-auto text-gray-600 mb-4" size={48} />
                 <h3 className="text-xl font-bold mb-2">No Transactions Yet</h3>
                 <p className="text-gray-400 mb-4">Your transaction history will appear here.</p>
                 <button 

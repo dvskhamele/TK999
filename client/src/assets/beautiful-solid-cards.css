@@ -1,6 +1,17 @@
 /* ==================== BEAUTIFUL SOLID CARDS CSS ==================== */
 /* This file contains styles with solid colors only, no transparency or blur effects */
 
+/* Base Styles */
+html, body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f7fa;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
 :root {
   /* Solid Color Palette */
   --solid-primary-50: #eff6ff;
@@ -286,7 +297,7 @@
   background-color: var(--solid-blue-50);
 }
 
-/* Buttons */
+/* Button Styles */
 .beautiful-solid-btn {
   padding: 0.875rem 1.75rem;
   border-radius: var(--solid-radius-lg);
@@ -307,7 +318,8 @@
   text-align: center;
   min-width: 120px;
   min-height: 44px;
-  color: white;
+  color: white; /* Default text color for buttons */
+  background: var(--solid-primary-600); /* Default background */
 }
 
 .beautiful-solid-btn:hover {
@@ -320,45 +332,26 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.beautiful-solid-btn-primary {
-  background: var(--solid-primary-600);
+.beautiful-solid-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffffff66, #ffffff1a);
+  transform: translate(-100%);
+  transition: transform 0.8s ease;
+  z-index: 1;
 }
 
-.beautiful-solid-btn-primary:hover {
-  background: var(--solid-primary-700);
+.beautiful-solid-btn:hover:after {
+  transform: translate(100%);
 }
 
-.beautiful-solid-btn-success {
-  background: var(--solid-success-600);
-}
-
-.beautiful-solid-btn-success:hover {
-  background: var(--solid-success-700);
-}
-
-.beautiful-solid-btn-warning {
-  background: var(--solid-warning-600);
-  color: var(--solid-neutral-900);
-}
-
-.beautiful-solid-btn-warning:hover {
-  background: var(--solid-warning-700);
-}
-
-.beautiful-solid-btn-danger {
-  background: var(--solid-danger-600);
-}
-
-.beautiful-solid-btn-danger:hover {
-  background: var(--solid-danger-700);
-}
-
-.beautiful-solid-btn-secondary {
-  background: var(--solid-secondary-600);
-}
-
-.beautiful-solid-btn-secondary:hover {
-  background: var(--solid-secondary-700);
+.beautiful-solid-btn > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* Inputs */
@@ -715,4 +708,58 @@
   .beautiful-solid-quick-bet {
     grid-template-columns: repeat(3, 1fr);
   }
+}/* Button Variants */
+.beautiful-solid-btn-primary {
+  background: var(--solid-primary-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+}
+
+.beautiful-solid-btn-primary:hover {
+  background: var(--solid-primary-700);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.6);
+}
+
+.beautiful-solid-btn-success {
+  background: var(--solid-success-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
+}
+
+.beautiful-solid-btn-success:hover {
+  background: var(--solid-success-700);
+  box-shadow: 0 6px 15px rgba(22, 163, 74, 0.6);
+}
+
+.beautiful-solid-btn-warning {
+  background: var(--solid-warning-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.5);
+}
+
+.beautiful-solid-btn-warning:hover {
+  background: var(--solid-warning-700);
+  box-shadow: 0 6px 15px rgba(217, 119, 6, 0.6);
+}
+
+.beautiful-solid-btn-danger {
+  background: var(--solid-danger-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+}
+
+.beautiful-solid-btn-danger:hover {
+  background: var(--solid-danger-700);
+  box-shadow: 0 6px 15px rgba(220, 38, 38, 0.6);
+}
+
+.beautiful-solid-btn-secondary {
+  background: var(--solid-secondary-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.5);
+}
+
+.beautiful-solid-btn-secondary:hover {
+  background: var(--solid-secondary-700);
+  box-shadow: 0 6px 15px rgba(2, 132, 199, 0.6);
 }

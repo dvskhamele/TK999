@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { 
   User, 
   Mail, 
   Phone, 
   MapPin, 
   Calendar, 
+  CalendarDays, 
   Lock, 
   CreditCard, 
   Bell, 
@@ -34,7 +35,13 @@ import {
   Activity,
   TrendingUp,
   BarChart3,
-  DollarSign
+  BarChart,
+  DollarSign,
+  CheckCircle,
+  History,
+  Zap,
+  ShieldCheck,
+  Heart
 } from 'lucide-react';
 
 interface User {
