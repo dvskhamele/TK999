@@ -259,7 +259,7 @@ const BeautifulDashboard: React.FC<BeautifulDashboardProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="min-h-screen bg-gray-100">
       {/* Beautiful Solid Header */}
       <header className="beautiful-solid-header sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">

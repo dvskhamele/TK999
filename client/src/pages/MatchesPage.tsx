@@ -155,9 +155,9 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
   const categories = ['All', ...Object.keys(matchesByCategory).filter(cat => cat !== 'All')];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
+    <div className="min-h-screen bg-indigo-100">
       {/* Header */}
-      <header className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 shadow-xl sticky top-0 z-50">
+      <header className="bg-indigo-700 shadow-xl sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">
           <div className="flex items-center">
             <Link 
@@ -172,15 +172,11 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-4 w-full lg:w-auto">
-            {/* Balance Card */}
-            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-3 rounded-xl font-bold flex items-center shadow-lg transform transition-all duration-300 hover:scale-105">
-              <DollarSign className="mr-2" size={20} />
-              <span className="text-lg font-extrabold">{user.balance.toLocaleString()} BDT</span>
-            </div>
+            {/* Balance Card */}\n            <div className=\"bg-emerald-500 text-white px-4 py-3 rounded-xl font-bold flex items-center shadow-lg transform transition-all duration-300 hover:scale-105\">\n              <DollarSign className=\"mr-2\" size={20} />\n              <span className=\"text-lg font-extrabold\">{user.balance.toLocaleString()} BDT</span>\n            </div>
             
             {/* User Profile */}
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+              <div className="bg-cyan-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                 {user?.name ? user.name.charAt(0).toUpperCase() : '👤'}
               </div>
               <div className="hidden md:block">
@@ -195,7 +191,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             <div className="flex space-x-2">
               <Link 
                 to="/dashboard" 
-                className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-blue-400 hover:to-blue-500 shadow-lg"
+                className="bg-blue-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 shadow-lg"
                 title="Dashboard"
               >
                 <span className="text-xl">📊</span>
@@ -204,7 +200,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               
               <Link 
                 to="/matches" 
-                className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-purple-400 hover:to-purple-500 shadow-lg"
+                className="bg-purple-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 shadow-lg"
                 title="Matches"
               >
                 <span className="text-xl">⚽</span>
@@ -214,7 +210,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               {(user?.role === 'admin' || user?.role === 'staff') && (
                 <Link 
                   to="/admin" 
-                  className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-amber-400 hover:to-orange-500 shadow-lg"
+                  className="bg-amber-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 shadow-lg"
                   title="Admin"
                 >
                   <span className="text-xl">⚙️</span>
@@ -224,7 +220,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               
               <button 
                 onClick={handleLogout}
-                className="bg-gradient-to-r from-rose-500 to-red-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:from-rose-400 hover:to-red-400 shadow-lg"
+                className="bg-rose-500 text-white p-3 rounded-xl flex flex-col items-center justify-center min-w-[70px] transform transition-all duration-300 hover:scale-105 shadow-lg"
                 title="Logout"
               >
                 <span className="text-xl">🚪</span>
@@ -269,7 +265,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             <div className="flex gap-3">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+                className="bg-purple-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:bg-purple-600 transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 <Filter className="mr-2" size={18} />
                 {showFilters ? 'Hide Filters' : 'Show Filters'}
@@ -277,7 +273,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
               
               <button
                 onClick={onShowAssistant}
-                className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-md hover:shadow-lg"
+                className="bg-amber-500 text-white px-5 py-3 rounded-xl font-semibold flex items-center hover:bg-amber-600 transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 <Zap className="mr-2" size={18} />
                 Smart Tips
@@ -308,7 +304,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       setStatusFilter('All');
                       setSearchTerm('');
                     }}
-                    className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-5 py-3 rounded-xl font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg w-full"
+                    className="bg-gray-500 text-white px-5 py-3 rounded-xl font-semibold hover:bg-gray-600 transition-all duration-300 shadow-md hover:shadow-lg w-full"
                   >
                     Clear Filters
                   </button>
@@ -321,8 +317,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 <button
                   className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center shadow-sm hover:shadow-md ${
                     activeCategory === 'All'
-                      ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white transform hover:scale-105'
-                      : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 border border-gray-200'
+                      ? 'bg-purple-600 text-white transform hover:scale-105'
+                      : 'bg-white text-gray-700 hover:bg-purple-50 border border-gray-200'
                   }`}
                   onClick={() => setActiveCategory('All')}
                 >
@@ -336,8 +332,8 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       key={category}
                       className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center shadow-sm hover:shadow-md ${
                         activeCategory === category
-                          ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white transform hover:scale-105'
-                          : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 border border-gray-200'
+                          ? 'bg-purple-600 text-white transform hover:scale-105'
+                          : 'bg-white text-gray-700 hover:bg-purple-50 border border-gray-200'
                       }`}
                       onClick={() => setActiveCategory(category)}
                     >
@@ -363,28 +359,28 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
             
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-gray-200">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl text-center border border-blue-100 hover:shadow-md transition-all duration-300">
+              <div className="bg-blue-50 p-4 rounded-xl text-center border border-blue-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Clock className="text-blue-600 mr-2" size={20} />
                   <p className="text-2xl font-bold text-blue-600">{matches.filter(m => m.status === 'live').length}</p>
                 </div>
                 <p className="text-sm text-gray-600">Live Matches</p>
               </div>
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl text-center border border-green-100 hover:shadow-md transition-all duration-300">
+              <div className="bg-green-50 p-4 rounded-xl text-center border border-green-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Calendar className="text-green-600 mr-2" size={20} />
                   <p className="text-2xl font-bold text-green-600">{matches.filter(m => m.status === 'upcoming').length}</p>
                 </div>
                 <p className="text-sm text-gray-600">Upcoming</p>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-fuchsia-50 p-4 rounded-xl text-center border border-purple-100 hover:shadow-md transition-all duration-300">
+              <div className="bg-purple-50 p-4 rounded-xl text-center border border-purple-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Star className="text-purple-600 mr-2" size={20} />
                   <p className="text-2xl font-bold text-purple-600">{user.favoriteSports.length}</p>
                 </div>
                 <p className="text-sm text-gray-600">Favorite Sports</p>
               </div>
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-xl text-center border border-amber-100 hover:shadow-md transition-all duration-300">
+              <div className="bg-amber-50 p-4 rounded-xl text-center border border-amber-100 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-center mb-2">
                   <Users className="text-amber-600 mr-2" size={20} />
                   <p className="text-2xl font-bold text-amber-600">{user.balance.toLocaleString()}</p>
@@ -397,7 +393,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
 
         {/* Smart Recommendations */}
         <div className="bg-white rounded-2xl shadow-xl mb-8 border border-gray-100">
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-5 rounded-t-2xl">
+          <div className="bg-indigo-500 p-5 rounded-t-2xl">
             <h3 className="text-lg font-bold text-white flex items-center">
               <Zap className="mr-2" size={22} />
               Daily Picks for You
@@ -406,7 +402,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
           <div className="p-5">
             <div className="flex flex-wrap gap-4">
               {favoriteTeams.map((team: string) => (
-                <div key={team} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl flex-1 min-w-[200px] border border-blue-100 hover:shadow-md transition-all duration-300">
+                <div key={team} className="bg-blue-50 p-4 rounded-xl flex-1 min-w-[200px] border border-blue-100 hover:shadow-md transition-all duration-300">
                   <h4 className="font-bold text-gray-800 text-lg">{team}</h4>
                   <p className="text-sm text-gray-600 mt-2">Based on your preferences</p>
                   <button
@@ -422,7 +418,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                           setSelectedTeam(match.teamA === team ? match.teamA : match.teamB);
                         }
                       }}
-                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm mt-4 w-full py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="bg-purple-500 text-white text-sm mt-4 w-full py-2 rounded-lg hover:bg-purple-600 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       View Picks
                     </button>
@@ -482,7 +478,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                       {Object.entries(match.odds).map(([team, odd]) => (
                         <div 
                           key={team} 
-                          className="border rounded-2xl p-5 text-center hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-gray-50 border-gray-200"
+                          className="border rounded-2xl p-5 text-center hover:shadow-lg transition-all duration-300 bg-white border-gray-200"
                         >
                           <h4 className="font-bold mb-3 text-lg text-gray-800">{team}</h4>
                           <div className="text-3xl font-bold text-purple-600 mb-4">{odd.toFixed(2)}</div>
@@ -493,7 +489,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               <button
                                 key={amount}
                                 onClick={() => handleQuickBet(match.id, team, amount)}
-                                className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 shadow-md"
+                                className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 shadow-md"
                                 disabled={match.status !== 'upcoming' || user.balance < amount}
                               >
                                 {amount}
@@ -506,7 +502,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                               setSelectedMatch(match.id);
                               setSelectedTeam(team);
                             }}
-                            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white w-full py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
+                            className="bg-purple-500 text-white w-full py-3 rounded-lg hover:bg-purple-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                             disabled={match.status !== 'upcoming'}
                             title={match.status !== 'upcoming' ? "Match not available for betting" : `Bet on ${team}`}
                           >
@@ -519,7 +515,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                   </div>
                   
                   {/* Match Info */}
-                  <div className="border rounded-2xl p-5 bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200">
+                  <div className="border rounded-2xl p-5 bg-gray-50 border-gray-200">
                     <h4 className="font-bold mb-4 flex items-center text-lg text-gray-800">
                       <TrendingUp className="mr-2 text-purple-600" size={20} />
                       Match Info
@@ -570,7 +566,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                     <h4 className="font-bold text-xl mb-5 text-gray-800">Place Your Bet</h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                       <div className="md:col-span-2">
-                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-5 border border-purple-100">
+                        <div className="bg-purple-50 rounded-2xl p-5 border border-purple-100">
                           <div className="flex justify-between items-center mb-4">
                             <span className="font-medium text-gray-700">Selected Team:</span>
                             <span className="font-bold text-xl text-purple-600">{selectedTeam}</span>
@@ -606,7 +602,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                         </div>
                         <button
                           onClick={() => handlePlaceBet(match.id, selectedTeam)}
-                          className="bg-gradient-to-r from-green-500 to-emerald-500 text-white w-full mt-6 py-3 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
+                          className="bg-green-500 text-white w-full mt-6 py-3 rounded-xl hover:bg-green-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                           disabled={betAmount > user.balance || betAmount < 10}
                         >
                           <Play className="mr-2 inline" size={18} />
@@ -617,7 +613,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                             setSelectedMatch(null);
                             setSelectedTeam('');
                           }}
-                          className="bg-gradient-to-r from-gray-500 to-gray-600 text-white w-full mt-4 py-3 rounded-xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
+                          className="bg-gray-500 text-white w-full mt-4 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
                         >
                           Cancel
                         </button>
@@ -641,7 +637,7 @@ const MatchesPage: React.FC<MatchesPageProps> = ({
                 setStatusFilter('All');
                 setSearchTerm('');
               }}
-              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="bg-blue-500 text-white px-5 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Clear All Filters
             </button>

@@ -4,31 +4,34 @@
 .beautiful-solid-card {
   background: #ffffff;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px #cccccc;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   color: #1e293b;
 }
 
 .beautiful-solid-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px #999999;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-card-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  background: #4f46e5;
   color: white;
   font-weight: 700;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-card-body {
   padding: 1.5rem;
+  background: #ffffff;
 }
 
 /* Beautiful Solid Stats Cards */
@@ -37,15 +40,16 @@
   border-radius: 1.25rem;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 15px #dddddd;
+  border: 2px solid #d1d5db;
   transition: all 0.3s ease;
   color: #1e293b;
 }
 
 .beautiful-solid-stats-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px #cccccc;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-stats-value {
@@ -65,20 +69,21 @@
 .beautiful-solid-profile-card {
   background: #ffffff;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px #cccccc;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   color: #1e293b;
 }
 
 .beautiful-solid-profile-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px #999999;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-profile-header {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  background: #4f46e5;
   padding: 1.5rem;
   color: white;
   font-weight: 700;
@@ -86,6 +91,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-profile-body {
@@ -96,20 +102,21 @@
 .beautiful-solid-wallet-card {
   background: #ffffff;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px #cccccc;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   color: #1e293b;
 }
 
 .beautiful-solid-wallet-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px #999999;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-wallet-header {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: #10b981;
   padding: 1.5rem;
   color: white;
   font-weight: 700;
@@ -117,6 +124,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-wallet-body {
@@ -128,28 +136,30 @@
   background: #ffffff;
   border-radius: 1.25rem;
   padding: 1.5rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 15px #dddddd;
+  border: 2px solid #d1d5db;
   transition: all 0.3s ease;
   color: #1e293b;
 }
 
 .beautiful-solid-notification-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px #cccccc;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-notification-card.unread {
-  border-left: 4px solid #4f46e5;
+  border-left: 6px solid #4f46e5;
   background: #eef2ff;
+  border: 2px solid #d1d5db;
 }
 
 /* Beautiful Solid Table */
 .beautiful-solid-table-container {
   border-radius: 1.25rem;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 15px #dddddd;
+  border: 2px solid #d1d5db;
   background: #ffffff;
 }
 
@@ -169,11 +179,12 @@
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
+  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-table td {
   padding: 1rem 1.25rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-table tr:last-child td {
@@ -194,10 +205,10 @@
   border-radius: 0.75rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  border: none;
+  border: 2px solid #d1d5db;
   outline: none;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px #cccccc;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -210,107 +221,123 @@
   min-width: 120px;
   min-height: 44px;
   color: white;
+  background-color: #4b5563;
 }
 
 .beautiful-solid-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 15px #999999;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px #999999;
+  border: 2px solid #6b7280;
 }
 
 .beautiful-solid-btn-primary {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  background: #4f46e5;
+  border: 2px solid #4338ca;
 }
 
 .beautiful-solid-btn-primary:hover {
-  background: linear-gradient(135deg, #4338ca, #6d28d9);
+  background: #4338ca;
+  border: 2px solid #3730a3;
 }
 
 .beautiful-solid-btn-success {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: #10b981;
+  border: 2px solid #047857;
 }
 
 .beautiful-solid-btn-success:hover {
-  background: linear-gradient(135deg, #059669, #047857);
+  background: #059669;
+  border: 2px solid #065f46;
 }
 
 .beautiful-solid-btn-warning {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: #f59e0b;
   color: white;
+  border: 2px solid #b45309;
 }
 
 .beautiful-solid-btn-warning:hover {
-  background: linear-gradient(135deg, #d97706, #b45309);
+  background: #d97706;
+  border: 2px solid #92400e;
 }
 
 .beautiful-solid-btn-danger {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: #ef4444;
+  border: 2px solid #b91c1c;
 }
 
 .beautiful-solid-btn-danger:hover {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  background: #dc2626;
+  border: 2px solid #991b1b;
 }
 
 .beautiful-solid-btn-secondary {
-  background: linear-gradient(135deg, #64748b, #475569);
+  background: #64748b;
+  border: 2px solid #374151;
 }
 
 .beautiful-solid-btn-secondary:hover {
-  background: linear-gradient(135deg, #475569, #334155);
+  background: #475569;
+  border: 2px solid #1f2937;
 }
 
 /* Beautiful Solid Input Fields */
 .beautiful-solid-input {
   width: 100%;
   padding: 0.875rem 1.25rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   border-radius: 0.75rem;
   font-family: inherit;
   font-size: 1rem;
   transition: all 0.2s ease;
   background-color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px #dddddd;
   color: #1e293b;
 }
 
 .beautiful-solid-input:focus {
   outline: none;
   border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 0 3px #a5b4fc;
   background-color: #ffffff;
+  border: 2px solid #4338ca;
 }
 
 .beautiful-solid-input:hover:not(:focus):not(:disabled) {
-  border-color: #cbd5e1;
+  border-color: #9ca3af;
+  border: 2px solid #9ca3af;
 }
 
 /* Beautiful Solid Header */
 .beautiful-solid-header {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid #c7d2fe;
+  background: #4f46e5;
+  box-shadow: 0 4px 20px #999999;
+  border-bottom: 2px solid #c7d2fe;
 }
 
 .beautiful-solid-wallet-display {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: #10b981;
   color: white;
   border-radius: 1rem;
   padding: 1rem 1.5rem;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 10px #6ee7b7;
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
-  border: 1px solid #6ee7b7;
+  border: 2px solid #6ee7b7;
 }
 
 .beautiful-solid-wallet-display:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 6px 15px #34d399;
+  border: 2px solid #34d399;
 }
 
 /* Beautiful Solid Tabs */
@@ -322,8 +349,8 @@
   background: #ffffff;
   border-radius: 1.25rem;
   padding: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px #dddddd;
+  border: 2px solid #d1d5db;
 }
 
 .beautiful-solid-tab {
@@ -335,20 +362,22 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: none;
-  background: transparent;
+  border: 2px solid #d1d5db;
+  background: #f9fafb;
   color: #64748b;
 }
 
 .beautiful-solid-tab:hover {
   background: #f1f5f9;
   color: #475569;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-tab.active {
-  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  background: #e0e7ff;
   color: #4f46e5;
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 4px 10px #a5b4fc;
+  border: 2px solid #a5b4fc;
 }
 
 /* Beautiful Solid Badges */
@@ -360,58 +389,66 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  border: 2px solid #d1d5db;
 }
 
 .beautiful-solid-badge-primary {
   background: #e0e7ff;
   color: #4f46e5;
+  border: 2px solid #c7d2fe;
 }
 
 .beautiful-solid-badge-success {
   background: #dcfce7;
   color: #10b981;
+  border: 2px solid #bbf7d0;
 }
 
 .beautiful-solid-badge-warning {
   background: #fef3c7;
   color: #f59e0b;
+  border: 2px solid #fde68a;
 }
 
 .beautiful-solid-badge-danger {
   background: #fee2e2;
   color: #ef4444;
+  border: 2px solid #fecaca;
 }
 
 .beautiful-solid-badge-secondary {
   background: #e2e8f0;
   color: #64748b;
+  border: 2px solid #cbd5e1;
 }
 
 /* Beautiful Solid Match Card */
 .beautiful-solid-match-card {
   background: #ffffff;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px #cccccc;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   color: #1e293b;
 }
 
 .beautiful-solid-match-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px #999999;
+  border: 2px solid #9ca3af;
 }
 
 .beautiful-solid-match-header {
   padding: 1.25rem;
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  background: #4f46e5;
   color: white;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  border-bottom: 2px solid #d1d5db;
 }
 
 .beautiful-solid-match-body {
@@ -445,7 +482,7 @@
   border-radius: 0.75rem;
   padding: 1rem;
   text-align: center;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   transition: all 0.2s ease;
 }
 
@@ -453,6 +490,7 @@
   background: #e0e7ff;
   border-color: #c7d2fe;
   transform: translateY(-2px);
+  border: 2px solid #a5b4fc;
 }
 
 .beautiful-solid-odd-team {
@@ -477,7 +515,7 @@
 
 .beautiful-solid-quick-bet-btn {
   background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   border-radius: 0.5rem;
   padding: 0.5rem;
   font-weight: 600;
@@ -489,15 +527,16 @@
 .beautiful-solid-quick-bet-btn:hover {
   background: #e2e8f0;
   transform: translateY(-2px);
+  border: 2px solid #9ca3af;
 }
 
 /* Beautiful Solid Bet Form */
 .beautiful-solid-bet-form {
   background: #ffffff;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px #cccccc;
   overflow: hidden;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
   color: #1e293b;
   padding: 1.5rem;
 }
@@ -517,7 +556,7 @@
   border-radius: 1rem;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #d1d5db;
 }
 
 .beautiful-solid-bet-summary-item {
@@ -546,7 +585,7 @@
   padding: 3rem 2rem;
   background: #f8fafc;
   border-radius: 1.25rem;
-  border: 1px dashed #cbd5e1;
+  border: 2px solid #d1d5db;
   color: #1e293b;
 }
 
