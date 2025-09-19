@@ -18,6 +18,15 @@ import './index.css'; // Import the main CSS file
 const mockLogin = async () => true;
 const mockRegister = async () => true;
 
+// Mock state for user balance and bets
+let mockUserBalance = 1000;
+let mockBets: any[] = [];
+let mockTransactions: any[] = [
+  {id: 1, userId: 1, type: 'Deposit', amount: 500, date: new Date().toISOString(), description: 'Initial deposit', balanceAfter: 1500},
+  {id: 2, userId: 1, type: 'Bet', amount: 100, date: new Date().toISOString(), description: 'Bet on Match #123', balanceAfter: 1400},
+  {id: 3, userId: 1, type: 'Win', amount: 250, date: new Date().toISOString(), description: 'Winnings from Match #123', balanceAfter: 1650}
+];
+
 // Mock user object that matches the expected User interface
 const mockUser = {
   id: 1,
@@ -70,6 +79,42 @@ const mockMatches = [
   }
 ];
 
+// Function to handle placing bets
+const handlePlaceBet = (matchId: number, team: string, amount: number) => {
+  if (amount > mockUserBalance) {
+    throw new Error('Insufficient balance');
+  }
+  
+  // Deduct amount from balance
+  mockUserBalance -= amount;
+  
+  // Add bet to mock bets
+  mockBets.push({
+    id: mockBets.length + 1,
+    userId: 1,
+    matchId,
+    teamChosen: team,
+    amount,
+    status: 'Pending',
+    date: new Date().toISOString(),
+    potentialWin: amount * 2, // Simple calculation for demo
+    odds: 2.0
+  });
+  
+  // Add transaction
+  mockTransactions.push({
+    id: mockTransactions.length + 1,
+    userId: 1,
+    type: 'Bet',
+    amount,
+    date: new Date().toISOString(),
+    description: `Bet on ${team} in Match #${matchId}`,
+    balanceAfter: mockUserBalance
+  });
+  
+  console.log(`Bet placed: ${amount} BDT on ${team} in match ${matchId}`);
+};
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -82,16 +127,10 @@ const App: React.FC = () => {
           onLogout={() => {}} 
           onDeposit={() => {}} 
           onWithdraw={() => {}} 
-          getUserDashboard={() => ({profile: mockUser, transactions: [
-            {id: 1, userId: 1, type: 'Deposit', amount: 500, date: new Date().toISOString(), description: 'Initial deposit', balanceAfter: 1500},
-            {id: 2, userId: 1, type: 'Bet', amount: 100, date: new Date().toISOString(), description: 'Bet on Match #123', balanceAfter: 1400},
-            {id: 3, userId: 1, type: 'Win', amount: 250, date: new Date().toISOString(), description: 'Winnings from Match #123', balanceAfter: 1650}
-          ], notifications: [
+          getUserDashboard={() => ({profile: {...mockUser, balance: mockUserBalance}, transactions: mockTransactions, notifications: [
             {id: 1, userId: 1, title: 'Welcome Bonus', message: 'You received a 500 BDT welcome bonus!', date: new Date().toISOString(), read: false, type: 'success'},
             {id: 2, userId: 1, title: 'Bet Won!', message: 'Congratulations! Your bet on Match #123 won.', date: new Date().toISOString(), read: false, type: 'success'}
-          ], wallet: {balance: 1650}, bets: [
-            {id: 1, userId: 1, matchId: 123, teamChosen: 'Team A', amount: 100, status: 'Won', date: new Date().toISOString(), potentialWin: 250, odds: 2.5}
-          ], matches: mockMatches})} 
+          ], wallet: {balance: mockUserBalance}, bets: mockBets, matches: mockMatches})} 
           notifications={[
             {id: 1, userId: 1, title: 'Welcome Bonus', message: 'You received a 500 BDT welcome bonus!', date: new Date().toISOString(), read: false, type: 'success'},
             {id: 2, userId: 1, title: 'Bet Won!', message: 'Congratulations! Your bet on Match #123 won.', date: new Date().toISOString(), read: false, type: 'success'}
@@ -100,12 +139,12 @@ const App: React.FC = () => {
           onShowAssistant={() => {}} 
           onUpdateProfile={() => {}} 
           matches={mockMatches}
-          onPlaceBet={() => {}} 
+          onPlaceBet={handlePlaceBet} 
         />} />
         <Route path="/matches" element={<BeautifulMatchesPage 
           user={mockUser} 
           matches={mockMatches} 
-          onPlaceBet={() => {}} 
+          onPlaceBet={handlePlaceBet} 
           onLogout={() => {}} 
           onShowAssistant={() => {}} 
         />} />
