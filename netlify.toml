@@ -1,8 +1,8 @@
 # Netlify configuration for static file deployment
 [build]
-  # Since we're deploying built files directly, we don't need to build
+  # Since we're deploying built files directly to root, we don't need to build
   command = "echo 'Using pre-built files'"
-  publish = "tk999-netlify-deploy/"
+  publish = "."
   
 # Redirects for SPA routing - only redirect non-file requests
 [[redirects]]
