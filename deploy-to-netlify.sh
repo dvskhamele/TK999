@@ -17,13 +17,21 @@ fi
 
 echo "✅ Netlify CLI is installed"
 
-# Prepare deployment files (already extracted to tk999-netlify-deploy directory)
-echo "📦 Using deployment files in tk999-netlify-deploy directory"
+# Prepare deployment files (using the correct path)
+DEPLOY_DIR="tk999-deployment/tk999-netlify-deploy"
+echo "📦 Using deployment files in $DEPLOY_DIR directory"
+
+# Check if deployment directory exists
+if [ ! -d "$DEPLOY_DIR" ]; then
+    echo "❌ Deployment directory $DEPLOY_DIR not found"
+    echo "Please ensure the React app has been built and deployment files exist"
+    exit 1
+fi
 
 # Show what we're deploying
 echo
 echo "📁 Deployment package contents:"
-ls -la tk999-netlify-deploy
+ls -la "$DEPLOY_DIR"
 echo
 
 # Try to deploy to Netlify
@@ -32,18 +40,18 @@ echo "Note: You'll need to authenticate with Netlify if not already logged in"
 echo
 
 # Try to deploy (will prompt for login if needed)
-if netlify deploy --dir=tk999-netlify-deploy --prod; then
+if netlify deploy --dir="$DEPLOY_DIR" --prod; then
     echo
     echo "✅ Deployment completed successfully!"
 else
     echo
     echo "⚠️  Deployment failed. This might be due to permission issues."
     echo "Please try one of these alternatives:"
-    echo "1. Run: netlify login && netlify deploy --dir=tk999-netlify-deploy --prod"
+    echo "1. Run: netlify login && netlify deploy --dir=$DEPLOY_DIR --prod"
     echo "2. Manually deploy by:"
     echo "   - Going to https://app.netlify.com/"
     echo "   - Clicking 'New site from Git' or 'Import an existing project'"
-    echo "   - Uploading the tk999-netlify-deploy directory"
+    echo "   - Uploading the $DEPLOY_DIR directory"
     echo
     exit 1
 fi
@@ -60,5 +68,5 @@ echo "3. You can later set up a custom domain in Netlify dashboard"
 echo
 echo "For manual deployment or troubleshooting:"
 echo "1. Visit https://app.netlify.com/"
-echo "2. Create a new site from the tk999-netlify-deploy directory"
+echo "2. Create a new site from the $DEPLOY_DIR directory"
 echo

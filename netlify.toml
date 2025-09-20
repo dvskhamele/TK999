@@ -1,11 +1,18 @@
-# Netlify configuration for static file deployment
 [build]
-  # Since we're deploying built files directly, we don't need to build
-  command = "echo 'Using pre-built files'"
-  publish = "deployment/"
-  
-# Temporarily remove all redirects for testing
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
+  # Point to the directory with our built React app
+  publish = "tk999-deployment/tk999-netlify-deploy/"
+  # Since we're deploying pre-built files, no build command needed
+  command = "echo 'Deploying pre-built React application'"
+
+# Redirect all routes to index.html for SPA functionality
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Optimize file headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
