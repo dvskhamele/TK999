@@ -4,19 +4,8 @@
   command = "echo 'Using pre-built files'"
   publish = "deployment/"
   
-# Redirects for SPA routing - exclude test files
-[[redirects]]
-  from = "/js-test.html"
-  to = "/js-test.html"
-  status = 200
-  
-[[redirects]]
-  from = "/login-test.html"
-  to = "/login-test.html"
-  status = 200
-  
-# Redirects for SPA routing - all other routes go to index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Temporarily remove all redirects for testing
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
