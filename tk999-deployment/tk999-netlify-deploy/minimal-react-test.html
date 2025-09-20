@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal React Test</title>
+</head>
+<body>
+    <h1>Minimal React Test</h1>
+    <div id="root">
+        <p>If you see this, React hasn't loaded.</p>
+    </div>
+
+    <script>
+        // Very simple test - just see if we can execute any JavaScript
+        try {
+            document.getElementById('root').innerHTML = '<p>JavaScript executed successfully!</p>';
+            
+            // Try to load the React app
+            const script = document.createElement('script');
+            script.src = '/assets/index-CCamSkAb.js';
+            script.onload = function() {
+                document.getElementById('root').innerHTML += '<p>React script loaded!</p>';
+            };
+            script.onerror = function(e) {
+                document.getElementById('root').innerHTML += '<p>Failed to load React script: ' + e.message + '</p>';
+            };
+            document.head.appendChild(script);
+        } catch (error) {
+            document.getElementById('root').innerHTML = '<p>Error: ' + error.message + '</p>';
+        }
+    </script>
+</body>
+</html>
