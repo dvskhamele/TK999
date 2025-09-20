@@ -1,82 +1,134 @@
-# TK999 Frontend - Fixed Deployment
+# TK999 - Deployment Instructions
 
-## Issue Summary
-The website was loading as plain HTML without any CSS styling. This was because:
-1. The CSS file wasn't being loaded properly
-2. The React application had TypeScript errors that prevented proper compilation
-3. Component imports were missing or incorrect
+## Prerequisites
 
-## Fixes Applied
+1. Node.js and npm installed
+2. Netlify CLI installed (`npm install -g netlify-cli`)
 
-### 1. Fixed TypeScript Compilation Errors
-- Fixed missing component imports (TrophyIcon → Trophy, Award, Flame, etc.)
-- Resolved History component conflict (DOM interface vs React component)
-- Fixed all import statements in React components
+## Deployment Process
 
-### 2. Created Solid Color CSS Design
-- Eliminated all transparency effects
-- Used solid colors only for all UI elements
-- Ensured proper text/background contrast for readability
-- Created comprehensive button variants (primary, success, warning, danger, secondary)
+### Step 1: Build the Application
 
-### 3. Restructured Deployment Files
-- Created standalone HTML file with all CSS inline
-- Ensured all styles are self-contained
-- Removed dependencies on external CSS files
+```bash
+# Navigate to the client directory
+cd client
 
-## Deployment Files
+# Install dependencies (if not already done)
+npm install
 
-### 1. `index.html` (Main Page)
-- Complete beautiful solid card design
-- All CSS styles embedded directly in the HTML
-- Fully functional without external dependencies
+# Build the application
+npm run build
+```
 
-### 2. `css-test.html` (Verification Page)
-- Simple test to verify CSS is working
-- Can be used to troubleshoot styling issues
+This will create a `dist` folder with the compiled application.
 
-## How to Deploy
+### Step 2: Update Deployment Directory
 
-### Option 1: Use Provided Deployment Package
-1. Download `tk999-complete-frontend-deployment.zip`
-2. Extract all files
-3. Upload to any static hosting service (Netlify, Vercel, GitHub Pages, etc.)
+The deployment directory (`tk999-deployment/tk999-netlify-deploy`) should be automatically updated with the latest build. If you need to manually update it:
 
-### Option 2: Manual Deployment
-1. Copy the `tk999-netlify-deploy` folder contents
-2. Upload all files to your hosting provider
-3. Ensure the main `index.html` file is served as the homepage
+```bash
+# Run the update script
+./update-deployment.sh
+```
 
-## Key Improvements
+### Step 3: Test Locally (Optional)
 
-1. **No Transparency**: All UI elements use solid colors only
-2. **Proper Contrast**: Text is always readable against backgrounds
-3. **Self-Contained**: All CSS is embedded in HTML files
-4. **Cross-Browser Compatible**: Works in all modern browsers
-5. **Responsive Design**: Adapts to all screen sizes
-6. **Accessible**: Proper color contrast for accessibility
+Before deploying, you can test the deployment locally:
 
-## Verification
+```bash
+# Navigate to the deployment directory
+cd tk999-deployment/tk999-netlify-deploy
 
-To verify the deployment is working correctly:
-1. Visit the deployed URL
-2. You should see a beautifully styled page with cards and buttons
-3. All elements should have solid backgrounds (no transparency)
-4. Text should be clearly readable against backgrounds
-5. Buttons should have proper hover effects
+# Start a simple HTTP server (Python 3)
+python -m http.server 8000
+
+# Or with Node.js (if http-server is installed)
+npx http-server -p 8000
+```
+
+Then open `http://localhost:8000/test-deployment.html` to verify everything works.
+
+### Step 4: Deploy to Netlify
+
+#### Option 1: Automated Deployment (Recommended)
+
+```bash
+# Run the deployment script
+./deploy-to-netlify.sh
+```
+
+This script will:
+1. Check if Netlify CLI is installed
+2. Verify the deployment directory
+3. Deploy to Netlify
+4. Provide instructions for manual deployment if needed
+
+#### Option 2: Manual Deployment
+
+1. Login to Netlify CLI:
+   ```bash
+   netlify login
+   ```
+
+2. Deploy the site:
+   ```bash
+   netlify deploy --dir="tk999-deployment/tk999-netlify-deploy" --prod
+   ```
+
+### Step 5: Post-Deployment
+
+1. After deployment, Netlify will provide a URL for your site
+2. Test the login and register functionality:
+   - Regular User: Any email + password `123456`
+   - Admin User: `admin@example.com` + password `admin123`
 
 ## Troubleshooting
 
-If the site still appears as plain HTML:
-1. Check browser developer console for errors
-2. Verify all files were uploaded correctly
-3. Ensure `index.html` is being served as the homepage
-4. Clear browser cache and refresh
+### Common Issues
 
-## File List
+1. **Netlify CLI not found**: Install with `npm install -g netlify-cli`
+2. **Build errors**: Ensure all dependencies are installed with `npm install` in the client directory
+3. **Missing assets**: Run `./update-deployment.sh` to refresh the deployment directory
+4. **Routing issues**: The application uses React Router with BrowserRouter, which requires Netlify redirects
 
-- `index.html` - Main beautiful solid card design page
-- `css-test.html` - Simple CSS verification page
-- All other supporting files
+### Netlify Redirects
 
-The site should now display with beautiful solid colors and proper styling instead of plain HTML.
+The `_redirects` file in the deployment directory handles client-side routing:
+
+```
+/*    /index.html   200
+```
+
+This ensures that all routes are redirected to index.html, allowing React Router to handle navigation.
+
+## Updating the Application
+
+To update the deployed application:
+
+1. Make changes to the source code
+2. Run `./update-deployment.sh` to rebuild and update the deployment directory
+3. Run `./deploy-to-netlify.sh` to deploy the updated version
+
+## Application Structure
+
+The deployed application includes:
+
+- `index.html`: Main entry point
+- `/assets/`: Compiled JavaScript, CSS, and other assets
+- `vite.svg`: Favicon
+- Test files for verification
+- `_redirects`: Netlify routing configuration
+
+## Login Credentials
+
+For testing purposes, the application includes demo credentials:
+
+- **Regular User**: 
+  - Email: Any valid email
+  - Password: `123456`
+
+- **Admin User**:
+  - Email: `admin@example.com`
+  - Password: `admin123`
+
+These are for demonstration only and would be replaced with a real authentication system in production.
