@@ -1,12 +1,11 @@
 # Netlify configuration for static file deployment
 [build]
-  # Since we're deploying built files directly to root, we don't need to build
+  # Since we're deploying built files directly, we don't need to build
   command = "echo 'Using pre-built files'"
-  publish = "."
+  publish = "deployment/"
   
-# Temporarily remove redirects to see if that's causing the issue
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
-#   force = false
+# Redirects for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
