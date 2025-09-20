@@ -1,58 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TK999 Debug Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
 </head>
 <body>
-    <h1>TK999 JavaScript Debug Test</h1>
-    <div id="debug-result"></div>
+    <h1>Debug Test Page</h1>
+    <p>If you can see this, the server is working but the React app is not loading.</p>
     <div id="root"></div>
-
     <script>
-        const debugResult = document.getElementById('debug-result');
-        
-        // Check if assets load correctly
-        fetch('/assets/index-CCamSkAb.js')
-            .then(response => {
-                if (response.ok) {
-                    debugResult.innerHTML += '<p style="color: green;">✅ Main JavaScript file accessible</p>';
-                    return response.text();
-                } else {
-                    debugResult.innerHTML += '<p style="color: red;">❌ Main JavaScript file not accessible: ' + response.status + '</p>';
-                    return null;
-                }
-            })
-            .then(jsContent => {
-                if (jsContent) {
-                    debugResult.innerHTML += '<p>JavaScript file size: ' + jsContent.length + ' characters</p>';
-                    
-                    // Try to load and execute the script
-                    const script = document.createElement('script');
-                    script.src = '/assets/index-CCamSkAb.js';
-                    script.onload = function() {
-                        debugResult.innerHTML += '<p style="color: green;">✅ JavaScript loaded successfully</p>';
-                        
-                        // Wait a moment and check if React populated the root
-                        setTimeout(() => {
-                            const rootContent = document.getElementById('root').innerHTML;
-                            if (rootContent && rootContent.trim() !== '') {
-                                debugResult.innerHTML += '<p style="color: green;">✅ React rendered content</p>';
-                                debugResult.innerHTML += '<p>Root content length: ' + rootContent.length + ' characters</p>';
-                            } else {
-                                debugResult.innerHTML += '<p style="color: orange;">⚠️ JavaScript loaded but no content rendered</p>';
-                                debugResult.innerHTML += '<p>This might indicate a JavaScript error</p>';
-                            }
-                        }, 2000);
-                    };
-                    script.onerror = function(e) {
-                        debugResult.innerHTML += '<p style="color: red;">❌ Failed to load JavaScript: ' + e.message + '</p>';
-                    };
-                    document.head.appendChild(script);
-                }
-            })
-            .catch(error => {
-                debugResult.innerHTML += '<p style="color: red;">❌ Error checking JavaScript file: ' + error.message + '</p>';
-            });
+        // Simple test to see if JavaScript is working
+        console.log("Debug script loaded");
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("DOM loaded");
+            const rootElement = document.getElementById("root");
+            if (rootElement) {
+                console.log("Root element found");
+                // Try to render something simple
+                rootElement.innerHTML = "<h2>JavaScript is working but React is not loading properly</h2>";
+            }
+        });
     </script>
 </body>
 </html>
