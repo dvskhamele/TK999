@@ -3,14 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import GameFocusedDashboard from './pages/GameFocusedDashboard';
-import EnhancedGameDashboard from './pages/EnhancedGameDashboard';
 import BeautifulDashboard from './pages/BeautifulDashboard';
-import MatchesPage from './pages/MatchesPage';
-import GamingMatchesPage from './pages/GamingMatchesPage';
 import BeautifulMatchesPage from './pages/BeautifulMatchesPage';
 import UserProfilePage from './pages/UserProfilePage';
-import AdminPage from './pages/EnhancedAdminPage';
+import EnhancedAdminPage from './pages/EnhancedAdminPage';
 import DashboardTestPage from './pages/DashboardTestPage';
 import './index.css'; // Import the main CSS file
 import './assets/beautiful-solid-cards.css'; // Import the solid color CSS file
@@ -158,7 +154,7 @@ const App: React.FC = () => {
           onShowAssistant={() => {}} 
           getUserDashboard={() => ({profile: mockUser, transactions: [], notifications: [], wallet: {balance: 1000}, bets: []})} 
         />} />
-        <Route path="/admin" element={<AdminPage 
+        <Route path="/admin" element={<EnhancedAdminPage 
           matches={mockMatches} 
           onUpdateMatchResult={() => {}} 
           getAdminData={() => ({matches: mockMatches, users: [], bets: [], transactions: [], notifications: []})} 
