@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   
   return {
-    base: '/',
+    base: './', // Changed from '/' to './' for relative paths in Netlify deployment
     plugins: [react()],
     server: {
       host: true,
