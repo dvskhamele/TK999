@@ -4,10 +4,9 @@
   command = "echo 'Using pre-built files'"
   publish = "."
   
-# Redirects for SPA routing - only redirect non-file requests
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  # Only redirect if the file doesn't exist
-  force = false
+# Temporarily remove redirects to see if that's causing the issue
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+#   force = false
