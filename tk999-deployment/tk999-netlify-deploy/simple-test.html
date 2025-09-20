@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Simple React Test</title>
-    <!-- Load React & ReactDOM from CDN -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- Load Babel for JSX processing -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Simple TK999 Test</title>
 </head>
 <body>
+    <h1>TK999 Simple Test</h1>
+    <div id="test-result"></div>
     <div id="root"></div>
-    <script type="text/babel">
-        function App() {
-            return (
-                <div>
-                    <h1>Simple React Test</h1>
-                    <p>If you can see this, React is working!</p>
-                </div>
-            );
-        }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+    <script>
+        const testResult = document.getElementById('test-result');
+        
+        // Test 1: Check if we can access the main JS file
+        fetch('/assets/index-CCamSkAb.js')
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('HTTP ' + response.status);
+                }
+            })
+            .then(jsContent => {
+                testResult.innerHTML += '<p style="color: green;">✅ Main JS file loaded successfully (' + jsContent.length + ' characters)</p>';
+                
+                // Try to dynamically load the script
+                const script = document.createElement('script');
+                script.src = '/assets/index-CCamSkAb.js';
+                script.onload = function() {
+                    testResult.innerHTML += '<p style="color: green;">✅ Script loaded in browser</p>';
+                    
+                    // Wait a bit for React to initialize
+                    setTimeout(() => {
+                        // Check if React components were rendered
+                        const root = document.getElementById('root');
+                        if (root && root.innerHTML.trim() !== '') {
+                            testResult.innerHTML += '<p style="color: green;">✅ React app rendered content</p>';
+                            testResult.innerHTML += '<p>Content preview: ' + root.innerHTML.substring(0, 100) + '...</p>';
+                        } else {
+                            testResult.innerHTML += '<p style="color: orange;">⚠️ Script loaded but no content rendered</p>';
+                            testResult.innerHTML += '<p>This could indicate a runtime JavaScript error</p>';
+                        }
+                    }, 3000);
+                };
+                script.onerror = function(e) {
+                    testResult.innerHTML += '<p style="color: red;">❌ Script failed to load: ' + e.message + '</p>';
+                };
+                document.head.appendChild(script);
+            })
+            .catch(error => {
+                testResult.innerHTML += '<p style="color: red;">❌ Failed to fetch JS file: ' + error.message + '</p>';
+            });
     </script>
 </body>
 </html>
