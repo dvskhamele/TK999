@@ -4,8 +4,10 @@
   command = "echo 'Using pre-built files'"
   publish = "tk999-netlify-deploy/"
   
-# Redirects for SPA routing
+# Redirects for SPA routing - only redirect non-file requests
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  # Only redirect if the file doesn't exist
+  force = false
