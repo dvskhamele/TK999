@@ -1,18 +1,10 @@
+# Netlify configuration for static file deployment
 [build]
-  base = "client/"
-  publish = "dist/"
-  command = "npm run build"
-
-[[redirects]]
-  from = "/test*"
-  to = "/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/beautiful-solid-*"
-  to = "/:splat"
-  status = 200
-
+  # Since we're deploying built files directly, we don't need to build
+  command = "echo 'Using pre-built files'"
+  publish = "tk999-netlify-deploy/"
+  
+# Redirects for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
