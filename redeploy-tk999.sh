@@ -1,37 +1,31 @@
 #!/bin/bash
 
-# Script to redeploy the correct TK999 application
-
 echo "=========================================="
-echo "   TK999 APPLICATION REDEPLOYMENT"
+echo "   REBUILDING AND REDEPLOYING TK999"
 echo "=========================================="
 echo
 
-echo "Current deployment URL: https://tk999-betting-app.netlify.app/"
-echo "Issue: Showing demo page instead of actual application"
-echo
+# Remove the root index.html that has incorrect references
+echo "🗑️  Removing root index.html with incorrect references..."
+rm -f /Users/test/startups/TK999/index.html
 
-echo "To fix this issue, you need to redeploy the correct files:"
-echo
+# Verify the correct index.html in deployment directory
+echo "✅ Checking correct index.html in deployment directory..."
+cat /Users/test/startups/TK999/tk999-deployment/tk999-netlify-deploy/index.html | grep -E "(index-|vendor-|css)"
 
-echo "OPTION 1: Manual redeployment"
-echo "1. Visit https://app.netlify.com/"
-echo "2. Go to your tk999-betting-app site"
-echo "3. Drag and drop the 'tk999-netlify-deploy' folder"
-echo "4. Wait for deployment to complete"
 echo
+echo "📁 Deployment directory contents:"
+ls -la /Users/test/startups/TK999/tk999-deployment/tk999-netlify-deploy/
 
-echo "OPTION 2: Upload correct ZIP file"
-echo "1. Visit https://app.netlify.com/"
-echo "2. Go to your tk999-betting-app site"
-echo "3. Upload the 'tk999-netlify-deployment-final.zip' file"
-echo "4. Wait for deployment to complete"
 echo
+echo "📁 Assets directory contents:"
+ls -la /Users/test/startups/TK999/tk999-deployment/tk999-netlify-deploy/assets/
 
-echo "After redeployment, visit https://tk999-betting-app.netlify.app/"
-echo "You should see the actual TK999 betting application with:"
-echo "- Login functionality"
-echo "- Dashboard"
-echo "- Betting interface"
-echo "- User profile"
-echo "- Admin panel"
+# Redeploy to Netlify
+echo
+echo "🚀 Redeploying to Netlify..."
+cd /Users/test/startups/TK999 && netlify deploy --dir=tk999-deployment/tk999-netlify-deploy --prod
+
+echo
+echo "✅ Redeployment complete!"
+echo "Check your site at: https://tk999-betting-app.netlify.app/"

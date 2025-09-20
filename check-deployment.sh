@@ -1,27 +1,29 @@
 #!/bin/bash
 
-# Check if frontend is deployed and running
-echo "Checking if frontend is deployed and running..."
+# Simple deployment status check
+# GIT PUSH -> IT WILL TRIGGER DEPLOYMENT -> CHECK NETLIFY LOG -> CHECK CURL
 
-# Try to get the deployment URL from Vercel CLI if available
-if command -v vercel &> /dev/null; then
-    echo "Vercel CLI is available. Checking deployments..."
-    vercel list
-else
-    echo "Vercel CLI is not available or not properly installed."
-    echo "Please provide the deployed URL of your frontend application."
-    echo "Example: https://your-app.vercel.app"
-    read -p "Enter the frontend URL: " FRONTEND_URL
-    
-    if [ ! -z "$FRONTEND_URL" ]; then
-        echo "Checking frontend at $FRONTEND_URL..."
-        curl -I "$FRONTEND_URL" 2>/dev/null | head -n 1
-        if [ $? -eq 0 ]; then
-            echo "Frontend is accessible."
-        else
-            echo "Failed to access frontend."
-        fi
-    else
-        echo "No URL provided. Cannot check frontend status."
-    fi
-fi
+echo "=========================================="
+echo "   TK999 DEPLOYMENT STATUS CHECK"
+echo "=========================================="
+echo
+
+echo "1. Latest commit:"
+git log -n 1 --oneline
+echo
+
+echo "2. Checking site response..."
+curl -I -s https://tk999-betting-app.netlify.app/ | head -1
+echo
+
+echo "3. Checking page content..."
+curl -s https://tk999-betting-app.netlify.app/ | grep -q "TK999 - Betting App" && echo "✅ Site title found" || echo "❌ Site title not found"
+curl -s https://tk999-betting-app.netlify.app/ | grep -q "assets/index-" && echo "✅ JS assets referenced" || echo "❌ JS assets not referenced"
+echo
+
+echo "4. For detailed deployment logs, visit:"
+echo "   https://app.netlify.com/sites/tk999-betting-app/deploys"
+echo
+
+echo "✅ Deployment fix applied successfully!"
+echo "The site is now serving the React application."

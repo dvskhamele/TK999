@@ -1,29 +1,49 @@
-# TK999 Application Deployment - Fixed
+# TK999 Deployment Fix Summary
 
-## Summary of Changes
+## Issue Identified
+The deployed version was showing raw HTML instead of the React application because:
+1. The Netlify configuration was pointing to the wrong publish directory
+2. The deployment scripts were not using the correct path to the built React app
+3. There was no proper redirect configuration for the SPA
 
-1. We've identified that the deployed version was showing a static demo page instead of the actual React application
-2. We've fixed this by extracting the correct built application from `tk999-frontend-deployment-fixed-v2.zip`
-3. The tk999-netlify-deploy directory now contains the correct files:
-   - A proper index.html that loads the React application
-   - JavaScript assets in the assets/ directory
-   - CSS stylesheets in the assets/ directory
+## Fixes Applied
 
-## Deployment Instructions
+### 1. Updated Netlify Configuration (`netlify.toml`)
+- Set the correct publish directory to `tk999-deployment/tk999-netlify-deploy/`
+- Added SPA redirect rules to route all requests to `index.html`
+- Added security headers for better protection
 
-Since there are permissions issues with the Netlify CLI, please use the following manual deployment process:
+### 2. Fixed Deployment Scripts
+- Updated `deploy-to-netlify.sh` to use the correct deployment directory path
+- Added validation to check if the deployment directory exists
+- Improved error handling and user guidance
 
-1. Go to https://app.netlify.com/
-2. Click on "Sites" in the top navigation
-3. Click "New site from Git" or "Import an existing project"
-4. Choose "Deploy manually" or drag and drop the `tk999-netlify-deploy` directory
-5. Wait for the deployment to complete
+### 3. Created Git Deployment Trigger
+- Added `trigger-deploy.sh` script to automatically push changes and trigger Netlify deployment
+- This enables continuous deployment through Git pushes
+
+### 4. Added Verification Tools
+- Created `verify-deployment.sh` to check deployment status
+- Provided clear instructions for manual verification
+
+## How to Deploy
+
+### Automatic Deployment (Recommended)
+1. Make changes to your application
+2. Build the React app (files go to `tk999-deployment/tk999-netlify-deploy/`)
+3. Run `./trigger-deploy.sh` to push changes and trigger deployment
+
+### Manual Deployment
+1. Run `./deploy-to-netlify.sh` to deploy using Netlify CLI
 
 ## Verification
+1. Visit https://tk999-betting-app.netlify.app/
+2. You should see the beautiful solid card design React application
+3. All CSS styling should be properly applied
 
-After deployment, your site should show:
-- The TK999 login/dashboard application
-- Proper React routing between pages
-- All the betting features and functionality
-
-The deployed application will be accessible at your Netlify site URL.
+## Troubleshooting
+If you still see plain HTML:
+1. Check Netlify deployment logs for errors
+2. Verify all files were uploaded correctly
+3. Ensure `netlify.toml` is in the repository root
+4. Confirm the publish directory is set correctly in Netlify settings
