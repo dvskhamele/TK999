@@ -968,9 +968,11 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div>
                   <label className="block text-sm font-medium mb-2">Match Date & Time</label>
                   <input
-                      type="datetime-local"
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={newMatch.date}
+                    type="datetime-local"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={newMatch.date}
+                    onChange={(e) => setNewMatch({...newMatch, date: e.target.value})}
+                  />
                 </div>
                 
                 <div>
@@ -1003,11 +1005,16 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Draw Odds</label>
-                                          <input
-                        type="number"
-                        step="0.01"
-                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value={newMatch.odds.draw}
+                    <input
+                      type="number"
+                      step="0.01"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={newMatch.odds.draw}
+                      onChange={(e) => setNewMatch({
+                        ...newMatch, 
+                        odds: {...newMatch.odds, draw: parseFloat(e.target.value) || 2.0}
+                      })}
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Team B Odds</label>
