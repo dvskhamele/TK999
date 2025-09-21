@@ -6,7 +6,6 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   
   return {
-    base: '/', // Changed back to '/' for absolute paths
     plugins: [react()],
     server: {
       host: true,

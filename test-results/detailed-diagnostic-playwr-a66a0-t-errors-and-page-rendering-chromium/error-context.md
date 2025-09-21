@@ -1,0 +1,41 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - heading "TK999 - Beautiful Solid Cards" [level=1] [ref=e3]
+  - paragraph [ref=e4]: This is a demonstration of our beautiful solid card design with no transparency.
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: 1,234
+      - generic [ref=e8]: Total Users
+    - generic [ref=e9]:
+      - generic [ref=e10]: 56.7%
+      - generic [ref=e11]: Win Rate
+    - generic [ref=e12]:
+      - generic [ref=e13]: ₹89,012
+      - generic [ref=e14]: Total Bets
+  - generic [ref=e15]:
+    - generic [ref=e16]: Dashboard Overview
+    - generic [ref=e17]:
+      - heading "Welcome to Your Dashboard" [level=2] [ref=e18]
+      - paragraph [ref=e19]: This is a sample card using our beautiful solid design with no transparency.
+      - generic [ref=e20]:
+        - button "Get Started" [ref=e21] [cursor=pointer]
+        - button "View Reports" [ref=e22] [cursor=pointer]
+  - generic [ref=e23]:
+    - generic [ref=e24]: Recent Activity
+    - generic [ref=e25]:
+      - paragraph [ref=e26]: No recent activity to display.
+      - button "Refresh" [ref=e27] [cursor=pointer]
+  - generic [ref=e28]:
+    - generic [ref=e29]: Button Examples
+    - generic [ref=e30]:
+      - heading "Different Button Styles" [level=3] [ref=e31]
+      - paragraph [ref=e32]: "Here are examples of all our button variants:"
+      - generic [ref=e33]:
+        - button "Primary" [ref=e34] [cursor=pointer]
+        - button "Success" [ref=e35] [cursor=pointer]
+        - button "Warning" [ref=e36] [cursor=pointer]
+        - button "Danger" [ref=e37] [cursor=pointer]
+        - button "Secondary" [ref=e38] [cursor=pointer]
+```

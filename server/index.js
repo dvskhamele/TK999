@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const app = express();
 const PORT = 5001;
@@ -9,6 +10,11 @@ const JWT_SECRET = 'your_jwt_secret'; // In a real app, use an environment varia
 
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// API routes will go here (your existing routes)
 
 // In-memory data
 let { users, matches, bets, transactions } = require('./data');
@@ -185,6 +191,11 @@ app.put('/api/admin/matches/:id', authenticateToken, (req, res) => {
     } else {
         res.status(404).json({ message: 'Match not found' });
     }
+});
+
+// Catch-all route to serve the React app for any non-API routes
+app.get(/^(?!\/api).+/, (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(PORT, () => {
