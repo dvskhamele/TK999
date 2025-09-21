@@ -299,13 +299,13 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
       {/* Enhanced Header */}
-      <header className="bg-gradient-to-r from-blue-800 to-purple-800 shadow-2xl border-b border-purple-500/30">
+      <header className="bg-gradient-to-r from-blue-800 to-purple-800 shadow-2xl border-b border-purple-500">
         <nav className="container mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex items-center justify-between">
               <Link 
                 to="/dashboard" 
-                className="flex items-center gap-3 text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+                className="flex items-center gap-3 text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 text-white"
               >
                 <div className="relative">
                   <Shield className="text-yellow-400" size={32} />
@@ -368,7 +368,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             className={`flex items-center gap-2 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
               activeTab === 'overview' 
                 ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-gray-900 shadow-lg' 
-                : 'bg-gray-800/50 hover:bg-gray-700/50'
+                : 'bg-gray-800 hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('overview')}
           >
@@ -379,7 +379,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             className={`flex items-center gap-2 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
               activeTab === 'users' 
                 ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg' 
-                : 'bg-gray-800/50 hover:bg-gray-700/50'
+                : 'bg-gray-800 hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('users')}
           >
@@ -390,7 +390,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             className={`flex items-center gap-2 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
               activeTab === 'matches' 
                 ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-gray-900 shadow-lg' 
-                : 'bg-gray-800/50 hover:bg-gray-700/50'
+                : 'bg-gray-800 hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('matches')}
           >
@@ -401,7 +401,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             className={`flex items-center gap-2 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
               activeTab === 'bets' 
                 ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg' 
-                : 'bg-gray-800/50 hover:bg-gray-700/50'
+                : 'bg-gray-800 hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('bets')}
           >
@@ -412,7 +412,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             className={`flex items-center gap-2 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
               activeTab === 'settings' 
                 ? 'bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg' 
-                : 'bg-gray-800/50 hover:bg-gray-700/50'
+                : 'bg-gray-800 hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('settings')}
           >
@@ -425,7 +425,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
         {activeTab === 'overview' && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-gradient-to-br from-blue-700/50 to-blue-800/50 backdrop-blur-sm rounded-2xl p-5 border border-blue-500/30">
+              <div className="bg-gradient-to-br from-blue-700 to-blue-800 rounded-2xl p-5 border border-blue-500">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="bg-blue-600 p-2 rounded-lg">
                     <Users size={24} />
@@ -440,7 +440,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-green-700/50 to-green-800/50 backdrop-blur-sm rounded-2xl p-5 border border-green-500/30">
+              <div className="bg-gradient-to-br from-green-700 to-green-800 rounded-2xl p-5 border border-green-500">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="bg-green-600 p-2 rounded-lg">
                     <Trophy size={24} />
@@ -455,7 +455,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-700/50 to-purple-800/50 backdrop-blur-sm rounded-2xl p-5 border border-purple-500/30">
+              <div className="bg-gradient-to-br from-purple-700 to-purple-800 rounded-2xl p-5 border border-purple-500">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="bg-purple-600 p-2 rounded-lg">
                     <Zap size={24} />
@@ -470,7 +470,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-orange-700/50 to-orange-800/50 backdrop-blur-sm rounded-2xl p-5 border border-orange-500/30">
+              <div className="bg-gradient-to-br from-orange-700 to-orange-800 rounded-2xl p-5 border border-orange-500">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="bg-orange-600 p-2 rounded-lg">
                     <DollarSign size={24} />
@@ -488,14 +488,14 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Recent Activity */}
-              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-700/50">
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-5 border border-gray-700">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <Activity className="text-yellow-500" />
                   Recent Activity
                 </h3>
                 <div className="space-y-3">
                   {adminData?.transactions.slice(0, 5).map(transaction => (
-                    <div key={transaction.id} className="flex items-center justify-between p-3 bg-gray-700/30 rounded-lg">
+                    <div key={transaction.id} className="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
                       <div>
                         <div className="font-medium">{transaction.description}</div>
                         <div className="text-sm text-gray-400">
@@ -513,7 +513,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
               </div>
               
               {/* Popular Sports */}
-              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-700/50">
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-5 border border-gray-700">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <TrendingUp className="text-green-500" />
                   Popular Sports
@@ -545,12 +545,12 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <input
                   type="text"
                   placeholder="Search users..."
-                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <select
-                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={userRoleFilter}
                   onChange={(e) => setUserRoleFilter(e.target.value)}
                 >
@@ -562,10 +562,10 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-700/50">
+                  <thead className="bg-gray-700">
                     <tr>
                       <th className="text-left p-4 font-medium">User</th>
                       <th className="text-left p-4 font-medium">Role</th>
@@ -578,7 +578,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                     {filteredUsers.map((user) => (
                       <tr 
                         key={user.id} 
-                        className="border-t border-gray-700/50 hover:bg-gray-700/30 transition-all"
+                        className="border-t border-gray-700 hover:bg-gray-700 transition-all"
                       >
                         <td className="p-4">
                           <div className="flex items-center gap-3">
@@ -593,9 +593,9 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                         </td>
                         <td className="p-4">
                           <span className={`px-2 py-1 rounded-full text-xs font-bold ${
-                            user.role === 'admin' ? 'bg-red-500/20 text-red-400' :
-                            user.role === 'staff' ? 'bg-blue-500/20 text-blue-400' :
-                            'bg-green-500/20 text-green-400'
+                            user.role === 'admin' ? 'bg-red-500 text-red-400' :
+                            user.role === 'staff' ? 'bg-blue-500 text-blue-400' :
+                            'bg-green-500 text-green-400'
                           }`}>
                             {user.role}
                           </span>
@@ -649,12 +649,12 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <input
                   type="text"
                   placeholder="Search matches..."
-                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <select
-                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={matchStatusFilter}
                   onChange={(e) => setMatchStatusFilter(e.target.value)}
                 >
@@ -675,10 +675,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredMatches.map((match) => (
-                <div 
-                  key={match.id} 
-                  className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-4 border border-gray-700/50 hover:border-yellow-500/50 transition-all"
-                >
+                <div key={match.id} className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-4 border border-gray-700 hover:border-yellow-500 transition-all">
                   <div className="flex justify-between items-start mb-3">
                     <div>
                       <div className="font-bold text-lg text-center">{match.teamA}</div>
@@ -686,9 +683,9 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                       <div className="font-bold text-lg text-center">{match.teamB}</div>
                     </div>
                     <div className={`px-2 py-1 rounded-lg text-xs font-bold ${
-                      match.status === 'live' ? 'bg-red-500/20 text-red-400 animate-pulse' :
-                      match.status === 'finished' ? 'bg-green-500/20 text-green-400' :
-                      'bg-blue-500/20 text-blue-400'
+                      match.status === 'live' ? 'bg-red-500 text-red-400 animate-pulse' :
+                      match.status === 'finished' ? 'bg-green-500 text-green-400' :
+                      'bg-blue-500 text-blue-400'
                     }`}>
                       {match.status}
                     </div>
@@ -699,15 +696,15 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                   </div>
                   
                   <div className="grid grid-cols-3 gap-2 mb-3 text-center">
-                    <div className="bg-gray-700/50 rounded-lg p-2">
+                    <div className="bg-gray-700 rounded-lg p-2">
                       <div className="text-xs text-gray-400">Team A</div>
                       <div className="font-bold">{match.odds.teamA}</div>
                     </div>
-                    <div className="bg-gray-700/50 rounded-lg p-2">
+                    <div className="bg-gray-700 rounded-lg p-2">
                       <div className="text-xs text-gray-400">Draw</div>
                       <div className="font-bold">{match.odds.draw}</div>
                     </div>
-                    <div className="bg-gray-700/50 rounded-lg p-2">
+                    <div className="bg-gray-700 rounded-lg p-2">
                       <div className="text-xs text-gray-400">Team B</div>
                       <div className="font-bold">{match.odds.teamB}</div>
                     </div>
@@ -785,7 +782,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 Bet Management
               </h2>
               <select
-                className="bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={betStatusFilter}
                 onChange={(e) => setBetStatusFilter(e.target.value)}
               >
@@ -796,10 +793,10 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
               </select>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-700/50">
+                  <thead className="bg-gray-700">
                     <tr>
                       <th className="text-left p-4 font-medium">User</th>
                       <th className="text-left p-4 font-medium">Match</th>
@@ -815,9 +812,9 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                       const user = adminData?.users.find(u => u.id === bet.userId);
                       const match = matches.find(m => m.id === bet.matchId);
                       return (
-                        <tr 
-                          key={bet.id} 
-                          className="border-t border-gray-700/50 hover:bg-gray-700/30 transition-all"
+                                              <tr 
+                        key={bet.id} 
+                        className="border-t border-gray-700 hover:bg-gray-700 transition-all"
                         >
                           <td className="p-4">
                             <div className="font-medium">{user?.name || 'Unknown User'}</div>
@@ -838,9 +835,9 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                           </td>
                           <td className="p-4">
                             <span className={`px-2 py-1 rounded-full text-xs font-bold ${
-                              bet.status === 'Won' ? 'bg-green-500/20 text-green-400' :
-                              bet.status === 'Lost' ? 'bg-red-500/20 text-red-400' :
-                              'bg-yellow-500/20 text-yellow-400'
+                              bet.status === 'Won' ? 'bg-green-500 text-green-400' :
+                              bet.status === 'Lost' ? 'bg-red-500 text-red-400' :
+                              'bg-yellow-500 text-yellow-400'
                             }`}>
                               {bet.status}
                             </span>
@@ -872,7 +869,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-700/50">
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-5 border border-gray-700">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <Key className="text-yellow-500" />
                   Security Settings
@@ -882,7 +879,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                     <label className="block text-sm font-medium mb-2">Admin Password</label>
                     <input
                       type="password"
-                      className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter new password"
                     />
                   </div>
@@ -899,7 +896,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-700/50">
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-5 border border-gray-700">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <TrendingUp className="text-green-500" />
                   System Configuration
@@ -917,7 +914,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                     <input
                       type="number"
                       step="0.01"
-                      className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="0.05"
                       defaultValue="0.05"
                     />
@@ -933,7 +930,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
 
         {/* Add Match Form Modal */}
         {showAddMatchForm && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="fixed inset-0 bg-black flex items-center justify-center p-4 z-50">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 w-full max-w-md border border-gray-700">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold">Add New Match</h3>
@@ -949,9 +946,9 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div>
                   <label className="block text-sm font-medium mb-2">Team A</label>
                   <input
-                    type="text"
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={newMatch.teamA}
+                      type="text"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={newMatch.teamA}
                     onChange={(e) => setNewMatch({...newMatch, teamA: e.target.value})}
                     placeholder="Enter team name"
                   />
@@ -960,9 +957,9 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div>
                   <label className="block text-sm font-medium mb-2">Team B</label>
                   <input
-                    type="text"
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={newMatch.teamB}
+                      type="text"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={newMatch.teamB}
                     onChange={(e) => setNewMatch({...newMatch, teamB: e.target.value})}
                     placeholder="Enter team name"
                   />
@@ -971,17 +968,15 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div>
                   <label className="block text-sm font-medium mb-2">Match Date & Time</label>
                   <input
-                    type="datetime-local"
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={newMatch.date}
-                    onChange={(e) => setNewMatch({...newMatch, date: e.target.value})}
-                  />
+                      type="datetime-local"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={newMatch.date}
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Sport Category</label>
                   <select
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={newMatch.category}
                     onChange={(e) => setNewMatch({...newMatch, category: e.target.value})}
                   >
@@ -995,11 +990,11 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div className="grid grid-cols-3 gap-3">
                   <div>
                     <label className="block text-sm font-medium mb-2">Team A Odds</label>
-                    <input
-                      type="number"
-                      step="0.01"
-                      className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={newMatch.odds.teamA}
+                                          <input
+                        type="number"
+                        step="0.01"
+                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={newMatch.odds.teamA}
                       onChange={(e) => setNewMatch({
                         ...newMatch, 
                         odds: {...newMatch.odds, teamA: parseFloat(e.target.value) || 1.5}
@@ -1008,24 +1003,19 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Draw Odds</label>
-                    <input
-                      type="number"
-                      step="0.01"
-                      className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={newMatch.odds.draw}
-                      onChange={(e) => setNewMatch({
-                        ...newMatch, 
-                        odds: {...newMatch.odds, draw: parseFloat(e.target.value) || 2.0}
-                      })}
-                    />
+                                          <input
+                        type="number"
+                        step="0.01"
+                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={newMatch.odds.draw}
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Team B Odds</label>
-                    <input
-                      type="number"
-                      step="0.01"
-                      className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={newMatch.odds.teamB}
+                                          <input
+                        type="number"
+                        step="0.01"
+                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={newMatch.odds.teamB}
                       onChange={(e) => setNewMatch({
                         ...newMatch, 
                         odds: {...newMatch.odds, teamB: parseFloat(e.target.value) || 2.5}
@@ -1055,7 +1045,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
 
         {/* User Manipulation Modal */}
         {showUserManipulation && selectedUser && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="fixed inset-0 bg-black flex items-center justify-center p-4 z-50">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 w-full max-w-md border border-gray-700">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold">Manipulate User Balance</h3>
@@ -1067,7 +1057,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 </button>
               </div>
               
-              <div className="mb-4 p-4 bg-gray-700/30 rounded-lg">
+              <div className="mb-4 p-4 bg-gray-700 rounded-lg">
                 <div className="font-bold">{selectedUser.name}</div>
                 <div className="text-sm text-gray-400">{selectedUser.email}</div>
                 <div className="mt-2">
@@ -1079,7 +1069,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div>
                   <label className="block text-sm font-medium mb-2">Action</label>
                   <select
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={userManipulation.action}
                     onChange={(e) => setUserManipulation({...userManipulation, action: e.target.value as 'add' | 'subtract' | 'set'})}
                   >
@@ -1091,10 +1081,10 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Amount (BDT)</label>
-                  <input
-                    type="number"
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={userManipulation.balance}
+                                        <input
+                        type="number"
+                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={userManipulation.balance}
                     onChange={(e) => setUserManipulation({...userManipulation, balance: parseFloat(e.target.value) || 0})}
                     placeholder="Enter amount"
                   />
@@ -1103,7 +1093,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
                 <div>
                   <label className="block text-sm font-medium mb-2">Reason</label>
                   <select
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={userManipulation.reason}
                     onChange={(e) => setUserManipulation({...userManipulation, reason: e.target.value})}
                   >
@@ -1135,7 +1125,7 @@ const EnhancedAdminPage: React.FC<AdminPageProps> = ({
 
         {/* Mobile Menu */}
         {activeTab === 'mobile-menu' && (
-          <div className="md:hidden bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 space-y-3">
+          <div className="md:hidden bg-gray-800 rounded-2xl p-4 space-y-3">
             <Link 
               to="/dashboard" 
               className="block w-full bg-gradient-to-r from-blue-500 to-purple-500 py-3 rounded-lg font-bold text-center"
