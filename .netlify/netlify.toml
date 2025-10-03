@@ -1,0 +1,43 @@
+functionsDirectory = "/Users/test/startups/deploy-68cc53904a126d00086a9168/netlify/functions"
+functionsDirectoryOrigin = "ui"
+redirectsOrigin = "config"
+plugins = []
+headers = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/test/startups/deploy-68cc53904a126d00086a9168"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "echo 'No build needed for static files'"
+base = "/Users/test/startups/deploy-68cc53904a126d00086a9168"
+functions = "/Users/test/startups/deploy-68cc53904a126d00086a9168/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
