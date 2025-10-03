@@ -1,0 +1,17 @@
+{
+  "name": "deploy-68cc53904a126d00086a9168",
+  "version": "1.0.0",
+  "description": "A complete betting platform with login, matches, and betting functionality.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "5.1.0",
+    "serve": "14.2.5"
+  }
+}

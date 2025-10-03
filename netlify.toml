@@ -1,0 +1,9 @@
+[build]
+  base = "."
+  publish = "."
+  command = "echo 'No build needed for static files'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

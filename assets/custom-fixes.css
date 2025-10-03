@@ -1,0 +1,696 @@
+/* Targeted fixes for specific transparent elements */
+
+/* Remove transparency specifically from problematic elements */
+.beautiful-card,
+.card,
+.stunning-card,
+.dashboard-card,
+.dashboard-profile-card,
+.dashboard-stats-card,
+.dashboard-wallet-card-enhanced,
+.dashboard-notification-card,
+.card-dashboard,
+.card-matches,
+.card-transactions,
+.card-notifications,
+.card-settings,
+.stunning-card-glow {
+  background: white !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Fix specific gradient buttons that are still transparent/greyish */
+.bg-gradient-to-r.from-purple-500.to-pink-500 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.bg-gradient-to-r.from-amber-500.to-orange-500 {
+  background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.bg-gradient-to-r.from-purple-600.to-pink-500 {
+  background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix the blue buttons that are turning white */
+.bg-gradient-to-r.from-blue-500.to-blue-600 {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.bg-gradient-to-r.from-blue-500.to-blue-600:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+}
+
+/* Fix the navigation buttons in header */
+.bg-gradient-to-r.from-purple-500.to-purple-600 {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.bg-gradient-to-r.from-purple-500.to-purple-600:hover {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+}
+
+/* Fix the logout button specifically */
+.bg-gradient-to-r.from-rose-500.to-red-500 {
+  background: linear-gradient(135deg, #f43f5e, #ef4444) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.bg-gradient-to-r.from-rose-500.to-red-500:hover {
+  background: linear-gradient(135deg, #e11d48, #dc2626) !important;
+}
+
+/* Fix the beautiful header to ensure it's not transparent */
+.beautiful-header,
+.dashboard-header,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Fix header text to be visible */
+.beautiful-header *,
+.dashboard-header *,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 * {
+  color: #ffffff !important;
+}
+
+/* Fix wallet card */
+.beautiful-wallet-card {
+  background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix user profile */
+.beautiful-user-profile {
+  background: #4f46e5 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: #ffffff !important;
+}
+
+/* Fix nav buttons */
+.beautiful-nav-btn {
+  background: rgba(79, 70, 229, 0.4) !important; /* More opaque than before */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: #ffffff !important;
+}
+
+/* Fix input fields */
+.beautiful-input,
+.form-input,
+.form-select,
+.form-textarea,
+input, select, textarea {
+  background: #ffffff !important;
+  color: #000000 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix table elements */
+.beautiful-table,
+.data-table,
+.dashboard-table,
+table {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix table headers */
+.beautiful-table th,
+.table-header,
+.dashboard-table th,
+th {
+  background: #f1f5f9 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix the beautiful stat card value text */
+.beautiful-stat-value {
+  color: #000000 !important;
+  background: none !important;
+}
+
+/* Fix the beautiful stat card label text */
+.beautiful-stat-label {
+  color: #000000 !important;
+}
+
+/* Fix the favorite sports tags */
+.bg-gradient-to-r.from-blue-100.to-indigo-100 {
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff) !important;
+  color: #1e40af !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix all other gradient buttons */
+.beautiful-btn,
+.btn,
+.stunning-btn,
+.dashboard-nav-btn,
+.beautiful-nav-btn,
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix for the "No Matches Found" issue - Load mock data if matches array is empty */
+.matches-page-no-matches {
+  display: none !important;
+}
+/* Fix for transparent elements - added by bg-fix-daemon */
+/* Remove all backdrop-filter effects causing transparency */
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix specific gradient buttons */
+.bg-gradient-to-r.from-blue-500.to-blue-600 {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  color: #ffffff !important;
+}
+
+.bg-gradient-to-r.from-purple-500.to-pink-500 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+  color: #ffffff !important;
+}
+
+.bg-gradient-to-r.from-amber-500.to-orange-500 {
+  background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+  color: #ffffff !important;
+}
+
+.bg-gradient-to-r.from-rose-500.to-red-500 {
+  background: linear-gradient(135deg, #f43f5e, #ef4444) !important;
+  color: #ffffff !important;
+}
+
+.bg-gradient-to-r.from-purple-600.to-pink-500 {
+  background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+  color: #ffffff !important;
+}
+
+/* Fix header elements */
+.beautiful-header,
+.dashboard-header,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899) !important;
+  color: #ffffff !important;
+}
+
+/* Fix card elements */
+.beautiful-card,
+.card,
+.stunning-card,
+.dashboard-card {
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Fix input elements */
+.beautiful-input,
+.form-input,
+.form-select,
+.form-textarea,
+input, select, textarea {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #e2e8f0 !important;
+}
+
+/* Fix table elements */
+.beautiful-table,
+.data-table,
+.dashboard-table,
+table {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+.beautiful-table th,
+.table-header,
+.dashboard-table th,
+th {
+  background: #f1f5f9 !important;
+  color: #000000 !important;
+}
+
+/* Fix text colors */
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900 {
+  color: #000000 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Fix wallet card */
+.beautiful-wallet-card {
+  background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+  color: #ffffff !important;
+}
+
+/* Fix user profile */
+.beautiful-user-profile {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Fix nav buttons */
+.beautiful-nav-btn {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Fix for transparent elements - TK999 Monitor */
+/* Ensure all gradient backgrounds are solid */
+.bg-gradient-to-r {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix specific problematic gradients */
+.bg-gradient-to-r.from-purple-500.to-pink-500,
+.bg-gradient-to-r.from-amber-500.to-orange-500,
+.bg-gradient-to-r.from-blue-500.to-blue-600,
+.bg-gradient-to-r.from-rose-500.to-red-500,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix header elements */
+.beautiful-header,
+.dashboard-header {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix card elements */
+.beautiful-card,
+.card,
+.stunning-card,
+.dashboard-card,
+.dashboard-profile-card,
+.dashboard-stats-card,
+.dashboard-wallet-card-enhanced,
+.dashboard-notification-card,
+.card-dashboard,
+.card-matches,
+.card-transactions,
+.card-notifications,
+.card-settings {
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix button elements */
+.beautiful-btn,
+.btn,
+.stunning-btn,
+.dashboard-nav-btn,
+.beautiful-nav-btn,
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  color: #ffffff !important;
+  border: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix input elements */
+.beautiful-input,
+.form-input,
+.form-select,
+.form-textarea,
+input, select, textarea {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #e2e8f0 !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix table elements */
+.beautiful-table,
+.data-table,
+.dashboard-table,
+table {
+  background: #ffffff !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix text elements */
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900 {
+  color: #000000 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Fix wallet card */
+.beautiful-wallet-card {
+  background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+*/
+
+/* Fix user profile */
+.beautiful-user-profile {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix nav buttons */
+.beautiful-nav-btn {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix all possible gradient backgrounds that might be causing transparency issues */
+[class*="bg-gradient"] {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure all buttons have solid backgrounds */
+button[class*="bg-gradient"],
+div[class*="bg-gradient"],
+a[class*="bg-gradient"] {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix specific gradient combinations that might still be transparent */
+.bg-gradient-to-r.from-blue-500.to-blue-600,
+.bg-gradient-to-r.from-purple-500.to-pink-500,
+.bg-gradient-to-r.from-amber-500.to-orange-500,
+.bg-gradient-to-r.from-rose-500.to-red-500,
+.bg-gradient-to-r.from-purple-600.to-pink-500,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700,
+.bg-gradient-to-r.from-green-500.to-teal-500,
+.bg-gradient-to-r.from-cyan-500.to-blue-500,
+.bg-gradient-to-r.from-emerald-500.to-blue-500,
+.bg-gradient-to-r.from-yellow-500.to-orange-500,
+.bg-gradient-to-r.from-purple-500.to-purple-600,
+.bg-gradient-to-r.from-blue-500.to-purple-600 {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure all buttons have solid colors */
+.bg-gradient-to-r.from-blue-500.to-blue-600 {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.bg-gradient-to-r.from-purple-500.to-pink-500 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+}
+
+.bg-gradient-to-r.from-amber-500.to-orange-500 {
+  background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+}
+
+.bg-gradient-to-r.from-rose-500.to-red-500 {
+  background: linear-gradient(135deg, #f43f5e, #ef4444) !important;
+}
+
+.bg-gradient-to-r.from-purple-600.to-pink-500 {
+  background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+}
+
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899) !important;
+}
+
+.bg-gradient-to-r.from-green-500.to-teal-500 {
+  background: linear-gradient(135deg, #10b981, #0d9488) !important;
+}
+
+.bg-gradient-to-r.from-cyan-500.to-blue-500 {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6) !important;
+}
+
+.bg-gradient-to-r.from-emerald-500.to-blue-500 {
+  background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+}
+
+.bg-gradient-to-r.from-yellow-500.to-orange-500 {
+  background: linear-gradient(135deg, #eab308, #f97316) !important;
+}
+
+.bg-gradient-to-r.from-purple-500.to-purple-600 {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+}
+
+.bg-gradient-to-r.from-blue-500.to-purple-600 {
+  background: linear-gradient(135deg, #3b82f6, #7c3aed) !important;
+}
+
+/* Fix all text that should be white on dark backgrounds */
+.text-white,
+.text-white.bg-gradient-to-r,
+.text-white.flex,
+.text-white.text-2xl.font-bold {
+  color: #ffffff !important;
+  text-shadow: 0 0 2px rgba(0,0,0,0.3) !important;
+}
+
+/* Fix all text that should be black on light backgrounds */
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900,
+.text-black,
+.text-gray-900.text-2xl.font-bold,
+.text-gray-800.text-xl.font-bold,
+.text-gray-700.text-lg.font-bold {
+  color: #000000 !important;
+}
+
+/* Fix the beautiful stat card value text */
+.beautiful-stat-value {
+  color: #000000 !important;
+  background: none !important;
+}
+
+/* Fix the beautiful stat card label text */
+.beautiful-stat-label {
+  color: #000000 !important;
+}
+
+/* Fix the favorite sports tags */
+.bg-gradient-to-r.from-blue-100.to-indigo-100 {
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff) !important;
+  color: #1e40af !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix all other gradient buttons */
+.beautiful-btn,
+.btn,
+.stunning-btn,
+.dashboard-nav-btn,
+.beautiful-nav-btn,
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix all possible gradient backgrounds that might be causing transparency issues */
+[class*="bg-gradient"] {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure all buttons have solid backgrounds */
+button[class*="bg-gradient"],
+div[class*="bg-gradient"],
+a[class*="bg-gradient"] {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix specific gradient combinations that might still be transparent */
+.bg-gradient-to-r.from-blue-500.to-blue-600,
+.bg-gradient-to-r.from-purple-500.to-pink-500,
+.bg-gradient-to-r.from-amber-500.to-orange-500,
+.bg-gradient-to-r.from-rose-500.to-red-500,
+.bg-gradient-to-r.from-purple-600.to-pink-500,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700,
+.bg-gradient-to-r.from-green-500.to-teal-500,
+.bg-gradient-to-r.from-cyan-500.to-blue-500,
+.bg-gradient-to-r.from-emerald-500.to-blue-500,
+.bg-gradient-to-r.from-yellow-500.to-orange-500,
+.bg-gradient-to-r.from-purple-500.to-purple-600,
+.bg-gradient-to-r.from-blue-500.to-purple-600 {
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure all buttons have solid colors */
+.bg-gradient-to-r.from-blue-500.to-blue-600 {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.bg-gradient-to-r.from-purple-500.to-pink-500 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+}
+
+.bg-gradient-to-r.from-amber-500.to-orange-500 {
+  background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+}
+
+.bg-gradient-to-r.from-rose-500.to-red-500 {
+  background: linear-gradient(135deg, #f43f5e, #ef4444) !important;
+}
+
+.bg-gradient-to-r.from-purple-600.to-pink-500 {
+  background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+}
+
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899) !important;
+}
+
+.bg-gradient-to-r.from-green-500.to-teal-500 {
+  background: linear-gradient(135deg, #10b981, #0d9488) !important;
+}
+
+.bg-gradient-to-r.from-cyan-500.to-blue-500 {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6) !important;
+}
+
+.bg-gradient-to-r.from-emerald-500.to-blue-500 {
+  background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+}
+
+.bg-gradient-to-r.from-yellow-500.to-orange-500 {
+  background: linear-gradient(135deg, #eab308, #f97316) !important;
+}
+
+.bg-gradient-to-r.from-purple-500.to-purple-600 {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+}
+
+.bg-gradient-to-r.from-blue-500.to-purple-600 {
+  background: linear-gradient(135deg, #3b82f6, #7c3aed) !important;
+}
+
+/* Fix all text that should be white on dark backgrounds */
+.text-white,
+.text-white.bg-gradient-to-r,
+.text-white.flex,
+.text-white.text-2xl.font-bold,
+.text-white.text-lg.font-bold,
+.text-white.text-xl.font-bold,
+.text-white.text-3xl.font-bold,
+.text-white.text-4xl.font-bold,
+.text-white.text-5xl.font-bold {
+  color: #ffffff !important;
+  text-shadow: 0 0 2px rgba(0,0,0,0.3) !important;
+}
+
+/* Fix all text that should be black on light backgrounds */
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900,
+.text-black,
+.text-gray-900.text-2xl.font-bold,
+.text-gray-800.text-xl.font-bold,
+.text-gray-700.text-lg.font-bold {
+  color: #000000 !important;
+}
+*/

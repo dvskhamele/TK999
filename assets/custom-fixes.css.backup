@@ -1,0 +1,590 @@
+/* Fix for transparent and hard-to-see elements */
+/* Increased specificity and added !important to ensure overrides */
+
+/* Fix main background */
+.min-h-screen {
+  background: #f0f2f5 !important;
+}
+
+/* Fix header */
+.beautiful-header,
+.dashboard-header,
+.bg-gradient-to-r.from-indigo-700.via-purple-700.to-pink-700 {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Additional fix for header elements that might be transparent */
+header *,
+header .text-white,
+header .text-gray-900,
+header .text-gray-800 {
+  color: #ffffff !important;
+}
+
+/* Fix all card-like elements - Higher specificity */
+.beautiful-card,
+.beautiful-card *,
+.card,
+.card *,
+.card-dashboard,
+.card-dashboard *,
+.card-matches,
+.card-matches *,
+.card-transactions,
+.card-transactions *,
+.card-notifications,
+.card-notifications *,
+.card-settings,
+.card-settings *,
+.stunning-card,
+.stunning-card *,
+.dashboard-card,
+.dashboard-card *,
+.dashboard-profile-card,
+.dashboard-profile-card *,
+.dashboard-wallet-card-enhanced,
+.dashboard-wallet-card-enhanced *,
+.dashboard-stats-card,
+.dashboard-stats-card *,
+.dashboard-notification-card,
+.dashboard-notification-card *,
+.dashboard-activity-table,
+.dashboard-activity-table *,
+.dashboard-table-container,
+.dashboard-table-container *,
+.card-body,
+.card-body *,
+.beautiful-card-body,
+.beautiful-card-body *,
+.stunning-card-body,
+.stunning-card-body *,
+.dashboard-card-body,
+.dashboard-card-body * {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #000000 !important;
+}
+
+/* Add more specific rules for transparent backgrounds */
+.beautiful-card,
+.card,
+.stunning-card,
+.dashboard-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix card headers with gradient backgrounds */
+.beautiful-card-header,
+.dashboard-card-header,
+.card-header,
+.beautiful-header-content,
+.dashboard-header-content {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Fix buttons */
+.beautiful-btn,
+.btn,
+.stunning-btn,
+.dashboard-nav-btn,
+.beautiful-nav-btn,
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.beautiful-btn:hover,
+.btn:hover,
+.stunning-btn:hover,
+.dashboard-nav-btn:hover,
+.beautiful-nav-btn:hover,
+.btn-primary:hover,
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover,
+.btn-secondary:hover {
+  background: #2563eb !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Fix inputs and form elements */
+.beautiful-input,
+.form-input,
+.form-select,
+.form-textarea,
+input, select, textarea {
+  background: #ffffff !important;
+  border: 2px solid #e2e8f0 !important;
+  color: #000000 !important;
+  padding: 1.25rem 1.5rem 1.25rem 3.5rem !important; /* Increased left padding for icons */
+  position: relative !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.beautiful-input:focus,
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus,
+input:focus, select:focus, textarea:focus {
+  border-color: #3b82f6 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Fix icon positioning in input fields */
+.relative .absolute.left-4.top-1\/2.transform.-translate-y-1\/2.text-gray-400,
+.relative .absolute.inset-y-0.left-0.pl-3.flex.items-center.pointer-events-none,
+.relative .absolute.left-6.top-1\/2.transform.-translate-y-1\/2.text-gray-400 {
+  position: absolute !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #94a3b8 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Fix tables */
+.beautiful-table,
+.data-table,
+.dashboard-table,
+table {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.beautiful-table th,
+.table-header,
+.dashboard-table th,
+th {
+  background: #f1f5f9 !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+.beautiful-table td,
+.table-cell,
+.dashboard-table td,
+td {
+  color: #000000 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.beautiful-table tr:nth-child(2n),
+tr:nth-child(2n) {
+  background-color: #f8fafc !important;
+}
+
+.beautiful-table tr:hover,
+tr:hover {
+  background-color: #e0f2fe !important;
+}
+
+/* Fix text colors */
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900,
+.text-white,
+.text-blue-100,
+.text-blue-600,
+.text-blue-700,
+.text-blue-800,
+.text-green-600,
+.text-green-700,
+.text-green-800,
+.text-yellow-600,
+.text-yellow-800,
+.text-red-600,
+.text-red-700,
+.text-red-800,
+.text-purple-800 {
+  color: #000000 !important;
+}
+
+/* Exception for white text that should remain white */
+.text-white.bg-gradient-to-r.from-blue-500.to-purple-600,
+.text-white.flex.items-center.justify-center.mb-8,
+.text-white.text-2xl.font-bold.bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text,
+.beautiful-card-header *,
+.dashboard-card-header *,
+.beautiful-logo *,
+.dashboard-logo *,
+.beautiful-header *,
+.dashboard-header *,
+.header *,
+.nav *,
+.navigation * {
+  color: #ffffff !important;
+}
+
+/* Additional fix for any text that might be transparent in the main content */
+main *,
+main .text-white,
+main .text-gray-900,
+main .text-gray-800,
+main .text-gray-700,
+main .text-gray-600,
+main .text-gray-500 {
+  color: #000000 !important;
+}
+
+/* Fix wallet card */
+.beautiful-wallet-card,
+.dashboard-wallet-card {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-radius: 1rem !important;
+  padding: 1rem 1.5rem !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix user profile */
+.beautiful-user-profile,
+.dashboard-user-profile {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+  border-radius: 1rem !important;
+  padding: 0.75rem 1.25rem !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Fix navigation buttons */
+.beautiful-nav-btn,
+.dashboard-nav-btn,
+.beautiful-nav-buttons button,
+.dashboard-nav-buttons button {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+  border-radius: 1rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.beautiful-nav-btn:hover,
+.dashboard-nav-btn:hover {
+  background: #3b82f6 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix badges and labels */
+.beautiful-badge,
+.dashboard-table-badge,
+.badge {
+  background: #e2e8f0 !important;
+  color: #000000 !important;
+}
+
+/* Fix stat cards */
+.beautiful-stat-card,
+.dashboard-stat-card,
+.stat-card {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.beautiful-stat-value,
+.dashboard-stat-value,
+.stat-value {
+  color: #000000 !important;
+  background: none !important;
+}
+
+/* Fix notification cards */
+.beautiful-notification-card,
+.dashboard-notification-card,
+.notification-card {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.beautiful-notification-card.unread,
+.notification-card.unread {
+  border-left: 4px solid #3b82f6 !important;
+  background: #dbeafe !important;
+}
+
+/* Fix empty states */
+.beautiful-empty-state,
+.dashboard-empty-state,
+.empty-state {
+  background: #f1f5f9 !important;
+  color: #000000 !important;
+  border: 1px dashed #cbd5e1 !important;
+}
+
+/* Fix tabs */
+.beautiful-tabs,
+.dashboard-tabs,
+.tabs {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 1rem !important;
+  padding: 0.5rem !important;
+}
+
+.beautiful-tab,
+.dashboard-tab,
+.tab {
+  background: transparent !important;
+  color: #64748b !important;
+  border-radius: 0.75rem !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+.beautiful-tab.active,
+.dashboard-tab.active,
+.tab.active {
+  background: #dbeafe !important;
+  color: #3b82f6 !important;
+}
+
+.beautiful-tab:hover,
+.dashboard-tab:hover,
+.tab:hover {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+/* Fix wallet elements */
+.dashboard-balance-amount,
+.beautiful-wallet-amount,
+.wallet-amount {
+  color: #ffffff !important;
+  background: none !important;
+}
+
+/* Fix all gradient backgrounds that might be causing transparency */
+[class*="bg-gradient"][class*="white"],
+[class*="from-white"],
+[class*="to-white"] {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Fix avatars */
+.beautiful-avatar,
+.dashboard-user-avatar,
+.beautiful-avatar-lg,
+.avatar {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+}
+
+/* Fix specific icons that might be transparent */
+[class*="lucide"] {
+  color: #000000 !important;
+}
+
+/* Additional fix for lucide icons in header */
+header .lucide,
+header [class*="lucide"] {
+  color: #ffffff !important;
+}
+
+/* Fix login/register form icons positioning */
+#login-form .relative .absolute,
+#register-form .relative .absolute {
+  position: absolute !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #94a3b8 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+#login-form .beautiful-input,
+#register-form .beautiful-input {
+  padding-left: 3.5rem !important;
+}
+
+/* Fix links */
+a, .link {
+  color: #3b82f6 !important;
+}
+
+a:hover, .link:hover {
+  color: #2563eb !important;
+}
+
+/* Fix spinner/loading indicators */
+.loading-spinner,
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1) !important;
+  border-left-color: #3b82f6 !important;
+}
+
+/* Fix dashboard elements */
+.dashboard-wallet-enhanced {
+  background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+  color: #ffffff !important;
+}
+
+.dashboard-user-name,
+.dashboard-user-role {
+  color: #ffffff !important;
+}
+
+/* Fix match cards */
+.match-card,
+.bet-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.match-card:hover,
+.bet-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix all floating/absolute positioned elements */
+.absolute,
+.fixed,
+.sticky {
+  z-index: auto !important;
+}
+
+/* Ensure proper contrast for all text */
+* {
+  color: #000000 !important;
+}
+
+/* Exception for header and intentionally white elements */
+header *,
+.beautiful-header *,
+.dashboard-header *,
+.nav *,
+.navigation *,
+.logo *,
+.beautiful-logo *,
+.dashboard-logo *,
+.text-white.bg-gradient-to-r,
+.text-white.flex,
+.text-white.text-2xl.font-bold {
+  color: #ffffff !important;
+}
+
+/* Fix for main content where text might be transparent */
+main * {
+  color: #000000 !important;
+}
+
+main .text-white {
+  color: #000000 !important;
+}
+
+/* Fix form labels */
+label,
+.form-label {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Fix table headers */
+th,
+.table-header {
+  background: #f1f5f9 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* Most important fix for backdrop-filter transparency */
+.beautiful-card,
+.stunning-card,
+.dashboard-card,
+.card,
+.card-dashboard,
+.card-matches,
+.card-transactions,
+.card-notifications,
+.card-settings {
+  background: white !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Specifically target the transparency issue */
+.beautiful-card,
+.beautiful-card:before,
+.stunning-card,
+.stunning-card:before,
+.card,
+.card:before,
+.dashboard-card,
+.dashboard-card:before {
+  background: white !important;
+  background-color: white !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Override any rgba or transparent backgrounds */
+* {
+  background: initial !important;
+  background-color: initial !important;
+}
+
+/* Override transparent backgrounds specifically */
+*[style*="rgba"],
+*[style*="/"],
+.beautiful-card,
+.stunning-card,
+.card,
+.dashboard-card,
+.dashboard-profile-card,
+.dashboard-stats-card,
+.dashboard-wallet-card-enhanced,
+.dashboard-notification-card,
+.card-dashboard,
+.card-matches,
+.card-transactions,
+.card-notifications,
+.card-settings,
+.stunning-card,
+.dashboard-card {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Final override to ensure no transparency */
+body {
+  background: #f0f2f5 !important;
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TK999 - Betting Platform</title>
+    <link rel="stylesheet" href="/assets/index-rtx0ihzt.css" />
+    <link rel="stylesheet" href="/assets/custom-fixes.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/init-user.js"></script>
+    <script src="/assets/api-interceptor.js"></script>
+    <script src="/assets/match-data-loader.js"></script>
+    <script src="/assets/client-fixes.js"></script>
+    <script src="/assets/simple-match-injector.js"></script>
+    <script src="/assets/verification-script.js"></script>
+    <script src="/assets/match-injector.js"></script>
+    <script src="/assets/match-injector-dom.js"></script>
+    <script src="/assets/react-component-override.js"></script>
+    <script src="/assets/aggressive-match-injector.js"></script>
+    <script src="/assets/final-match-fix.js"></script>
+    <script>
+      // Inject mock match data directly into the window object
+      window.injectedMockMatches = [
+        // Live matches
+        {
+          id: 1,
+          sport: 'Football',
+          league: 'Premier League',
+          teamA: 'Manchester United',
+          teamB: 'Liverpool',
+          teamAScore: 1,
+          teamBScore: 1,
+          status: 'live',
+          startTime: new Date(Date.now() - 3600000), // 1 hour ago
+          odds: {
+            teamA: 2.2,
+            draw: 3.0,
+            teamB: 2.8
+          },
+          isLive: true,
+          isFavorite: true,
+          category: 'Football',
+          date: new Date(Date.now() - 3600000).toISOString()
+        },
+        {
+          id: 2,
+          sport: 'Cricket',
+          league: 'T20 World Cup',
+          teamA: 'India',
+          teamB: 'Australia',
+          teamAScore: 145,
+          teamBScore: 89,
+          status: 'live',
+          startTime: new Date(Date.now() - 7200000), // 2 hours ago
+          odds: {
+            teamA: 1.8,
+            teamB: 2.1
+          },
+          isLive: true,
+          isFavorite: true,
+          category: 'Cricket',
+          date: new Date(Date.now() - 7200000).toISOString()
+        },
+        {
+          id: 3,
+          sport: 'Tennis',
+          league: 'Wimbledon',
+          teamA: 'Djokovic',
+          teamB: 'Nadal',
+          teamAScore: 2,
+          teamBScore: 1,
+          status: 'live',
+          startTime: new Date(Date.now() - 3600000), // 1 hour ago
+          odds: {
+            teamA: 1.7,
+            teamB: 2.2
+          },
+          isLive: true,
+          isFavorite: false,
+          category: 'Tennis',
+          date: new Date(Date.now() - 3600000).toISOString()
+        },
+        // Upcoming matches
+        {
+          id: 4,
+          sport: 'Football',
+          league: 'La Liga',
+          teamA: 'Barcelona',
+          teamB: 'Real Madrid',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 3600000), // 1 hour from now
+          odds: {
+            teamA: 2.3,
+            draw: 3.1,
+            teamB: 3.0
+          },
+          isLive: false,
+          isFavorite: true,
+          category: 'Football',
+          date: new Date(Date.now() + 3600000).toISOString()
+        },
+        {
+          id: 5,
+          sport: 'Basketball',
+          league: 'NBA',
+          teamA: 'Lakers',
+          teamB: 'Warriors',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 7200000), // 2 hours from now
+          odds: {
+            teamA: 1.9,
+            teamB: 1.95
+          },
+          isLive: false,
+          isFavorite: false,
+          category: 'Basketball',
+          date: new Date(Date.now() + 7200000).toISOString()
+        },
+        {
+          id: 6,
+          sport: 'Football',
+          league: 'Serie A',
+          teamA: 'Juventus',
+          teamB: 'AC Milan',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 10800000), // 3 hours from now
+          odds: {
+            teamA: 2.1,
+            draw: 3.0,
+            teamB: 3.2
+          },
+          isLive: false,
+          isFavorite: false,
+          category: 'Football',
+          date: new Date(Date.now() + 10800000).toISOString()
+        },
+        {
+          id: 7,
+          sport: 'Football',
+          league: 'Bundesliga',
+          teamA: 'Bayern Munich',
+          teamB: 'Borussia Dortmund',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 14400000), // 4 hours from now
+          odds: {
+            teamA: 1.7,
+            draw: 3.5,
+            teamB: 4.2
+          },
+          isLive: false,
+          isFavorite: false,
+          category: 'Football',
+          date: new Date(Date.now() + 14400000).toISOString()
+        },
+        {
+          id: 8,
+          sport: 'Cricket',
+          league: 'IPL',
+          teamA: 'Mumbai Indians',
+          teamB: 'Chennai Super Kings',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 18000000), // 5 hours from now
+          odds: {
+            teamA: 1.9,
+            teamB: 1.85
+          },
+          isLive: false,
+          isFavorite: true,
+          category: 'Cricket',
+          date: new Date(Date.now() + 18000000).toISOString()
+        },
+        {
+          id: 9,
+          sport: 'Tennis',
+          league: 'US Open',
+          teamA: 'Alcaraz',
+          teamB: 'Djokovic',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 21600000), // 6 hours from now
+          odds: {
+            teamA: 2.1,
+            teamB: 1.7
+          },
+          isLive: false,
+          isFavorite: false,
+          category: 'Tennis',
+          date: new Date(Date.now() + 21600000).toISOString()
+        },
+        {
+          id: 10,
+          sport: 'Basketball',
+          league: 'NBA',
+          teamA: 'Celtics',
+          teamB: 'Heat',
+          teamAScore: null,
+          teamBScore: null,
+          status: 'upcoming',
+          startTime: new Date(Date.now() + 25200000), // 7 hours from now
+          odds: {
+            teamA: 1.85,
+            teamB: 1.9
+          },
+          isLive: false,
+          isFavorite: false,
+          category: 'Basketball',
+          date: new Date(Date.now() + 25200000).toISOString()
+        }
+      ];
+      
+      // Override the React component to use injected mock data if matches array is empty
+      document.addEventListener('DOMContentLoaded', function() {
+        // Try to patch the MatchesPage component to use injected data
+        setTimeout(() => {
+          // Dispatch a custom event with the mock data
+          window.dispatchEvent(new CustomEvent('mockMatchesLoaded', { 
+            detail: window.injectedMockMatches 
+          }));
+        }, 1000);
+      });
+    </script>
+    <script type="module">
+      import "/assets/index-cwg3bxhf.js";
+    </script>
+  </body>
+</html>
