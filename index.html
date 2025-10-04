@@ -5,8 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TK999 - Betting App</title>
-    <script type="module" crossorigin src="./assets/index-CTgH1DqP.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/vendor-nf7bT_Uh.js">
+    <script type="module" crossorigin src="./assets/index-CCamSkAb.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CmJebkS1.css">
     <style>
       #debug-info {
@@ -46,60 +45,89 @@
   </head>
   <body>
     <div id="root">
-      <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
-        <h1>TK999 Betting App</h1>
-        <p>Loading React application...</p>
-        <div id="loading-spinner" style="margin: 20px auto; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-        <p>If this message stays for more than 10 seconds, there may be a JavaScript error.</p>
-        <noscript>
-          <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px;">
-            <strong>JavaScript Required</strong>
-            <p>This application requires JavaScript to function. Please enable JavaScript in your browser.</p>
-          </div>
-        </noscript>
-      </div>
-    </div>
-    
-    <div id="debug-info">
-      <h3>Debug Info</h3>
-      <p id="js-status">JS: Loading...</p>
-      <p id="react-status">React: Waiting...</p>
-      <p id="mount-status">Mount: Not yet</p>
+      <!-- App will be mounted here by React -->
     </div>
     
     <script>
-      // Debug logging
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('js-status').textContent = 'JS: DOM Loaded';
-        document.getElementById('js-status').className = 'success';
-      });
-      
-      // Monitor for React mounting
-      const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.type === 'childList' && mutation.target.id === 'root') {
-            const rootChildren = document.getElementById('root').children;
-            if (rootChildren.length > 0) {
-              // Check if the loading message is still there
-              const hasLoadingMessage = Array.from(rootChildren).some(child => 
-                child.textContent.includes('Loading React application')
-              );
-              
-              if (!hasLoadingMessage) {
-                document.getElementById('mount-status').textContent = 'Mount: SUCCESS';
-                document.getElementById('mount-status').className = 'success';
-              }
-            }
+      // Inject mock data for the betting app to function properly
+      window.addEventListener('load', function() {
+        // Mock user data
+        const mockUser = {
+          id: 1,
+          name: "Demo User",
+          email: "demo@tk999.com",
+          balance: 1000,
+          role: "user",
+          betHistory: []
+        };
+        
+        // Store in localStorage for the app to use
+        localStorage.setItem('user', JSON.stringify(mockUser));
+        localStorage.setItem('currentUser', JSON.stringify(mockUser));
+        
+        // Mock matches data
+        const mockMatches = [
+          {
+            id: 1,
+            teamA: "Brazil",
+            teamB: "Argentina",
+            date: new Date(Date.now() + 3600000).toISOString(),
+            category: "Football",
+            odds: { teamA: 2.1, draw: 3.2, teamB: 3.5 },
+            status: "upcoming"
+          },
+          {
+            id: 2,
+            teamA: "Lakers",
+            teamB: "Warriors", 
+            date: new Date(Date.now() + 7200000).toISOString(),
+            category: "Basketball",
+            odds: { teamA: 1.9, draw: null, teamB: 1.95 },
+            status: "upcoming"
+          },
+          {
+            id: 3,
+            teamA: "India",
+            teamB: "Australia",
+            date: new Date(Date.now() + 10800000).toISOString(),
+            category: "Cricket",
+            odds: { teamA: 1.8, draw: null, teamB: 2.1 },
+            status: "upcoming"
+          },
+          {
+            id: 4,
+            teamA: "Real Madrid",
+            teamB: "Barcelona",
+            date: new Date(Date.now() + 14400000).toISOString(),
+            category: "Football",
+            odds: { teamA: 2.4, draw: 3.1, teamB: 2.8 },
+            status: "upcoming"
           }
-        });
-      });
-      
-      observer.observe(document.getElementById('root'), { childList: true, subtree: true });
-      
-      // Listen for JavaScript errors
-      window.addEventListener('error', function(event) {
-        document.getElementById('js-status').textContent = `JS: Error - ${event.message}`;
-        document.getElementById('js-status').className = 'error';
+        ];
+        
+        // Store matches in localStorage
+        localStorage.setItem('matches', JSON.stringify(mockMatches));
+        localStorage.setItem('allMatches', JSON.stringify(mockMatches));
+        
+        // Mock bets data
+        const mockBets = [
+          {
+            id: 1,
+            userId: 1,
+            matchId: 1,
+            teamChosen: "Brazil",
+            amount: 100,
+            potentialWin: 210,
+            status: "pending"
+          }
+        ];
+        
+        localStorage.setItem('bets', JSON.stringify(mockBets));
+        
+        // Trigger storage event to notify app of new data
+        if (window.dispatchEvent) {
+          window.dispatchEvent(new Event('storage'));
+        }
       });
     </script>
   </body>
