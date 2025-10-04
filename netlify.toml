@@ -1,4 +1,5 @@
 [build]
+<<<<<<< HEAD
   base = "."
   publish = "."
   command = "echo 'No build needed for static files'"
@@ -7,3 +8,23 @@
   from = "/*"
   to = "/index.html"
   status = 200
+=======
+  # Point to the directory with our built React app
+  publish = "tk999-deployment/tk999-netlify-deploy/"
+  # Since we're deploying pre-built files, no build command needed
+  command = "echo 'Deploying pre-built React application'"
+
+# Redirect all routes to index.html for SPA functionality
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Optimize file headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+>>>>>>> 3b0aa97c719082403efdfade708cd2882a2d02e7
