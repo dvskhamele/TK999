@@ -1,19 +1,14 @@
 [build]
-  # Point to the directory with our built React app
-  publish = "tk999-deployment/tk999-netlify-deploy/"
-  # Since we're deploying pre-built files, no build command needed
-  command = "echo 'Deploying pre-built React application'"
+  publish = "."
+  command = "echo 'Deploying TK999 Betting Platform'"
 
-# Redirect all routes to index.html for SPA functionality
+[template.environment]
+  NODE_VERSION = "18"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
 
-# Optimize file headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+[dev]
+  framework = "#static"
