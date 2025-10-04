@@ -1,111 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TK999 - Betting App</title>
-    <script type="module" crossorigin src="./assets/index-cwg3bxhf.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/vendor-nf7bT_Uh.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-CmJebkS1.css">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
     <style>
-      #debug-info {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        background: rgba(0,0,0,0.8);
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+        min-height: 100vh;
+      }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Add basic styles to ensure login button is visible if app doesn't load */
+      .fallback-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
         color: white;
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 10000;
-        font-family: monospace;
-        font-size: 12px;
-        max-width: 300px;
+        text-align: center;
+        padding: 20px;
       }
-      #debug-info h3 {
-        margin: 0 0 5px 0;
-        color: #4CAF50;
+      .login-btn {
+        background: linear-gradient(135deg, #ff8c00, #ffd700);
+        color: #1a1a1a;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 20px 0;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
-      #debug-info p {
-        margin: 2px 0;
-      }
-      #debug-info .error {
-        color: #f44336;
-      }
-      #debug-info .warning {
-        color: #ff9800;
-      }
-      #debug-info .success {
-        color: #4CAF50;
-      }
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      .login-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, #ffd700, #ff8c00);
       }
     </style>
   </head>
   <body>
     <div id="root">
-      <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
-        <h1>TK999 Betting App</h1>
-        <p>Loading React application...</p>
-        <div id="loading-spinner" style="margin: 20px auto; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-        <p>If this message stays for more than 10 seconds, there may be a JavaScript error.</p>
-        <noscript>
-          <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px;">
-            <strong>JavaScript Required</strong>
-            <p>This application requires JavaScript to function. Please enable JavaScript in your browser.</p>
-          </div>
-        </noscript>
+      <!-- Fallback content in case React doesn't load -->
+      <div class="fallback-content">
+        <h1>TK999 Betting Platform</h1>
+        <p>Loading application...</p>
+        <div style="border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 60px; height: 60px; animation: spin 2s linear infinite; margin: 20px auto;"></div>
+        <p>If the app doesn't load, please refresh the page or check browser console for errors.</p>
       </div>
     </div>
-    
-    <div id="debug-info">
-      <h3>Debug Info</h3>
-      <p id="js-status">JS: Loading...</p>
-      <p id="react-status">React: Waiting...</p>
-      <p id="mount-status">Mount: Not yet</p>
-    </div>
+
+    <!-- Load the main application script -->
+    <script src="./assets/index-cwg3bxhf.js"></script>
     
     <script>
-      // Debug logging
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('js-status').textContent = 'JS: DOM Loaded';
-        document.getElementById('js-status').className = 'success';
-      });
-      
-      // Monitor for React mounting
-      const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.type === 'childList' && mutation.target.id === 'root') {
-            const rootChildren = document.getElementById('root').children;
-            if (rootChildren.length > 0) {
-              // Check if the loading message is still there
-              const hasLoadingMessage = Array.from(rootChildren).some(child => 
-                child.textContent.includes('Loading React application')
-              );
-              
-              if (!hasLoadingMessage) {
-                document.getElementById('mount-status').textContent = 'Mount: SUCCESS';
-                document.getElementById('mount-status').className = 'success';
-              }
-            }
-          }
-        });
-      });
-      
-      observer.observe(document.getElementById('root'), { childList: true, subtree: true });
-      
-      // Listen for JavaScript errors
-      window.addEventListener('error', function(event) {
-        document.getElementById('js-status').textContent = `JS: Error - ${event.message}`;
-        document.getElementById('js-status').className = 'error';
-      });
-      
-      // Inject mock match data after the app loads
+      // Wait for app to load and inject mock data
       window.addEventListener('load', function() {
+        // Wait a bit for the app to initialize
         setTimeout(function() {
-          // Store mock match data in localStorage for the app to use
+          // Mock user data
+          const mockUser = {
+            id: 1,
+            name: "Demo User",
+            email: "demo@tk999.com",
+            balance: 1000,
+            role: "user"
+          };
+          
+          // Store in localStorage for the app to use
+          localStorage.setItem('currentUser', JSON.stringify(mockUser));
+          
+          // Mock matches data
           const mockMatches = [
             {
               id: 1,
@@ -137,17 +118,13 @@
           ];
           
           localStorage.setItem('matches', JSON.stringify(mockMatches));
+          localStorage.setItem('allMatches', JSON.stringify(mockMatches));
           
-          // Also try to update the app state if it's available
-          if (window.updateMatches) {
-            window.updateMatches(mockMatches);
-          }
-          
-          // Trigger a possible data refresh in the app
+          // Trigger storage event to notify the app of new data
           if (window.dispatchEvent) {
             window.dispatchEvent(new Event('storage'));
           }
-        }, 1500);
+        }, 1000);
       });
     </script>
   </body>
