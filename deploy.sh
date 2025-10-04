@@ -1,26 +1,18 @@
 #!/bin/bash
-echo \"Deploying TK999 Betting Platform to Netlify...\"
 
-# Check if zip exists
-if [ ! -f \"tk999-betting-platform.zip\" ]; then
-    echo \"Creating zip file...\"
-    zip -r tk999-betting-platform.zip . -x \"node_modules/*\" \".git/*\" \".qodo/*\" \"*.log\" \"*/Thumbs.db\" \"*/.DS_Store\"
-fi
+# Simple deployment script for TK999 Betting App
 
-# Get Netlify authentication token if available
-if [ -z \"$NETLIFY_AUTH_TOKEN\" ]; then
-    echo \"Please set your Netlify authentication token:\"
-    echo \"export NETLIFY_AUTH_TOKEN=your_token_here\"
-    echo \"You can get your token from https://app.netlify.com/user/applications#personal-access-tokens\"
-    exit 1
-fi
+echo "Starting deployment process..."
 
-# Deploy to Netlify
-echo \"Deploying...\"
-curl -X POST \\
-  https://api.netlify.com/api/v1/sites \\
-  -H \"Authorization: Bearer $NETLIFY_AUTH_TOKEN\" \\
-  -H \"Content-Type: application/zip\" \\
-  --data-binary @tk999-betting-platform.zip
+# Add all changes
+git add .
 
-echo \"Deployment completed! Check your Netlify dashboard for the URL.\"
+# Commit changes with a timestamp
+git commit -m "Deployment $(date)"
+
+# Push to remote repository
+git push origin main
+
+echo "Deployment completed!"
+echo "Your site should automatically deploy to Netlify."
+echo "You can check the deployment status at: https://app.netlify.com/projects/tk999-betting-app/deploys"
