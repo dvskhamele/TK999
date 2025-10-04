@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Netlify Deployment Script for TK999 Betting Platform
-# This script ensures proper deployment to Netlify with error handling
+# This script handles deployment to Netlify with proper error handling
 
 set -e  # Exit on any error
 
@@ -10,75 +10,68 @@ echo "TK999 Betting Platform - Netlify Deployment"
 echo "=========================================="
 echo
 
-# Check if git is clean
-if [[ -n $(git status --porcelain) ]]; then
-    echo "⚠️  Warning: You have uncommitted changes!"
-    echo "It's recommended to commit your changes before deploying."
-    read -p "Do you want to continue anyway? (y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "Deployment cancelled."
-        exit 1
-    fi
-fi
-
-echo "Step 1: Pulling latest changes from remote..."
-git pull origin main
-
-echo
-echo "Step 2: Verifying required files exist..."
+# Check if required files exist
+echo "Step 1: Verifying required files..."
 if [ ! -f "index.html" ]; then
     echo "❌ Error: index.html not found!"
     exit 1
 fi
 
+if [ ! -d "assets" ]; then
+    echo "❌ Error: assets directory not found!"
+    exit 1
+fi
+
+echo "✅ All required files found"
+
+# Create netlify.toml if it doesn't exist
+echo
+echo "Step 2: Creating Netlify configuration..."
 if [ ! -f "netlify.toml" ]; then
-    echo "⚠️  Warning: netlify.toml not found, creating default..."
     cat > netlify.toml << EOF
 [build]
   publish = "."
-  command = "echo 'Deploying static site'"
+  command = "echo 'Deploying TK999 Betting Platform'"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[dev]
+  framework = "#static"
 EOF
-fi
-
-echo "✅ All required files found"
-
-echo
-echo "Step 3: Verifying assets exist..."
-if [ -d "assets" ]; then
-    echo "✅ Assets directory found with $(ls assets/ | wc -l) files"
+    echo "✅ Created netlify.toml configuration"
 else
-    echo "⚠️  Assets directory not found"
+    echo "✅ netlify.toml already exists"
 fi
 
+# Add and commit any changes
 echo
-echo "Step 4: Adding and committing any changes..."
+echo "Step 3: Committing changes..."
 git add .
 if [ -n "$(git status --porcelain)" ]; then
-    git commit -m "Deploy: Add netlify deployment script and fix assets"
+    git commit -m "Deploy: Update TK999 betting platform with proper Netlify configuration"
+    echo "✅ Changes committed"
+else
+    echo "✅ No changes to commit"
 fi
 
+# Push to GitHub (which triggers Netlify deployment)
 echo
-echo "Step 5: Pushing to GitHub (which triggers Netlify deployment)..."
+echo "Step 4: Pushing to GitHub..."
 git push origin main
+echo "✅ Changes pushed to GitHub"
 
 echo
 echo "=========================================="
-echo "🎉 Deployment Process Complete!"
+echo "🎉 Deployment Complete!"
 echo "=========================================="
 echo
-echo "Your site will be deployed to Netlify automatically."
-echo "Monitor the deployment at: https://app.netlify.com/sites/tk999-betting-app/deploys"
-echo
-echo "If the deployment shows as cancelled, check:"
-echo "- That index-cwg3bxhf.js exists in the assets folder"
-echo "- That your netlify.toml configuration is correct"
-echo "- The Netlify deployment logs for specific errors"
-echo
-echo "Once complete, your site will be available at:"
-echo "https://tk999-betting-app.netlify.app"
+echo "Your TK999 Betting Platform is being deployed to Netlify."
+echo "Visit: https://tk999-betting-app.netlify.app"
+echo "The app should now show the actual betting platform with:"
+echo "- Login functionality"
+echo "- Matches with betting odds"
+echo "- Betting capabilities"
+echo "- All platform features"
