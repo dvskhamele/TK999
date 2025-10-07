@@ -1,19 +1,14 @@
 functionsDirectory = "/Users/test/startups/deploy-68cc53904a126d00086a9168/netlify/functions"
 functionsDirectoryOrigin = "ui"
+headersOrigin = "config"
 redirectsOrigin = "config"
 plugins = []
-headers = []
-
-[functions]
-
-[functions."*"]
 
 [build]
 publish = "/Users/test/startups/deploy-68cc53904a126d00086a9168"
 publishOrigin = "config"
 commandOrigin = "config"
-command = "echo 'No build needed for static files'"
-base = "/Users/test/startups/deploy-68cc53904a126d00086a9168"
+command = "echo 'Deploying TK999 Betting Platform'"
 functions = "/Users/test/startups/deploy-68cc53904a126d00086a9168/netlify/functions"
 
 [build.environment]
@@ -29,6 +24,24 @@ functions = "/Users/test/startups/deploy-68cc53904a126d00086a9168/netlify/functi
 [build.processing.js]
 
 [build.services]
+
+[template]
+
+[template.environment]
+NODE_VERSION = "18"
+
+[dev]
+framework = "#static"
+
+[functions]
+
+[functions."*"]
+
+[[headers]]
+for = "/assets/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000"
 
 [[redirects]]
 from = "/*"
