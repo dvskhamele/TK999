@@ -121,12 +121,12 @@ const initialMatches: Match[] = [
     id: 4,
     teamA: 'Boston Celtics',
     teamB: 'Los Angeles Lakers',
-    date: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
+    date: new Date(Date.now() + 3600000).toISOString(), // 1 hour from now
     odds: { 'Boston Celtics': 1.7, 'Los Angeles Lakers': 2.2, Draw: 3.0 },
     result: null,
     category: 'Basketball',
-    status: 'live',
-    liveScore: { teamA: 85, teamB: 78 }
+    status: 'upcoming',
+    liveScore: undefined
   }
 ];
 

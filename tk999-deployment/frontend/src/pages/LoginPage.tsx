@@ -14,9 +14,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   const [error, setError] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [success, setSuccess] = useState('');
-  const [twoFactorCode, setTwoFactorCode] = useState('');
-  const [showTwoFactor, setShowTwoFactor] = useState(false);
-  const [sentCode, setSentCode] = useState(false);
+  // 2FA states - commented out for demo app
+  // const [twoFactorCode, setTwoFactorCode] = useState('');
+  // const [showTwoFactor, setShowTwoFactor] = useState(false);
+  // const [sentCode, setSentCode] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,17 +47,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
     setSuccess('');
     
     try {
-      // For demo purposes, we'll simulate 2FA for admin accounts
-      if (email === 'admin@example.com') {
-        setShowTwoFactor(true);
-        setSentCode(true);
-        setSuccess('2FA code sent to your registered device!');
-        setTimeout(() => setSuccess(''), 3000);
-        return;
-      }
-      
       const response = onLogin(email, password);
-      if (response.user.role === 'admin') {
+      if (response.user?.role === 'admin') {
+        setSuccess('Login successful! Redirecting to admin panel...');
+        setTimeout(() => navigate('/admin'), 1500);
+      } else if (response.user?.role === 'staff') {
         setSuccess('Login successful! Redirecting to admin panel...');
         setTimeout(() => navigate('/admin'), 1500);
       } else {
@@ -70,32 +65,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
     }
   };
 
-  const handleTwoFactorSubmit = () => {
-    if (!twoFactorCode) {
-      setError('Please enter the 2FA code');
-      return;
-    }
-    
-    // In a real implementation, this would validate the 2FA code
-    if (twoFactorCode === '123456') {
-      setSuccess('2FA verified! Logging in...');
-      setTimeout(() => {
-        setShowTwoFactor(false);
-        navigate('/admin');
-      }, 1500);
-    } else {
-      setError('Invalid 2FA code. Please try again.');
-    }
-  };
-
   const handleForgotPassword = () => {
     alert('Password reset functionality would be implemented in a real application');
-  };
-
-  const handleResendCode = () => {
-    setSentCode(true);
-    setSuccess('2FA code resent to your device!');
-    setTimeout(() => setSuccess(''), 3000);
   };
 
   return (
@@ -126,81 +97,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </div>
           )}
           
-          {/* 2FA Screen */}
-          {showTwoFactor ? (
-            <div className="space-y-8">
-              <div className="text-center">
-                <Fingerprint className="mx-auto mb-8 text-blue-600 animate-float" size={72} />
-                <h3 className="text-3xl font-extrabold text-gray-800 mb-4">Two-Factor Authentication</h3>
-                <p className="text-gray-600 text-2xl">
-                  Enter the 6-digit code sent to your registered device
-                </p>
-              </div>
-              
-              <div>
-                <label className="block text-gray-700 font-extrabold mb-4 flex items-center text-2xl">
-                  <Key className="mr-3 text-3xl" />
-                  2FA Code
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    className="stunning-input pl-20 pr-6 py-5 text-2xl"
-                    placeholder="Enter 6-digit code"
-                    value={twoFactorCode}
-                    onChange={(e) => setTwoFactorCode(e.target.value)}
-                    disabled={isLoading}
-                    maxLength={6}
-                    autoComplete="off"
-                  />
-                  <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400">
-                    <Key size={36} />
-                  </div>
-                </div>
-                <p className="text-lg text-gray-500 mt-4">
-                  Didn't receive a code?{' '}
-                  <button
-                    type="button"
-                    onClick={handleResendCode}
-                    className="text-blue-600 hover:text-blue-800 font-extrabold"
-                    disabled={!sentCode}
-                  >
-                    Resend Code
-                  </button>
-                </p>
-              </div>
-              
-              <div className="flex gap-6">
-                <button
-                  type="button"
-                  onClick={() => setShowTwoFactor(false)}
-                  className="stunning-btn stunning-btn-secondary flex-1 py-5 hover:scale-105 transition-transform duration-300 text-2xl"
-                  disabled={isLoading}
-                >
-                  Back
-                </button>
-                <button
-                  type="button"
-                  onClick={handleTwoFactorSubmit}
-                  className="stunning-btn stunning-btn-primary flex-1 flex items-center justify-center py-5 hover:scale-105 transition-transform duration-300 text-2xl animate-pulse-glow"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <div className="stunning-spinner mr-4"></div>
-                      Verifying...
-                    </>
-                  ) : (
-                    <>
-                      <CheckCircle className="mr-3" size={32} />
-                      Verify
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <>
+          <div>
+
               {/* Email Field */}
               <div className="mb-8">
                 <label className="block text-gray-700 font-extrabold mb-4 flex items-center text-2xl">
@@ -311,6 +209,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   <span className="font-extrabold">Regular User:</span> any email + password <span className="font-mono bg-white px-4 py-2 rounded-2xl font-extrabold text-2xl">123456</span>
                   <br className="my-4" />
                   <span className="font-extrabold">Admin User:</span> <span className="font-mono bg-white px-4 py-2 rounded-2xl font-extrabold text-2xl">admin@example.com</span> + password <span className="font-mono bg-white px-4 py-2 rounded-2xl font-extrabold text-2xl">admin123</span>
+                  <br className="my-4" />
+                  <span className="font-extrabold">Staff User:</span> <span className="font-mono bg-white px-4 py-2 rounded-2xl font-extrabold text-2xl">staff@example.com</span> + password <span className="font-mono bg-white px-4 py-2 rounded-2xl font-extrabold text-2xl">staff123</span>
                 </p>
               </div>
               
@@ -328,9 +228,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   </Link>
                 </p>
               </div>
-            </>
-          )}
-        </form>
+            </div>
+          </form>
       </div>
     </div>
   );
