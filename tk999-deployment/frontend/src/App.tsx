@@ -286,6 +286,46 @@ const App: React.FC = () => {
                   match.teamB : 
                   'Draw';
               
+              // Send to all users who had bets on this match
+              const usersWithBets = JSON.parse(localStorage.getItem('users') || '[]');
+              const bettors = bets.filter(bet => bet.matchId === match.id);
+              
+              // Add a short delay to ensure notifications are created after bet processing
+              setTimeout(() => {
+                bettors.forEach(bet => {
+                  const user = usersWithBets.find((u: User) => u.id === bet.userId);
+                  if (user) {
+                    const isWinner = bet.teamChosen === winner;
+                    const userNotification: Notification = {
+                      id: Date.now() + bet.id,
+                      userId: user.id,
+                      title: isWinner ? '🎉 Bet Won!' : '📊 Bet Result',
+                      message: `${match.teamA} vs ${match.teamB} has finished! Result: ${winner}. Your bet on ${bet.teamChosen} ${isWinner ? `WON! You earned ${bet.potentialWin.toFixed(2)} BDT.` : 'was unsuccessful. Better luck next time!'}`,
+                      date: new Date().toISOString(),
+                      read: false,
+                      type: isWinner ? 'success' : 'info'
+                    };
+                    setNotifications(prev => [...prev, userNotification]);
+                  }
+                });
+                
+                // General notification for the match result
+                const generalNotification: Notification = {
+                  id: Date.now() + match.id,
+                  userId: 0, // Will be filtered out by individual users
+                  title: 'Match Finished',
+                  message: `${match.teamA} vs ${match.teamB} has finished with result: ${winner}`,
+                  date: new Date().toISOString(),
+                  read: false,
+                  type: winner === 'Draw' ? 'info' : 'success'
+                };
+                
+                // Only add general notification for current user if they had a bet
+                if (bettors.some(b => b.userId === currentUser?.id)) {
+                  setNotifications(prev => [...prev, generalNotification]);
+                }
+              }, 1000); // Add slight delay to ensure bets are processed first
+              
               return {
                 ...match,
                 status: 'finished',
@@ -314,9 +354,36 @@ const App: React.FC = () => {
       const updatedBets = bets.map(bet => {
         if (bet.matchId === match.id && bet.status === 'Pending') {
           const isWinner = bet.teamChosen === match.result;
+          const newStatus = isWinner ? 'Won' as const : 'Lost' as const;
+          
+          // Send notification about bet result
+          const user = currentUser?.id === bet.userId ? currentUser : 
+                      JSON.parse(localStorage.getItem('users') || '[]')
+                        .find((u: User) => u.id === bet.userId);
+          
+          if (user) {
+            const resultMessage = isWinner ? 
+              `Congratulations! You won ${bet.potentialWin} BDT on your bet for ${bet.teamChosen} in ${match.teamA} vs ${match.teamB}` :
+              `Your bet on ${bet.teamChosen} in ${match.teamA} vs ${match.teamB} was unsuccessful. Better luck next time!`;
+              
+            const resultType = isWinner ? 'success' : 'info';
+              
+            const newNotification: Notification = {
+              id: Date.now(),
+              userId: user.id,
+              title: isWinner ? 'Bet Won!' : 'Bet Result',
+              message: resultMessage,
+              date: new Date().toISOString(),
+              read: false,
+              type: resultType
+            };
+            
+            setNotifications(prev => [...prev, newNotification]);
+          }
+          
           return {
             ...bet,
-            status: isWinner ? ('Won' as const) : ('Lost' as const)
+            status: newStatus
           };
         }
         return bet;
@@ -353,19 +420,6 @@ const App: React.FC = () => {
               };
               
               setTransactions(prev => [...prev, newTransaction]);
-              
-              // Send notification
-              const newNotification: Notification = {
-                id: Date.now(),
-                userId: user.id,
-                title: 'Bet Won!',
-                message: `Congratulations! You won ${winAmount} BDT on your bet for ${match.teamA} vs ${match.teamB}`,
-                date: new Date().toISOString(),
-                read: false,
-                type: 'success'
-              };
-              
-              setNotifications(prev => [...prev, newNotification]);
             }
           });
       }
@@ -592,12 +646,12 @@ const App: React.FC = () => {
     
     setTransactions(prev => [...prev, newTransaction]);
     
-    // Send notification
+    // Send immediate notification about the placed bet
     const newNotification: Notification = {
       id: Date.now() + 2,
       userId: currentUser.id,
-      title: 'Bet Placed',
-      message: `You placed a ${amount} BDT bet on ${team} in ${match.teamA} vs ${match.teamB}`,
+      title: 'Bet Placed Successfully!',
+      message: `You placed a ${amount} BDT bet on ${team} in ${match.teamA} vs ${match.teamB} with odds of ${odds.toFixed(2)}. Potential win: ${potentialWin.toFixed(2)} BDT. Result will be available when the match finishes.`,
       date: new Date().toISOString(),
       read: false,
       type: 'info'
